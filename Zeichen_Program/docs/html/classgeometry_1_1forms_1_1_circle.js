@@ -12,7 +12,7 @@ var classgeometry_1_1forms_1_1_circle =
     [ "operator<", "classgeometry_1_1forms_1_1_circle.html#a5329c9c727d11ebcec8afa5e7e842ec8", null ],
     [ "operator>", "classgeometry_1_1forms_1_1_circle.html#ad2735577ba1cf04e8ceb392bccece448", null ],
     [ "print", "classgeometry_1_1forms_1_1_circle.html#ac83c42548969d403a4f547a3ef4fd118", null ],
-    [ "radius", "classgeometry_1_1forms_1_1_circle.html#a9ce792bba7739c885ad75f78b91bec95", null ],
     [ "radius", "classgeometry_1_1forms_1_1_circle.html#a7e03b27f991ae30702a5b7010ea5462f", null ],
+    [ "radius", "classgeometry_1_1forms_1_1_circle.html#a9ce792bba7739c885ad75f78b91bec95", null ],
     [ "m_radius", "classgeometry_1_1forms_1_1_circle.html#a70f74ea00f6ebd2bfe488251afbd9204", null ]
 ];

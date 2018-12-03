@@ -10,8 +10,8 @@ namespace geometry{
 
         }
 
-         Rectangle::Rectangle(Rectangle &another)
-             : BasicShape(another.position()->X(), another.position()->Y()), m_width(another.width()), m_height(another.height()){
+        Rectangle::Rectangle(Rectangle &another)
+            : BasicShape(another.position()->X(), another.position()->Y()), m_width(another.width()), m_height(another.height()){
 
              BasicShape::area(another.width() * another.height());
              BasicShape::circumference(2 * (another.width() + another.height()));
@@ -33,19 +33,13 @@ namespace geometry{
         double Rectangle::height(){
             return m_height;
         }
+
         void Rectangle::height(double t_height){
             m_height = t_height;
             BasicShape::area(m_width * m_height);
             BasicShape::circumference(2 * (m_width + m_height));
         }
 
-
-        /**
-         * This method will be to print all variables from this rectangle
-         *
-         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
-         * @date 12/02/2018
-         */
         void Rectangle::print(){
             std::cout
                     << "+----------------------------------------" << std::endl

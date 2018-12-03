@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['additem',['addItem',['../classview_1_1_scene.html#aada38ff0eb292d97a5496955bcfde0bc',1,'view::Scene']]],
   ['app',['App',['../classapp_1_1_app.html',1,'app::App'],['../namespaceapp.html',1,'app'],['../classapp_1_1_app.html#a4a289c6cb8f8d34895492cc66ed0be8e',1,'app::App::App()']]],
   ['app_2ecpp',['app.cpp',['../app_8cpp.html',1,'']]],
   ['app_2eh',['app.h',['../app_8h.html',1,'']]],

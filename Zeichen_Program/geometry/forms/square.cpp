@@ -10,17 +10,18 @@ namespace geometry {
         Square::Square(Square &another)
             : Rectangle(another.side(), another.side(), another.position()->X(), another.position()->Y()){
         }
-
         Square::~Square(){
         }
 
+        void Square::side(double t_side){
+            height(t_side);
+            width(t_side);
+        }
 
-        /**
-         * This method will be to print all variables from this square
-         *
-         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
-         * @date 12/02/2018
-         */
+        double Square::side(){
+            return (height() + width()) *0.5;
+        }
+
         void Square::print(){
             std::cout
                     << "+----------------------------------------" << std::endl
@@ -34,33 +35,22 @@ namespace geometry {
                     << std::endl;
         }
 
-
-        double Square::side(){
-            return (height() + width()) *0.5;
-        }
-
-
-        void Square::side(double t_side){
-            height(t_side);
-            width(t_side);
-        }
-
-
         // private method
-
-        double Square::width(){
-           return Rectangle::width();
-        }
 
         void Square::width(double t_width){
            Rectangle::width(t_width);
         }
 
-        double Square::height(){
-            return Rectangle::height();
+        double Square::width(){
+           return Rectangle::width();
         }
+
         void Square::height(double t_height){
             Rectangle::height(t_height);
+        }
+
+        double Square::height(){
+            return Rectangle::height();
         }
     }
 }

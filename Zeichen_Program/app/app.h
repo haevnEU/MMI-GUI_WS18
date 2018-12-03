@@ -33,14 +33,45 @@ namespace app{
 
      public:
 
+        /**
+         * This method will be used to create a new App instance
+         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
+         * @date 12/02/2018
+         */
         App();
 
+        /**
+         * This method will destruct the object an release used resource.
+         *
+         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
+         * @date 12/02/2018
+         */
         ~App();
 
+        /**
+         * This metod will be used to handle user input on the canvas.
+         * First the selected shape will be examinated if none is selected the operation will abort
+         * After the examination default variables are retreived to operate on
+         * Next step is the execution of a selected command
+         * Finally the result will be rendered on screen
+         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
+         * @date 12/02/2018
+         * @code app.onCanvasClicked();
+         */
         void onCanvasClicked();
 
+        /**
+         * This method will be used to retreive the scenegraph
+         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
+         * @date 12/02/2018
+         */
         view::Scene* scene();
 
+        /**
+         * This method will be used to retreive the current state
+         * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
+         * @date 12/02/2018
+         */
         AppState* state();
     };
 }
