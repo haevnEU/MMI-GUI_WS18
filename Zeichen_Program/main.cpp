@@ -4,7 +4,8 @@
 #include "app/app.h"
 #include "app/color.h"
 #include "app/tool.h"
-
+#include "geometry/forms/basicShape.h"
+#include "geometry/forms/rectangle.h"
 
 int main()
 {
