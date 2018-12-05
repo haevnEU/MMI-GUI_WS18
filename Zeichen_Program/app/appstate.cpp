@@ -3,7 +3,7 @@
 namespace app{
 
     AppState::AppState()
-        : m_selectedToool(NO_SELECTION), m_selectedColor(BLUE), m_selectedHeight(0), m_selectedWidth(0),
+        : m_selectedToool(NO_SELECTION), m_selectedColor(NO_COLOR), m_selectedHeight(0), m_selectedWidth(0),
           m_selectedShape(nullptr) {
 
     }

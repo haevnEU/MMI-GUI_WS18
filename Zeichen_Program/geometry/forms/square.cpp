@@ -19,7 +19,7 @@ namespace geometry {
         }
 
         double Square::side(){
-            return (height() + width()) *0.5;
+            return (height() + width()) * 0.5;
         }
 
         void Square::print(){
