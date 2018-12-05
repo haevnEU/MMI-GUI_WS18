@@ -3,7 +3,7 @@
 namespace geometry{
     namespace forms{
 
-        int BasicShape::s_shapeCounter = 0;
+        unsigned int BasicShape::s_shapeCounter = 0;
 
         BasicShape::BasicShape(double t_x, double t_y){
             m_id = s_shapeCounter;
@@ -22,7 +22,7 @@ namespace geometry{
             }
         }
 
-        int BasicShape::id(){
+        unsigned int BasicShape::id(){
             return m_id;
         }
 
@@ -57,6 +57,5 @@ namespace geometry{
         void BasicShape::circumference(double t_circumference){
             m_circumference = t_circumference;
         }
-
     }
 }

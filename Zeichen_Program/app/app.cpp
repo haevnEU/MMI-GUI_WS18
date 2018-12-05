@@ -12,6 +12,12 @@ namespace app{
         delete m_scene;
     }
 
+    /*
+     * (1) First task is to verirfy that a shape was selected
+     * (2) Second task is to retreive some base variables from the application state
+     * (3) Next the selected operation will be executed
+     * (4) Finally everything is rendered
+     */
     void App::onCanvasClicked(){
         // (1) Determine if any shape was selected
         // if not the operation will abort

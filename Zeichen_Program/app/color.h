@@ -13,6 +13,8 @@ namespace app{
      * @date 12/02/2018
      */
     enum Color{
+        /// Deselect color
+        NO_COLOR,
         /// Red color
         RED,
         /// Green color

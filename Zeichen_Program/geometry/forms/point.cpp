@@ -7,9 +7,7 @@ namespace geometry {
 
         }
 
-        Point::Point(Point &another){
-            m_x = another.X();
-            m_y = another.Y();
+        Point::Point(Point &another) : m_x(another.X()), m_y(another.Y()){
         }
 
         Point::~Point(){

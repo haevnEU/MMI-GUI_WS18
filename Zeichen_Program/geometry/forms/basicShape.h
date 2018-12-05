@@ -20,7 +20,7 @@ namespace geometry {
         // Variables
         private:
             /// Used to create unique IDs, possible through incrementing special counter
-            static int s_shapeCounter;
+            static unsigned int s_shapeCounter;
 
             /// Parent of this shape
             BasicShape* m_parent;
@@ -28,14 +28,15 @@ namespace geometry {
             /// Position of this shape
             Point *m_position;
 
+            /// The id from the shape
+            unsigned int m_id;
+
             /// the area of the shape
             double m_area;
 
             /// The circumference of the shape
             double m_circumference;
 
-            /// The id from the shape
-            int m_id;
 
         // Methods
         public:
@@ -74,7 +75,7 @@ namespace geometry {
              * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
              * @date 12/02/2018
              */
-            int id();
+            unsigned int id();
 
             /**
              * This method will be used to retreive the parent of the shape.

@@ -63,7 +63,7 @@ namespace view{
          * @author Nils Milewski (nils.milewski@stud.hs-ruhrwest.de)
          * @date 12/02/2018
          */
-        void removeItem(int t_id);
+        void removeItem(unsigned int t_id);
 
         /**
          * This method will render the scenegraph and display it to screen.
