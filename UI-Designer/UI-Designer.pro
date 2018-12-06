@@ -24,12 +24,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        app/app.cpp \
+        app/appstate.cpp \
+        geometry/forms/basicshape.cpp \
+        geometry/forms/circle.cpp \
+        geometry/forms/point.cpp \
+        geometry/forms/rectangle.cpp \
+        geometry/forms/square.cpp \
+        view/scene.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        app/app.h \
+        app/appstate.h \
+        app/color.h \
+        app/tool.h \
+        geometry/forms/basicshape.h \
+        geometry/forms/circle.h \
+        geometry/forms/point.h \
+        geometry/forms/rectangle.h \
+        geometry/forms/square.h \
+        view/scene.h
 
 FORMS += \
         mainwindow.ui
