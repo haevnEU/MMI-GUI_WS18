@@ -13,22 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>240</y>
-     <width>235</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
@@ -190,54 +174,10 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QTextEdit" name="m_inputWidth">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
          <string>Height</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextEdit" name="m_inputHeight">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
         </property>
        </widget>
       </item>
@@ -255,50 +195,6 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QTextEdit" name="m_inputMinWidth">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QTextEdit" name="m_inputMinHeight">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
@@ -313,47 +209,81 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxWidth">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxHeight">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxMinWidth">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxMinHeight">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
+        </property>
+       </widget>
+      </item>
       <item row="4" column="1">
-       <widget class="QTextEdit" name="m_inputMaxWidth">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxMaxWidth">
+        <property name="decimals">
+         <number>2</number>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
         </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QTextEdit" name="m_inputMaxHeight">
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+       <widget class="QDoubleSpinBox" name="m_doubleSpinnBoxMaxHeigth">
+        <property name="decimals">
+         <number>2</number>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+        <property name="maximum">
+         <double>100000000000000000620008645040778319495168.000000000000000</double>
         </property>
-        <property name="baseSize">
-         <size>
-          <width>200</width>
-          <height>23</height>
-         </size>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::DefaultStepType</enum>
         </property>
        </widget>
       </item>
@@ -369,8 +299,8 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>246</width>
-       <height>111</height>
+       <width>280</width>
+       <height>122</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout_4">
@@ -404,34 +334,13 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>Enabled</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QRadioButton" name="m_radioEnabledYes">
-        <property name="text">
-         <string>Yes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QRadioButton" name="m_radioEnabledNo">
-        <property name="text">
-         <string>No</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
        <widget class="QLabel" name="label_12">
         <property name="text">
          <string>Visibility</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="1" column="1">
        <widget class="QComboBox" name="m_comboVisibility">
         <property name="minimumSize">
          <size>
@@ -453,42 +362,76 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Enabled</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="m_radioEnabledYes">
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="m_radioEnabledNo">
+        <property name="text">
+         <string>No</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
+  </widget>
+  <widget class="QDialogButtonBox" name="dialogButtons">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>240</y>
+     <width>166</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
   </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>dialogButtons</sender>
    <signal>accepted()</signal>
    <receiver>PropertiesView</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>212</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
+     <x>155</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>dialogButtons</sender>
    <signal>rejected()</signal>
    <receiver>PropertiesView</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>212</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
+     <x>155</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>

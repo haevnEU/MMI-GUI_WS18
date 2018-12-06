@@ -2,7 +2,8 @@
 #define PROPERTIESVIEW_H
 
 #include <QDialog>
-#include "core/data/baseproperties.h"
+
+#include "core/objects/IBaseElement.h"
 
 namespace Ui {
 class PropertiesView;
@@ -18,14 +19,15 @@ public slots:
     void accept();
     void reject();
 
+
 public:
     explicit PropertiesView(QWidget *parent = nullptr);
     ~PropertiesView();
 
-    core::data::BaseProperties getProperties();
+    void load(core::objects::IBaseElement* baseElement);
 private:
     Ui::PropertiesView *ui;
-    core::data::BaseProperties m_properties;
+    core::objects::IBaseElement* m_baseElement;
 
 };
 

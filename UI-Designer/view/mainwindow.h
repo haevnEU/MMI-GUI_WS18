@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "propertiesview.h"
-
+#include "app/app.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,7 +15,8 @@ class MainWindow : public QMainWindow
 
 public slots:
     void handlePropertiesClicked();
-
+    void onPropertiesViewClosed();
+    void handleButtonAddClicked();
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -23,7 +24,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    PropertiesView* pv;
+    app::App* m_app;
 };
 
 #endif // MAINWINDOW_H

@@ -36,7 +36,8 @@ SOURCES += \
         geometry/forms/square.cpp \
         view/mainwindow.cpp \
         view/propertiesview.cpp \
-    core/data/baseproperties.cpp
+        core/objects/IBaseElement.cpp \
+    core/objects/button.cpp
 
 HEADERS += \
         app/app.h \
@@ -50,7 +51,8 @@ HEADERS += \
         geometry/forms/square.h \
         view/mainwindow.h \
         view/propertiesview.h \
-    core/data/baseproperties.h
+        core/objects/IBaseElement.h \
+    core/objects/button.h
 
 FORMS += \
         view/mainwindow.ui \
