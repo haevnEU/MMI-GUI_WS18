@@ -12,3 +12,15 @@ PropertiesView::~PropertiesView()
 {
     delete ui;
 }
+
+void PropertiesView::accept(){
+    ui->textEdit->toPlainText();
+}
+
+void PropertiesView::reject(){
+
+}
+
+core::data::BaseProperties PropertiesView::getProperties(){
+    return m_properties;
+}

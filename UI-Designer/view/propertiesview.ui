@@ -48,7 +48,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <property name="usesScrollButtons">
     <bool>false</bool>
@@ -87,7 +87,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QTextEdit" name="textEdit">
+       <widget class="QTextEdit" name="m_inputName">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -116,7 +116,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QTextEdit" name="textEdit_9">
+       <widget class="QTextEdit" name="m_inputToolTip">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -145,7 +145,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QTextEdit" name="textEdit_8">
+       <widget class="QTextEdit" name="m_inputAction">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -169,7 +169,7 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="widget">
     <attribute name="title">
      <string>Size</string>
     </attribute>
@@ -191,7 +191,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QTextEdit" name="textEdit_2">
+       <widget class="QTextEdit" name="m_inputWidth">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -220,7 +220,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QTextEdit" name="textEdit_5">
+       <widget class="QTextEdit" name="m_inputHeight">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -256,7 +256,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QTextEdit" name="textEdit_3">
+       <widget class="QTextEdit" name="m_inputMinWidth">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -278,7 +278,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QTextEdit" name="textEdit_6">
+       <widget class="QTextEdit" name="m_inputMinHeight">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -314,7 +314,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QTextEdit" name="textEdit_7">
+       <widget class="QTextEdit" name="m_inputMaxWidth">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -336,7 +336,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QTextEdit" name="textEdit_4">
+       <widget class="QTextEdit" name="m_inputMaxHeight">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -382,7 +382,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="m_comboColor">
         <property name="minimumSize">
          <size>
           <width>200</width>
@@ -411,14 +411,14 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QRadioButton" name="m_radioEnabledYes">
         <property name="text">
          <string>Yes</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="m_radioEnabledNo">
         <property name="text">
          <string>No</string>
         </property>
@@ -432,7 +432,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="comboBox_2">
+       <widget class="QComboBox" name="m_comboVisibility">
         <property name="minimumSize">
          <size>
           <width>200</width>
