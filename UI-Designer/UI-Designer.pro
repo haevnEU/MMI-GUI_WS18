@@ -27,7 +27,6 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
         app/app.cpp \
         app/appstate.cpp \
         geometry/forms/basicshape.cpp \
@@ -35,10 +34,11 @@ SOURCES += \
         geometry/forms/point.cpp \
         geometry/forms/rectangle.cpp \
         geometry/forms/square.cpp \
-        view/scene.cpp
+        view/mainwindow.cpp \
+        view/propertiesview.cpp \
+    core/data/baseproperties.cpp
 
 HEADERS += \
-        mainwindow.h \
         app/app.h \
         app/appstate.h \
         app/color.h \
@@ -48,10 +48,13 @@ HEADERS += \
         geometry/forms/point.h \
         geometry/forms/rectangle.h \
         geometry/forms/square.h \
-        view/scene.h
+        view/mainwindow.h \
+        view/propertiesview.h \
+    core/data/baseproperties.h
 
 FORMS += \
-        mainwindow.ui
+        view/mainwindow.ui \
+        view/propertiesview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

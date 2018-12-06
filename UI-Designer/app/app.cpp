@@ -5,7 +5,9 @@ namespace app{
 
     App::App(){
         m_scene = new QGraphicsScene();
+        m_scene->setBackgroundBrush(Qt::darkGray);
         m_state = new AppState();
+
     }
 
     App::~App(){
@@ -34,17 +36,17 @@ namespace app{
         double width = m_state->selectedWidth();
         double height = m_state->selectedHeight();
         double side = (height + width) * 0.5;
-
+        QAbstractGraphicsShapeItem* item;
         // (3) Execute the operation
         switch(m_state->selectedTool()){
         case Tool::CIRCLE:
-            m_scene->addItem(new QGraphicsEllipseItem(x, y, side, side));
+            item = new QGraphicsEllipseItem(x, y, side, side);
             break;
         case Tool::RECTANGLE:
-            m_scene->addItem(new QGraphicsRectItem(width, height, x, y));
+            item = new QGraphicsRectItem(width, height, x, y);
             break;
         case Tool::SQUARE:
-            m_scene->addItem(new QGraphicsRectItem(x, y, side, side));
+            item = new QGraphicsRectItem(x, y, side, side);
             break;
         case Tool::DELETE:
            // m_scene->removeItem(m_state->selectedShape()->id());
@@ -52,9 +54,12 @@ namespace app{
         case Tool::NO_SELECTION:
             break;
         }
-        QPainter painter(this);
 
-        m_scene->render(painter);
+        item->setBrush(m_state->selectedColor());
+        m_scene->addItem(item);
+       // QPainter painter(this);
+
+       // m_scene->render(painter);
 
         // (4) Render the result to screen
        }
