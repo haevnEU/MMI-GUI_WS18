@@ -7,7 +7,7 @@
 namespace core {
     namespace objects {
 
-        class Button : IBaseElement, QPushButton
+        class Button : public IBaseElement, public QPushButton
         {
         public:
             Button();

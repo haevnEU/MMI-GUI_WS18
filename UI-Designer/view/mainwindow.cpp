@@ -4,7 +4,7 @@
 #include "app/app.h"
 #include "app/appstate.h"
 #include "app/tool.h"
-
+#include "core/objects/button.h"
 
 core::objects::IBaseElement* prop = nullptr;
 
@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_app->state()->selectTool(app::Tool::CIRCLE);
     m_app->onCanvasClicked();
     ui->m_graphicsViewCanvas->setScene(m_app->scene());
-
+    prop = new core::objects::Button();
 }
 
 MainWindow::~MainWindow()

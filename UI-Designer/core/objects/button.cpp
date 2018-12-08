@@ -3,7 +3,7 @@
     namespace core {
     namespace objects {
 
-        Button::Button()
+        Button::Button() : IBaseElement ()
         {
         }
 

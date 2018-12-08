@@ -3,17 +3,15 @@
 
 PropertiesView::PropertiesView(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::PropertiesView)
-{
+    ui(new Ui::PropertiesView) {
     ui->setupUi(this);
 }
 
-PropertiesView::~PropertiesView()
-{
+PropertiesView::~PropertiesView() {
     delete ui;
 }
 
-void PropertiesView::accept(){
+void PropertiesView::accept() {
 
     m_baseElement->setName(ui->m_inputName->toPlainText());
     m_baseElement->setToolTip(ui->m_inputToolTip->toPlainText());
@@ -33,7 +31,7 @@ void PropertiesView::accept(){
     this->done(true);
 }
 
-void PropertiesView::reject(){
+void PropertiesView::reject() {
     this->done(false);
 }
 
