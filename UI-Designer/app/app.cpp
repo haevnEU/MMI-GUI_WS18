@@ -1,6 +1,5 @@
 #include "app.h"
 
-#include "qpainter.h"
 namespace app{
 
     App::App(){
@@ -51,17 +50,15 @@ namespace app{
         case Tool::DELETE:
            // m_scene->removeItem(m_state->selectedShape()->id());
             break;
-        case Tool::NO_SELECTION:
+
+        case Tool::BUTTON:
+            core::objects::Button* bt = new core::objects::Button("TEST");
+            bt->move(QCursor::pos());
+            m_scene->addWidget(bt);
             break;
         }
-
-        item->setBrush(m_state->selectedColor());
-        m_scene->addItem(item);
-       // QPainter painter(this);
-
-       // m_scene->render(painter);
-
-        // (4) Render the result to screen
+      /*  item->setBrush(m_state->selectedColor());
+        m_scene->addItem(item);*/
        }
 
     QGraphicsScene* App::scene(){
@@ -71,4 +68,5 @@ namespace app{
     AppState* App::state(){
         return m_state;
     }
+
 }

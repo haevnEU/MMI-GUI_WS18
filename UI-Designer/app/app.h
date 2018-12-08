@@ -13,6 +13,8 @@
 #include "geometry/forms/rectangle.h"
 #include "geometry/forms/basicshape.h"
 
+#include "core/objects/button.h"
+
 namespace app{
 
     /**

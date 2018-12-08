@@ -18,7 +18,7 @@ namespace core{
          */
         class IBaseElement{
 
-        private:
+        protected:
             /// This variable describes the UI element name
             QString m_name;
 
@@ -30,7 +30,6 @@ namespace core{
 
             /// Current width of the UI element
             double m_width;
-
 
             /// Minimum width of the UI element
             double m_minWidth;
@@ -73,40 +72,40 @@ namespace core{
             virtual ~IBaseElement();
 
             QString getName();
-            void setName(QString t_name);
+            virtual void setName(QString t_name) = 0;
 
             QString getToolTip();
-            void setToolTip(QString t_tooltip);
+            virtual void setToolTip(QString t_tooltip)  = 0;
 
             QString getAction();
-            void setAction(QString t_action);
+            virtual void setAction(QString t_action) = 0;
 
             double getWidth();
-            void setWidth(double t_width);
+            virtual void setWidth(double t_width)  = 0;
 
             double getMaxWidth();
-            void setMaxWidth(double t_width);
+            virtual void setMaxWidth(double t_width)  = 0;
 
             double getMinWidth();
-            void setMinWidth(double t_width);
+            virtual void setMinWidth(double t_width) = 0;
 
             double getHeight();
-            void setHeight(double t_width);
+            virtual void setHeight(double t_width) = 0;
 
             double getMaxHeight();
-            void setMaxHeight(double t_width);
+            virtual void setMaxHeight(double t_width) = 0;
 
             double getMinHeight();
-            void setMinHeight(double t_width);
+            virtual void setMinHeight(double t_width) = 0;
 
             bool getEnabled();
-            void setEnabled(bool t_enabled);
+            virtual void setEnabled(bool t_enabled) = 0;
 
             int getColor();
-            void setColor(int t_color);
+            virtual void setColor(int t_color) = 0;
 
             int getVisibility();
-            void setVisibility(int t_visibility);
+            virtual void setVisibility(int t_visibility) = 0;
 
             void clear();
 
@@ -126,9 +125,6 @@ namespace core{
                    << "[Color] " << input.m_color << std::endl;
                 return os;
             }
-
-        private:
-            virtual void onlyUseToCreateAnAbstractClass() = 0;
         };
     }
 }

@@ -9,7 +9,6 @@ namespace Ui {
 class PropertiesView;
 }
 
-
 class PropertiesView : public QDialog
 {
     Q_OBJECT
@@ -21,14 +20,16 @@ public slots:
 
 
 public:
-    explicit PropertiesView(QWidget *parent = nullptr);
+    explicit PropertiesView(core::objects::IBaseElement* t_properties, QWidget *parent = nullptr);
     ~PropertiesView();
 
-    void load(core::objects::IBaseElement* baseElement);
+    void load();
+
 private:
+
     Ui::PropertiesView *ui;
     core::objects::IBaseElement* m_baseElement;
-
+    core::objects::IBaseElement* m_properties;
 };
 
 #endif // PROPERTIESVIEW_H

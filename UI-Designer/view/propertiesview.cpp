@@ -1,10 +1,13 @@
 #include "propertiesview.h"
 #include "ui_propertiesview.h"
 
-PropertiesView::PropertiesView(QWidget *parent) :
+PropertiesView::PropertiesView(core::objects::IBaseElement* t_properties, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PropertiesView) {
     ui->setupUi(this);
+
+    m_properties = t_properties;
+    load();
 }
 
 PropertiesView::~PropertiesView() {
@@ -35,10 +38,8 @@ void PropertiesView::reject() {
     this->done(false);
 }
 
-void PropertiesView::load(core::objects::IBaseElement* t_baseElement){
+void PropertiesView::load(){
 
-    if(t_baseElement == nullptr)this->done(false);
-    m_baseElement = t_baseElement;
     ui->m_inputName->setText(m_baseElement->getName());
     ui->m_inputToolTip->setText(m_baseElement->getToolTip());
     ui->m_inputAction->setText(m_baseElement->getAction());

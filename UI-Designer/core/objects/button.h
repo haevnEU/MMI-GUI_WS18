@@ -10,10 +10,31 @@ namespace core {
         class Button : public IBaseElement, public QPushButton
         {
         public:
-            Button();
+            Button(QString t_text);
 
-        private:
-            void onlyUseToCreateAnAbstractClass(){}
+            void setName(QString t_name);
+
+            void setToolTip(QString t_tooltip);
+
+            void setAction(QString t_action);
+
+            void setWidth(double t_width);
+
+            void setMaxWidth(double t_width);
+
+            void setMinWidth(double t_width);
+
+            void setHeight(double t_width);
+
+            void setMaxHeight(double t_width);
+
+            void setMinHeight(double t_width);
+
+            void setEnabled(bool t_enabled);
+
+            void setColor(int t_color);
+
+            void setVisibility(int t_visibility);
         };
     } // namespace objects
 } // namespace core

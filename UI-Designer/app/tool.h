@@ -22,7 +22,9 @@ namespace app {
         /// This enabled delete operation
         DELETE,
         /// This disable all operation
-        NO_SELECTION
+        NO_SELECTION,
+        /// This enabled button operation
+        BUTTON
     };
 }
 
