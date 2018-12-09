@@ -9,7 +9,7 @@
 #include "color.h"
 #include "geometry/forms/point.h"
 #include "geometry/forms/basicshape.h"
-
+#include "core/objects/IBaseElement.h"
 
 namespace app{
 
@@ -45,7 +45,6 @@ namespace app{
 
         /// Shape which the next oepration will operate on
         QAbstractGraphicsShapeItem* m_selectedShape;
-
     // Methods
     public:
 

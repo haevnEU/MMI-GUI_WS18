@@ -23,9 +23,9 @@ namespace app{
     void App::onCanvasClicked(){
         // (1) Determine if any shape was selected
         // if not the operation will abort
-//        if(m_state->selectedShape() == nullptr){
-//            return;
-//        }
+        if(m_state->selectedShape() == nullptr){
+            return;
+        }
 
 
         // (2) Request couple variable which are required to add
@@ -38,6 +38,8 @@ namespace app{
         QAbstractGraphicsShapeItem* item;
         // (3) Execute the operation
         switch(m_state->selectedTool()){
+        case NO_SELECTION:
+            break;
         case Tool::CIRCLE:
             item = new QGraphicsEllipseItem(x, y, side, side);
             break;
@@ -50,7 +52,6 @@ namespace app{
         case Tool::DELETE:
            // m_scene->removeItem(m_state->selectedShape()->id());
             break;
-
         case Tool::BUTTON:
             core::objects::Button* bt = new core::objects::Button("TEST");
             bt->move(m_state->selectedPosition());

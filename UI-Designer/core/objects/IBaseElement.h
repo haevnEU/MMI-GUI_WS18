@@ -1,9 +1,10 @@
 #ifndef BASEPROPERTIES_H
 #define BASEPROPERTIES_H
 
-#include "QString"
+#include <QString>
 #include <QPoint>
 #include <iostream>
+
 namespace core{
     namespace objects{
 
