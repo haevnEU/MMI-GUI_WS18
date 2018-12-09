@@ -53,7 +53,7 @@ namespace app{
 
         case Tool::BUTTON:
             core::objects::Button* bt = new core::objects::Button("TEST");
-            bt->move(QCursor::pos());
+            bt->move(m_state->selectedPosition());
             m_scene->addWidget(bt);
             break;
         }

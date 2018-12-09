@@ -22,6 +22,7 @@ public:
     ~MainWindow();
 
 
+    void mousePressEvent(QMouseEvent* event);
 private:
     Ui::MainWindow *ui;
     app::App* m_app;

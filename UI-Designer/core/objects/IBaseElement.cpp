@@ -55,23 +55,8 @@ namespace core{
             return m_visibility;
         }
 
-        void IBaseElement::clear(){
-            m_name = "";
-            m_tooltip = "";
-            m_action = "";
-
-            m_width = 0;
-            m_minWidth= 0;
-            m_maxWidth = 0;
-
-            m_height = 0;
-            m_minHeight = 0;
-            m_maxHeight = 0;
-
-            m_enabled = true;
-
-            m_color = 0;
-            m_visibility = 0;
+        QPoint IBaseElement::getPosition(){
+            return m_position;
         }
 
     }

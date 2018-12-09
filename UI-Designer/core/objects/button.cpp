@@ -24,6 +24,7 @@ namespace core {
 
         void Button::setWidth(double t_width){
             IBaseElement::m_width = t_width;
+
             // TODO IMPLEMENT
         }
 
@@ -70,6 +71,9 @@ namespace core {
             // TODO IMPLEMENT
         }
 
+        void Button::setPosition(QPoint t_point){
+
+        }
 
     } // namespace objects
 } // namespace core

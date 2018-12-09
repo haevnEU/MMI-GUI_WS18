@@ -18,6 +18,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+void MainWindow::mousePressEvent(QMouseEvent* event){
+    std::cout << QCursor::pos().x() << std::endl << QCursor::pos().y() << std::endl;
+    m_app->state()->selectPosition(QCursor::pos().x(), QCursor::pos().y());
+    m_app->onCanvasClicked();
+
+}
+
 MainWindow::~MainWindow(){
 
     delete m_app;
@@ -28,11 +35,6 @@ MainWindow::~MainWindow(){
 void MainWindow::handleButtonAddClicked(){
 
    m_app->state()->selectTool(app::Tool::BUTTON);
-   m_app->state()->selectPosition(QPoint(0,0));
-   m_app->state()->selectWidth(100);
-   m_app->state()->selectHeight(100);
-   m_app->state()->selectColor(Qt::GlobalColor::blue);
-   m_app->onCanvasClicked();
 
 }
 

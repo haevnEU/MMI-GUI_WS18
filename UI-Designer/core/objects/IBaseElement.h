@@ -2,7 +2,7 @@
 #define BASEPROPERTIES_H
 
 #include "QString"
-
+#include <QPoint>
 #include <iostream>
 namespace core{
     namespace objects{
@@ -54,6 +54,9 @@ namespace core{
 
             /// Visibility of the UI element
             int m_visibility;
+
+            /// Position of the UI element
+            QPoint m_position;
 
         public:
 
@@ -107,7 +110,8 @@ namespace core{
             int getVisibility();
             virtual void setVisibility(int t_visibility) = 0;
 
-            void clear();
+            QPoint getPosition();
+            virtual void setPosition(QPoint t_point) = 0;
 
             friend std::ostream& operator<< (std::ostream& os, const IBaseElement& input)
             {

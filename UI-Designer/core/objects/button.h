@@ -35,6 +35,8 @@ namespace core {
             void setColor(int t_color);
 
             void setVisibility(int t_visibility);
+
+            void setPosition(QPoint t_point);
         };
     } // namespace objects
 } // namespace core
