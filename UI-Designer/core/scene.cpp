@@ -1,7 +1,7 @@
 #include "scene.h"
 
 #include <QPushButton>
-
+#include <QGraphicsItem>
 Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 {
     selectedItem = new QPushButton("TEST");
@@ -57,13 +57,10 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     if(event->button() == Qt::MouseButton::LeftButton){
         m_grab = true;
         // ?!
-        GraphicsItem *item = itemAt(event->scenePos());
-    }
-
 }
 
 void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
-    if(m_grab) selectedItem->move(event->scenePos().x(), event->scenePos().y());
+    if(m_grab && selectedItem != nullptr) selectedItem->move(event->scenePos().x(), event->scenePos().y());
 }
 
 void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
