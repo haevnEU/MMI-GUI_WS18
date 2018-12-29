@@ -196,35 +196,13 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="tools2" native="true">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>240</y>
-      <width>300</width>
-      <height>701</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>300</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>300</width>
-      <height>16777215</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QTreeWidget" name="tools">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
       <width>300</width>
-      <height>192</height>
+      <height>511</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -247,9 +225,144 @@
     </property>
     <column>
      <property name="text">
-      <string>BasicItems</string>
+      <string>Elements</string>
      </property>
     </column>
+    <item>
+     <property name="text">
+      <string>Control</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Button</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Radiobutton</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Checkbox</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Display</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Label</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Progressbar</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Webbrowser</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Input</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>TextField</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ComboBox</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slider</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Time</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Layout</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Grid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Canvas</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>VBox</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>HBox</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Data visualization</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Listview</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tableview</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Treeview</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Grouping</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Groupbox</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Radiobuttongroup</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>NOT CATEGORIZED</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>
