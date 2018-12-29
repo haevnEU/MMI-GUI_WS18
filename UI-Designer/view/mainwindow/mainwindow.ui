@@ -6,50 +6,217 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>717</height>
+    <width>1699</width>
+    <height>815</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>950</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="gridLayoutWidget">
+   <widget class="QGraphicsView" name="canvas">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>661</width>
+      <height>689</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="details" native="true">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>20</y>
+      <width>300</width>
+      <height>701</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>300</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>300</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <widget class="QWidget" name="formLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>301</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbObjectWidth">
+        <property name="text">
+         <string>Width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectWidth"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbObjectMaxWidth">
+        <property name="text">
+         <string>Max width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectMaxWidth"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbObjectMinWidth">
+        <property name="text">
+         <string>Min width</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectMinWidth"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbObjectHeight">
+        <property name="text">
+         <string>Height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectHeight"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lbObjectMaxHeight">
+        <property name="text">
+         <string>Max height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectMaxHeight"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lbObjectMinHeight">
+        <property name="text">
+         <string>Min height</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QDoubleSpinBox" name="sbObjectMinHeight"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="lbPosX">
+        <property name="text">
+         <string>Position X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QSpinBox" name="spPosX"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="lbPosY">
+        <property name="text">
+         <string>position Y</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QSpinBox" name="spPosY"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="lbContent">
+        <property name="text">
+         <string>Content</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="leContent"/>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="lbTooltip">
+        <property name="text">
+         <string>Toltip</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="leTooltip"/>
+      </item>
+      <item row="10" column="1">
+       <widget class="QCheckBox" name="checkBox">
+        <property name="text">
+         <string>Visible</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="lbVisibility">
+        <property name="text">
+         <string>Visibility</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tools" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>30</y>
-      <width>951</width>
-      <height>531</height>
+      <y>10</y>
+      <width>300</width>
+      <height>701</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QListView" name="listView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>150</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>16777215</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGraphicsView" name="graphicsView"/>
-     </item>
-    </layout>
+    <property name="minimumSize">
+     <size>
+      <width>300</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>300</width>
+      <height>16777215</height>
+     </size>
+    </property>
    </widget>
   </widget>
  </widget>
