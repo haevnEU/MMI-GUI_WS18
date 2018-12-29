@@ -196,11 +196,11 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="tools" native="true">
+   <widget class="QWidget" name="tools2" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>190</x>
+      <y>240</y>
       <width>300</width>
       <height>701</height>
      </rect>
@@ -217,6 +217,39 @@
       <height>16777215</height>
      </size>
     </property>
+   </widget>
+   <widget class="QTreeWidget" name="tools">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>300</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>300</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>300</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="rootIsDecorated">
+     <bool>true</bool>
+    </property>
+    <property name="headerHidden">
+     <bool>false</bool>
+    </property>
+    <column>
+     <property name="text">
+      <string>BasicItems</string>
+     </property>
+    </column>
    </widget>
   </widget>
  </widget>
