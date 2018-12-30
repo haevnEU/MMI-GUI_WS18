@@ -199,8 +199,8 @@
    <widget class="QTreeWidget" name="tools">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>380</x>
+      <y>30</y>
       <width>300</width>
       <height>511</height>
      </rect>

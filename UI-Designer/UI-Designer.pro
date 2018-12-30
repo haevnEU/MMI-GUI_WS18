@@ -27,11 +27,17 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         view/mainwindow/mainwindow.cpp \
-    core/scene.cpp
+    core/scene.cpp \
+    core/model.cpp \
+    core/objects/iabstractobject.cpp \
+    core/objects/buttons/hbutton.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
-    core/scene.h
+    core/scene.h \
+    core/model.h \
+    core/objects/iabstractobject.h \
+    core/objects/buttons/hbutton.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui

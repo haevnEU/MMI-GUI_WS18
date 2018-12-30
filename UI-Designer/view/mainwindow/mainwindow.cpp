@@ -5,25 +5,43 @@
 #include <QMouseEvent>
 #include "core/scene.h"
 
+#include <QPushButton>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QLabel>
+
+using namespace haevn::view;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    // Create custom scene
-    m_scene = new Scene();
+    // Create custom scene//
+    m_scene = new core::Scene();
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
     ui->canvas->setScene(m_scene);
+
+    ui->tools->setDragEnabled(true);
+
+
 }
 
 MainWindow::~MainWindow(){
-
-    delete m_scene;
+    if(m_scene != nullptr){
+        delete m_scene;
+        m_scene = nullptr;
+    }
     delete ui;
 }
 
-void MainWindow::resizeEvent(QResizeEvent* event){
+
+void MainWindow::link(core::Model* t_model){
+    m_model = t_model;
+}
+
+void MainWindow::resizeEvent(QResizeEvent* t_event){
 
 
     double posY = 10;

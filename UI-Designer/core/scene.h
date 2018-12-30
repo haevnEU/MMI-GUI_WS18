@@ -11,35 +11,41 @@
 #include <QFocusEvent>
 #include <QKeyEvent>
 #include <QGraphicsSceneMouseEvent>
+#include <QMimeData>
 
-class Scene : public QGraphicsScene
-{
-    Q_OBJECT
-public:
-    explicit Scene(QObject *parent = nullptr);
+#include "core/objects/iabstractobject.h"
 
-    virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
-    virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
-    virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
-    virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
-    virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
-    virtual void focusInEvent(QFocusEvent *event);
-    virtual void focusOutEvent(QFocusEvent *event);
-    virtual void helpEvent(QGraphicsSceneHelpEvent *event);
-    virtual void keyPressEvent(QKeyEvent *event);
-    virtual void keyReleaseEvent(QKeyEvent *event);
-    virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-signals:
+namespace haevn{
+    namespace core {
+        class Scene : public QGraphicsScene {
+            Q_OBJECT
+        public:
+            explicit Scene(QObject *parent = nullptr);
 
-public slots:
+            virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
+            virtual void dragEnterEvent(QGraphicsSceneDragDropEvent *event);
+            virtual void dragMoveEvent(QGraphicsSceneDragDropEvent *event);
+            virtual void dragLeaveEvent(QGraphicsSceneDragDropEvent *event);
+            virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
+            virtual void focusInEvent(QFocusEvent *event);
+            virtual void focusOutEvent(QFocusEvent *event);
+            virtual void helpEvent(QGraphicsSceneHelpEvent *event);
+            virtual void keyPressEvent(QKeyEvent *event);
+            virtual void keyReleaseEvent(QKeyEvent *event);
+            virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+            virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+            virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+        signals:
+
+        public slots:
+            void AddItem(core::objects::IAbstractObject* t_item);
 
 
-
-private:
-    QWidget* selectedItem;
-    bool m_grab = false;
-};
-
+        private:
+            QWidget* selectedItem;
+            bool m_grab = false;
+        };
+    }
+}
 #endif // SCENE_H

@@ -3,23 +3,36 @@
 
 #include <QMainWindow>
 #include "core/scene.h"
+#include "core/model.h"
+#include "core/objects/iabstractobject.h"
+
 namespace Ui {
 class MainWindow;
 }
+namespace haevn {
+    namespace view {
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+        class MainWindow : public QMainWindow
+        {
+            Q_OBJECT
+        signals:
 
-    void resizeEvent(QResizeEvent* event);
-private:
 
-    Scene* m_scene;
-    Ui::MainWindow *ui;
-};
+        public slots:
 
+        public:
+            explicit MainWindow(QWidget *parent = nullptr);
+            ~MainWindow();
+            void resizeEvent(QResizeEvent* t_event);
+            void link(core::Model* t_model);
+        private:
+            core::objects::IAbstractObject* selectedItem;
+            core::Model* m_model;
+            core::Scene* m_scene;
+            Ui::MainWindow *ui;
+        };
+
+    }
+}
 #endif // MAINWINDOW_H
