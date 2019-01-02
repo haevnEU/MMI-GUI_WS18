@@ -13,9 +13,6 @@ namespace haevn{
 
                 class HButton : public QPushButton, public IAbstractObject{
                     Q_OBJECT
-                public:
-                    explicit HButton(QPushButton *parent = nullptr);
-
                 signals:
                    void heightChanged(double height);
                    void maxHeightChanged(double maxHeight);
@@ -31,7 +28,18 @@ namespace haevn{
                    void visibilityChanged(bool visibility);
 
                public slots:
+
+                public:
+                   explicit HButton(QPushButton *parent = nullptr);
+
+                   /**
+                    * @see IAbstractObject#setHeight
+                    */
                    void setHeight(double t_height);
+
+                   /**
+                    * @see iabstractobject#setMaxHeight
+                    */
                    void setMaxHeight(double t_maxHeight);
                    void setMinHeight(double t_minHeight);
 
@@ -43,9 +51,6 @@ namespace haevn{
 
                    void setVisibility(bool t_visibility);
 
-
-                 private:
-                    void overrideMe();
                 };
 
             }

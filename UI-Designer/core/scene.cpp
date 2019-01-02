@@ -2,6 +2,9 @@
 
 #include <QPushButton>
 #include <QGraphicsItem>
+#include <QLabel>
+#include <QTreeWidget>
+#include "core/custom_objects/htreeview.h"
 
 using namespace haevn::core;
 
@@ -38,11 +41,9 @@ void Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
 
 
 void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
-        std::cout << "Drop" << std::endl;
     if(event->mimeData()->hasText() || true){
-        std::cout << event->mimeData()->text().toStdString() << std::endl;
+        std::cout << "DROP: " <<  event->mimeData()->text().toStdString() << std::endl;
     }
-        event->mimeData();
 }
 
 void Scene::focusInEvent(QFocusEvent *event){
