@@ -39,7 +39,8 @@ HEADERS += \
     core/model.h \
     core/objects/iabstractobject.h \
     core/objects/buttons/hbutton.h \
-    core/custom_objects/htreeview.h
+    core/custom_objects/htreeview.h \
+    core/enumerations.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui

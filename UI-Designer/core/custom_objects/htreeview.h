@@ -11,6 +11,8 @@
 #include <QDrag>
 #include <QMimeData>
 
+#include "core/enumerations.h"
+
 namespace haevn {
     namespace core {
         namespace custom_objects{
@@ -39,9 +41,9 @@ namespace haevn {
                 /**
                  * @brief insertData
                  * @param level
-                 * @param text
+                 * @param t_type
                  */
-                void insertData(int level, QString text);
+                void insertData(int level, e_haevn_objects t_type);
 
                 /**
                  * @brief mousePressEvent
@@ -62,6 +64,7 @@ namespace haevn {
             public slots:
 
             };
+
 
         }
     }

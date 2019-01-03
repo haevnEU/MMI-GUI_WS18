@@ -6,7 +6,7 @@
 #include "core/scene.h"
 
 #include "core/objects/buttons/hbutton.h"
-
+#include "core/enumerations.h"
 
 using namespace haevn::view;
 
@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // Create custom scene//
-    m_scene = new core::Scene();
+    m_scene = new core::Scene(m_model);
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
@@ -27,37 +27,37 @@ MainWindow::MainWindow(QWidget *parent) :
     tools = new haevn::core::custom_objects::HTreeView();
 
     tools->addRootHeader("Control");
-    tools->insertData(0, "Button");
-    tools->insertData(0, "RadioButton");
-    tools->insertData(0, "CheckBox");
+    tools->insertData(0, core::e_haevn_objects::control_Button);
+    tools->insertData(0, core::e_haevn_objects::control_RadioButton);
+    tools->insertData(0, core::e_haevn_objects::control_CheckBox);
 
     tools->addRootHeader("Input");
-    tools->insertData(1, "ComboBox");
-    tools->insertData(1, "TextField");
-    tools->insertData(1, "SpinBox");
-    tools->insertData(1, "Date");
-    tools->insertData(1, "Time");
-    tools->insertData(1, "Slider");
+    tools->insertData(1, core::e_haevn_objects::input_TextField);
+    tools->insertData(1, core::e_haevn_objects::input_ComboBox);
+    tools->insertData(1, core::e_haevn_objects::input_Slider);
+    tools->insertData(1, core::e_haevn_objects::input_SpinBox);
+    tools->insertData(1, core::e_haevn_objects::input_Date);
+    tools->insertData(1, core::e_haevn_objects::input_Time);
 
     tools->addRootHeader("Display");
-    tools->insertData(2, "Label");
-    tools->insertData(2, "ProgressBar");
-    tools->insertData(2, "WebView");
+    tools->insertData(2,  core::e_haevn_objects::display_Label);
+    tools->insertData(2,  core::e_haevn_objects::display_ProgressBar);
+    tools->insertData(2,  core::e_haevn_objects::display_WebView);
 
     tools->addRootHeader("Grouping");
-    tools->insertData(3, "GroupBox");
-    tools->insertData(3, "RadioButtonGroup");
+    tools->insertData(3, core::e_haevn_objects::grouping_GroupBox);
+    tools->insertData(3, core::e_haevn_objects::grouping_RadioButtonGroup);
 
     tools->addRootHeader("Items");
-    tools->insertData(4, "ListView");
-    tools->insertData(4, "TableView");
-    tools->insertData(4, "TreeView");
+    tools->insertData(4, core::e_haevn_objects::dataVisualization_ListView);
+    tools->insertData(4, core::e_haevn_objects::dataVisualization_TableView);
+    tools->insertData(4, core::e_haevn_objects::dataVisualization_TreeView);
 
     tools->addRootHeader("Layout");
-    tools->insertData(5, "Grid");
-    tools->insertData(5, "Canvas");
-    tools->insertData(5, "HBox");
-    tools->insertData(5, "VBox");
+    tools->insertData(5, core::e_haevn_objects::layout_Grid);
+    tools->insertData(5, core::e_haevn_objects::layout_Canvas);
+    tools->insertData(5, core::e_haevn_objects::layout_HBox);
+    tools->insertData(5, core::e_haevn_objects::layout_VBox);
 
     tools->setDragEnabled(true);
     layout()->addWidget(tools);

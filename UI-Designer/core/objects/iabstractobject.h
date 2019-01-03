@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QColor>
 #include <QString>
-
+#include <QWidget>
 namespace haevn{
     namespace core {
         namespace objects {
@@ -12,7 +12,7 @@ namespace haevn{
            /**
             * @brief The IAbstractObject class
             */
-           class IAbstractObject{
+           class IAbstractObject : virtual QWidget{
 
 
             public:
@@ -115,6 +115,7 @@ namespace haevn{
                 QColor m_foreground;
 
             };
+
         }
     }
 }

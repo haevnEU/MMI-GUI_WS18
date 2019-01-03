@@ -14,6 +14,7 @@
 #include <QMimeData>
 
 #include "core/objects/iabstractobject.h"
+#include "core/model.h"
 
 namespace haevn{
     namespace core {
@@ -28,13 +29,7 @@ namespace haevn{
              * @brief Scene
              * @param parent
              */
-            explicit Scene(QObject *parent = nullptr);
-
-            /**
-             * @brief contextMenuEvent
-             * @param event
-             */
-            virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *event);
+            explicit Scene(Model* model, QObject *parent = nullptr);
 
             /**
              * @brief dragEnterEvent
@@ -59,36 +54,6 @@ namespace haevn{
              * @param event
              */
             virtual void dropEvent(QGraphicsSceneDragDropEvent *event);
-
-            /**
-             * @brief focusInEvent
-             * @param event
-             */
-            virtual void focusInEvent(QFocusEvent *event);
-
-            /**
-             * @brief focusOutEvent
-             * @param event
-             */
-            virtual void focusOutEvent(QFocusEvent *event);
-
-            /**
-             * @brief helpEvent
-             * @param event
-             */
-            virtual void helpEvent(QGraphicsSceneHelpEvent *event);
-
-            /**
-             * @brief keyPressEvent
-             * @param event
-             */
-            virtual void keyPressEvent(QKeyEvent *event);
-
-            /**
-             * @brief keyReleaseEvent
-             * @param event
-             */
-            virtual void keyReleaseEvent(QKeyEvent *event);
 
             /**
              * @brief mousePressEvent
@@ -120,6 +85,9 @@ namespace haevn{
 
 
         private:
+
+            ///
+            Model* m_model;
 
             ///
             QWidget* selectedItem;

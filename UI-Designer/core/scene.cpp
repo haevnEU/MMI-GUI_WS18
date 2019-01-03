@@ -5,15 +5,12 @@
 #include <QLabel>
 #include <QTreeWidget>
 #include "core/custom_objects/htreeview.h"
+#include "core/enumerations.h"
 
 using namespace haevn::core;
 
-Scene::Scene(QObject *parent) : QGraphicsScene(parent)
-{
-
-    selectedItem = new QPushButton("TEST");
-    addWidget(selectedItem);
-//setMouseTracking(true); // E.g. set in your constructor of your widget.
+Scene::Scene(Model* model, QObject *parent) : QGraphicsScene(parent){
+    m_model = model;
 }
 
 
@@ -21,18 +18,12 @@ void Scene::AddItem(core::objects::IAbstractObject* t_item){
     //QGraphicsScene::addWidget(t_item);
 }
 
-
-void Scene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event){
-
-}
-
 void Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
-    std::cout << "Drag entered" << std::endl;
+    QGraphicsScene::dragEnterEvent(event);
 }
 
 void Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
-    std::cout << "drag move" << std::endl;
-    std::cout << event->scenePos().x() << " " << event->scenePos().y() << std::endl;
+
 }
 
 void Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
@@ -41,30 +32,62 @@ void Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
 
 
 void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
-    if(event->mimeData()->hasText() || true){
-        std::cout << "DROP: " <<  event->mimeData()->text().toStdString() << std::endl;
+    haevn::core::e_haevn_objects t_type = static_cast<haevn::core::e_haevn_objects>(event->mimeData()->property("type").toInt());
+
+    switch(t_type){
+        // Control part
+        case e_haevn_objects::control_Button:
+          break;
+        case e_haevn_objects::control_CheckBox:
+          break;
+        case e_haevn_objects::control_RadioButton:
+          break;
+
+        // input part
+        case e_haevn_objects::input_Date:
+          break;
+        case e_haevn_objects::input_Time:
+          break;
+        case e_haevn_objects::input_Slider:
+            break;
+        case e_haevn_objects::input_SpinBox:
+            break;
+        case e_haevn_objects::input_ComboBox:
+            break;
+        case e_haevn_objects::input_TextField:
+            break;
+
+        // Display part
+        case e_haevn_objects::display_Label:
+            break;
+        case e_haevn_objects::display_WebView:
+            break;
+        case e_haevn_objects::display_ProgressBar:
+            break;
+
+        // Layout part
+        case e_haevn_objects::layout_Grid:
+            break;
+        case e_haevn_objects::layout_Canvas:
+            break;
+        case e_haevn_objects::layout_HBox:
+            break;
+        case e_haevn_objects::layout_VBox:
+            break;
+
+        // Grouping part
+        case e_haevn_objects::grouping_GroupBox:
+            break;
+        case e_haevn_objects::grouping_RadioButtonGroup:
+            break;
+        // Items part
+        case e_haevn_objects::dataVisualization_ListView:
+            break;
+        case e_haevn_objects::dataVisualization_TreeView:
+            break;
+        case e_haevn_objects::dataVisualization_TableView:
+            break;
     }
-}
-
-void Scene::focusInEvent(QFocusEvent *event){
-
-}
-
-void Scene::focusOutEvent(QFocusEvent *event){
-
-}
-
-void Scene::helpEvent(QGraphicsSceneHelpEvent *event){
-
-}
-
-void Scene::keyPressEvent(QKeyEvent *event){
-
-}
-
-void Scene::keyReleaseEvent(QKeyEvent *event){
-
-
 }
 
 void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){

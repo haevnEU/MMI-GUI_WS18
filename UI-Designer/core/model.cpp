@@ -2,8 +2,7 @@
 
 using namespace haevn::core;
 
-Model::Model(QObject *parent) : QObject(parent)
-{
+Model::Model(QObject *parent) : QObject(parent){
 
 }
 

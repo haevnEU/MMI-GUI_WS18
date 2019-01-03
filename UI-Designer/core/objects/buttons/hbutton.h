@@ -11,7 +11,8 @@ namespace haevn{
         namespace objects{
             namespace buttons{
 
-                class HButton : public QPushButton, public IAbstractObject{
+            // TODO
+                class HButton : public virtual QPushButton, public virtual IAbstractObject{
                     Q_OBJECT
                 signals:
                    void heightChanged(double height);
