@@ -6,6 +6,7 @@
 #include <QTreeWidget>
 #include "core/custom_objects/htreeview.h"
 #include "core/enumerations.h"
+#include "core/objects/buttons/hbutton.h"
 
 using namespace haevn::core;
 
@@ -33,21 +34,25 @@ void Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
 
 void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     haevn::core::e_haevn_objects t_type = static_cast<haevn::core::e_haevn_objects>(event->mimeData()->property("type").toInt());
+    core::objects::IAbstractObject* item2 = nullptr;
 
     switch(t_type){
         // Control part
-        case e_haevn_objects::control_Button:
-          break;
+        case e_haevn_objects::control_Button:{
+            objects::buttons::HButton* item = new objects::buttons::HButton();
+            m_model->addItem(item);
+            addWidget(dynamic_cast<objects::buttons::HButton*>(item));
+        }break;
         case e_haevn_objects::control_CheckBox:
-          break;
+            break;
         case e_haevn_objects::control_RadioButton:
-          break;
+            break;
 
         // input part
         case e_haevn_objects::input_Date:
-          break;
+            break;
         case e_haevn_objects::input_Time:
-          break;
+            break;
         case e_haevn_objects::input_Slider:
             break;
         case e_haevn_objects::input_SpinBox:
@@ -88,6 +93,7 @@ void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
         case e_haevn_objects::dataVisualization_TableView:
             break;
     }
+
 }
 
 void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){

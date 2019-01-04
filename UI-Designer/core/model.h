@@ -19,6 +19,7 @@ namespace haevn{
             ///
             explicit Model(QObject *parent = nullptr);
 
+            virtual ~Model();
         signals:
 
             /**
@@ -37,7 +38,7 @@ namespace haevn{
         private:
 
             ///
-            std::list<objects::IAbstractObject*>* m_items;
+            std::list<objects::IAbstractObject*> m_items;
         };
     }
 }

@@ -12,5 +12,6 @@ int main(int argc, char *argv[]){
     w.link(&model);
     w.show();
 
+
     return a.exec();
 }

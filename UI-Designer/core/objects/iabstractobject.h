@@ -12,7 +12,7 @@ namespace haevn{
            /**
             * @brief The IAbstractObject class
             */
-           class IAbstractObject : virtual QWidget{
+           class IAbstractObject {
 
 
             public:
@@ -22,6 +22,7 @@ namespace haevn{
                  */
                 explicit IAbstractObject();
 
+               virtual ~IAbstractObject();
            public:
 
                /**
