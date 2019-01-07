@@ -29,7 +29,7 @@ namespace haevn{
              * @brief Scene
              * @param parent
              */
-            explicit Scene(Model* model, QObject *parent = nullptr);
+            explicit Scene(QObject *parent = nullptr);
 
             /**
              * @brief dragEnterEvent
@@ -73,15 +73,19 @@ namespace haevn{
              */
             virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
-        signals:
 
+            QWidget* getSelectedWidget();
+
+        signals:
+            void itemAdded(QWidget* t_item);
+            void selectedItemChanged(QWidget* widget);
         public slots:
 
             /**
              * @brief AddItem
              * @param t_item
              */
-            void AddItem(core::objects::IAbstractObject* t_item);
+            void AddItem(QWidget* t_item);
 
 
         private:

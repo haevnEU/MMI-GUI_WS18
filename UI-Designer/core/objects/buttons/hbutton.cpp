@@ -1,61 +1,56 @@
 #include "hbutton.h"
+#include <QDebug>
 
-using namespace haevn::core::objects;
 using namespace haevn::core::objects::buttons;
 
-buttons::HButton::HButton(QPushButton *parent) : QPushButton(parent), IAbstractObject()
-{
-
+HButton::HButton(QPushButton *parent) : QPushButton(parent){
+    qDebug() << "ctor of HButton called";
 }
 
 
+HButton::~HButton(){
+    qDebug() << "DTOR OF HBUTTON CALLED";
+}
 
-void HButton::setHeight(double t_height){
-    IAbstractObject::m_height = t_height;
+void HButton::setHeight(int t_height){
+    QPushButton::resize(QPushButton::width(), t_height);
     emit heightChanged(t_height);
 }
 
-void HButton::setMaxHeight(double t_maxHeight){
-
-    IAbstractObject::m_maxHeight = t_maxHeight;
+void HButton::setMaxHeight(int t_maxHeight){
+    QPushButton::setMaximumHeight(t_maxHeight);
     emit maxHeightChanged(t_maxHeight);
 }
 
-void HButton::setMinHeight(double t_minHeight){
-
-    IAbstractObject::m_minHeight = t_minHeight;
+void HButton::setMinHeight(int t_minHeight){
+    QPushButton::setMinimumHeight(t_minHeight);
     emit minHeightChanged(t_minHeight);
 }
 
-void HButton::setWidth(double t_width){
-
-    IAbstractObject::m_width = t_width;
+void HButton::setWidth(int t_width){
+    QPushButton::resize(t_width, QPushButton::height());
     emit widthChanged(t_width);
 }
 
-void HButton::setMaxWidth(double t_maxWidth){
+void HButton::setMaxWidth(int t_maxWidth){
 
-    IAbstractObject::m_maxWidth = t_maxWidth;
+    QPushButton::setMaximumWidth(t_maxWidth);
     emit maxWidthChanged(t_maxWidth);
 }
 
-void HButton::setMinWidth(double t_minWidth){
+void HButton::setMinWidth(int t_minWidth){
 
-    IAbstractObject::m_minWidth = t_minWidth;
+    QPushButton::setMinimumWidth(t_minWidth);
     emit minWidthChanged(t_minWidth);
 }
 
-void HButton::setPosition(double t_x, double t_y){
-
-
-    IAbstractObject::m_posX = t_x;
-    IAbstractObject::m_posY = t_y;
+void HButton::setPosition(int t_x, int t_y){
+    QPushButton::move(t_x, t_y);
     emit positionChanged(t_x, t_y);
 }
 
 void HButton::setVisibility(bool t_visibility){
-
-    IAbstractObject::m_visibility = t_visibility;
+    QPushButton::setVisible(t_visibility);
     emit visibilityChanged(t_visibility);
 }
 

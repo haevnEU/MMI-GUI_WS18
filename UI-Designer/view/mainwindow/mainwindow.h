@@ -18,15 +18,30 @@ namespace haevn {
             Q_OBJECT
         signals:
 
-
         public slots:
+            void widthChanged(int t_width);
+            void maxWidthChanged(int t_width);
+            void minWidthChanged(int t_width);
+
+            void heightChanged(int t_height);
+            void maxHeightChanged(int t_height);
+            void minHeightChanged(int t_height);
+
+            void contentChanged(QString t_content);
+            void tooltipChanged(QString t_tooltip);
+
+            void posXChanged(int t_x);
+            void posYChanged(int t_y);
+
+            void visibilityChanged(int t_visibility);
+
+            void selectedItemChanged(QWidget* widget);
 
         public:
             explicit MainWindow(QWidget *parent = nullptr);
             ~MainWindow();
             void resizeEvent(QResizeEvent* t_event);
          //   void mousePressEvent(QMouseEvent* event);
-            void link(core::Model* t_model);
         private:
             core::objects::IAbstractObject* selectedItem;
 

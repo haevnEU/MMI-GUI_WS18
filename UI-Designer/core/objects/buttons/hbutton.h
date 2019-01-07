@@ -12,19 +12,19 @@ namespace haevn{
             namespace buttons{
 
             // TODO
-                class HButton : public QPushButton, public IAbstractObject{
+                class HButton : public QPushButton {
                     Q_OBJECT
                 signals:
-                   void heightChanged(double height);
-                   void maxHeightChanged(double maxHeight);
-                   void minHeightChanged(double minHeight);
+                   void heightChanged(int height);
+                   void maxHeightChanged(int maxHeight);
+                   void minHeightChanged(int minHeight);
 
 
-                   void widthChanged(double width);
-                   void maxWidthChanged(double maxWidth);
-                   void minWidthChanged(double minWidth);
+                   void widthChanged(int width);
+                   void maxWidthChanged(int maxWidth);
+                   void minWidthChanged(int minWidth);
 
-                   void positionChanged(double x, double y);
+                   void positionChanged(int x, int y);
 
                    void visibilityChanged(bool visibility);
 
@@ -33,25 +33,27 @@ namespace haevn{
                 public:
                    explicit HButton(QPushButton *parent = nullptr);
 
+                   virtual ~HButton();
                    /**
                     * @see IAbstractObject#setHeight
                     */
-                   void setHeight(double t_height);
+                   void setHeight(int t_height);
 
                    /**
                     * @see iabstractobject#setMaxHeight
                     */
-                   void setMaxHeight(double t_maxHeight);
-                   void setMinHeight(double t_minHeight);
+                   void setMaxHeight(int t_maxHeight);
+                   void setMinHeight(int t_minHeight);
 
-                   void setWidth(double t_width);
-                   void setMaxWidth(double t_maxWidth);
-                   void setMinWidth(double t_minWidth);
+                   void setWidth(int t_width);
+                   void setMaxWidth(int t_maxWidth);
+                   void setMinWidth(int t_minWidth);
 
-                   void setPosition(double t_x, double t_y);
+                   void setPosition(int t_x, int t_y);
 
                    void setVisibility(bool t_visibility);
 
+                   IAbstractObject& operator=(const HButton& another);
                 };
 
             }

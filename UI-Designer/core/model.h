@@ -2,9 +2,7 @@
 #define MODEL_H
 
 #include <QObject>
-#include <iostream>
-#include <list>
-#include "objects/iabstractobject.h"
+#include <QListWidget>
 
 namespace haevn{
     namespace core {
@@ -14,10 +12,19 @@ namespace haevn{
          */
         class Model : public QObject{
             Q_OBJECT
-        public:
 
+            // singleton
+        private:
+            static Model* s_instance;
+        public:
+            static Model* getInstance(QObject* parent = nullptr);
+
+        private:
             ///
             explicit Model(QObject *parent = nullptr);
+            Model(Model& another){}
+            // end singleton
+        public:
 
             virtual ~Model();
         signals:
@@ -26,7 +33,7 @@ namespace haevn{
              * @brief itemAdded
              * @param newItem
              */
-            void itemAdded(objects::IAbstractObject* newItem);
+            void itemAdded(QWidget* newItem);
 
         public slots:
 
@@ -34,11 +41,11 @@ namespace haevn{
              * @brief addItem
              * @param t_item
              */
-            void addItem(objects::IAbstractObject* t_item);
+            void addItem(QWidget* t_item);
         private:
 
             ///
-            std::list<objects::IAbstractObject*> m_items;
+            QList<QWidget*>* m_items;
         };
     }
 }

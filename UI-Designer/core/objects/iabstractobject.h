@@ -22,7 +22,11 @@ namespace haevn{
                  */
                 explicit IAbstractObject();
 
-               virtual ~IAbstractObject();
+                explicit IAbstractObject(IAbstractObject& another);
+
+                virtual ~IAbstractObject();
+
+               //virtual IAbstractObject& operator=(const IAbstractObject& another) = 0;
            public:
 
                /**
