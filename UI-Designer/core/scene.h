@@ -12,9 +12,24 @@
 #include <QKeyEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QMimeData>
+#include <QList>
+#include <QGraphicsItem>
+#include "core/selectionmodel.h"
 
-#include "core/objects/iabstractobject.h"
-#include "core/model.h"
+
+#include <QDebug>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QGraphicsItem>
+#include <QLabel>
+#include <QTreeWidget>
+
+#include "core/custom_objects/htreeview.h"
+#include "core/enumerations.h"
+
+#include <QGraphicsWidget>
+#include <QGraphicsProxyWidget>
 
 namespace haevn{
     namespace core {
@@ -73,8 +88,10 @@ namespace haevn{
              */
             virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+            QList<QGraphicsItem*> getItems();
 
-            QWidget* getSelectedWidget();
+
+            haevn::core::SelectionModel* getSelectionModel();
 
         signals:
             void itemAdded(QWidget* t_item);
@@ -85,16 +102,13 @@ namespace haevn{
              * @brief AddItem
              * @param t_item
              */
-            void AddItem(QWidget* t_item);
+           // void AddItem(QWidget* t_item);
 
 
         private:
 
             ///
-            Model* m_model;
-
-            ///
-            QWidget* selectedItem;
+            haevn::core::SelectionModel* m_selectionModel;
 
             ///
             bool m_grab = false;

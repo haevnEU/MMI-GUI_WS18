@@ -6,7 +6,6 @@
 #include <QMouseEvent>
 #include "core/scene.h"
 
-#include "core/objects/buttons/hbutton.h"
 #include "core/enumerations.h"
 #include <QSpinBox>
 
@@ -61,9 +60,10 @@ MainWindow::MainWindow(QWidget *parent) :
     tools->setDragEnabled(true);
     layout()->addWidget(tools);
 
+
+    // UI Signal-Slot
     connect(ui->spPosX, SIGNAL(valueChanged(int)), this, SLOT(posXChanged(int)));
     connect(ui->spPosY, SIGNAL(valueChanged(int)), this, SLOT(posYChanged(int)));
-
 
     connect(ui->sbObjectWidth, SIGNAL(valueChanged(int)), this, SLOT(widthChanged(int)));
     connect(ui->sbObjectMaxWidth, SIGNAL(valueChanged(int)), this, SLOT(maxWidthChanged(int)));
@@ -75,59 +75,110 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->leContent, SIGNAL(textChanged(QString)), this, SLOT(contentChanged(QString)));
     connect(ui->leTooltip, SIGNAL(textChanged(QString)), this, SLOT(tooltipChanged(QString)));
+    connect(ui->leName, SIGNAL(textChanged(QString)), this, SLOT(nameChanged(QString)));
 
     connect(ui->cbVisibility, SIGNAL(stateChanged(int)), this, SLOT(visibilityChanged(int)));
 
-    connect(m_scene, SIGNAL(selectedItemChanged(QWidget*)), this, SLOT(selectedItemChanged(QWidget*)));
+
+    // Scene Signal-Slot
+    connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
+    connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
+
+}
+
+
+void MainWindow::positionChanged(int t_x, int t_y){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setPosition(t_x, t_y);
+    }
+    if(ui->spPosX->value() != t_x){
+        ui->spPosX->setValue(t_x);
+    }
+    if(ui->spPosY->value() != t_y){
+        ui->spPosY->setValue(t_y);
+    }
 }
 
 void MainWindow::posXChanged(int t_x){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->move(t_x, ui->spPosY->value());
+        m_scene->getSelectionModel()->setPosition(t_x, ui->spPosY->value());
+    }
+    if(ui->spPosX->value() != t_x){
+        ui->spPosX->setValue(t_x);
     }
 }
+
 void MainWindow::posYChanged(int t_y){
     if(m_scene != nullptr) {
-        qDebug() << ui->spPosX->value();
-        m_scene->getSelectedWidget()->move(ui->spPosX->value(), t_y);
+        m_scene->getSelectionModel()->setPosition(ui->spPosY->value(), t_y);
+    }
+    if(ui->spPosY->value() != t_y){
+        ui->spPosX->setValue(t_y);
     }
 }
 
 void MainWindow::widthChanged(int t_width){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->resize(t_width, ui->sbObjectHeight->value());
+        m_scene->getSelectionModel()->setWidth(t_width);
+    }
+    if(ui->sbObjectWidth->value() != t_width){
+        ui->sbObjectWidth->setValue(t_width);
     }
 }
 
 void MainWindow::maxWidthChanged(int t_width){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->setMaximumWidth(t_width);
+        m_scene->getSelectionModel()->setMaxWidth(t_width);
+    }
+    if(ui->sbObjectMaxWidth->value() != t_width){
+        ui->sbObjectMaxWidth->setValue(t_width);
     }
 }
 
 void MainWindow::minWidthChanged(int t_width){
     if(m_scene != nullptr) {
-
-        m_scene->getSelectedWidget()->setMinimumWidth(t_width);
+        m_scene->getSelectionModel()->setMinWidth(t_width);
+    }
+    if(ui->sbObjectMinWidth->value() != t_width){
+        ui->sbObjectMinWidth->setValue(t_width);
     }
 }
 
 void MainWindow::heightChanged(int t_height){
     if(m_scene != nullptr) {
-
-        m_scene->getSelectedWidget()->resize(ui->sbObjectWidth->value(), t_height);
+        m_scene->getSelectionModel()->setHeight(t_height);
+    }
+    if(ui->sbObjectHeight->value() != t_height){
+        ui->sbObjectHeight->setValue(t_height);
     }
 }
 
 void MainWindow::maxHeightChanged(int t_height){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->setMaximumHeight(t_height);
+        m_scene->getSelectionModel()->setMaxHeight(t_height);
+    }
+    if(ui->sbObjectMaxHeight->value() != t_height){
+        ui->sbObjectMaxHeight->setValue(t_height);
     }
 }
 
 void MainWindow::minHeightChanged(int t_height){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->setMinimumHeight(t_height);
+        m_scene->getSelectionModel()->setMinHeight(t_height);
+    }
+    if(ui->sbObjectMinHeight->value() != t_height){
+        ui->sbObjectMinHeight->setValue(t_height);
+    }
+}
+
+void MainWindow::nameChanged(QString t_name){
+    if(m_scene != nullptr){
+        m_scene->getSelectionModel()->setName(t_name);
+
+        qDebug() << "Whatsthis: " << m_scene->getSelectionModel()->property("Name").data();
+    }
+    if(ui->leName->text() != t_name){
+        ui->leName->setText(t_name);
     }
 }
 
@@ -138,19 +189,24 @@ void MainWindow::contentChanged(QString t_content){
 
 void MainWindow::tooltipChanged(QString t_tooltip){
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->setToolTip(t_tooltip);
+        //m_scene->getSelectionModel()->setToolTip(t_tooltip);
+    }
+    if(ui->leTooltip->text() != t_tooltip){
+        ui->leTooltip->setText(t_tooltip);
     }
 }
 
 void MainWindow::visibilityChanged(int t_visibility){
     bool state = t_visibility == Qt::CheckState::Checked ? true : false;
     if(m_scene != nullptr) {
-        m_scene->getSelectedWidget()->setEnabled(state);
+        m_scene->getSelectionModel()->setVisibility(state);
     }
+
 }
 
-void MainWindow::selectedItemChanged(QWidget* widget){
+void MainWindow::selectedWidgetChanged(QWidget* widget){
     if(nullptr != widget){
+        m_scene->getSelectionModel()->selectWidget(widget);
         ui->spPosX->setValue(widget->pos().x());
         ui->spPosY->setValue(widget->pos().y());
 
@@ -164,6 +220,8 @@ void MainWindow::selectedItemChanged(QWidget* widget){
 
         ui->cbVisibility->setCheckState(widget->isEnabled() == true ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
         ui->leTooltip->setText(widget->toolTip());
+        QString tmp = widget->whatsThis();
+        ui->leName->setText(widget->whatsThis());
     }
 }
 
@@ -182,7 +240,7 @@ void MainWindow::resizeEvent(QResizeEvent* t_event){
     int height = size().height() - 20;
 
     int canvasPosX = 320;
-    int canvasWidth = (size().width() * 0.97) - 620;
+    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
 
     int detailsPosX = (canvasWidth) + 320;
 

@@ -1,15 +1,13 @@
 #include "htreeview.h"
 
-using namespace haevn::core::custom_objects;
-
-
-HTreeView::HTreeView(QWidget *parent) : QTreeWidget(parent){
+haevn::core::custom_objects::HTreeView::HTreeView(QWidget *parent) : QTreeWidget(parent){
     setHeaderHidden(true);
 }
 
-void HTreeView::mousePressEvent(QMouseEvent *event){
+void haevn::core::custom_objects::HTreeView::mousePressEvent(QMouseEvent *event){
 
     QTreeView::mousePressEvent(event);
+
     if(event->button() == Qt::RightButton){
         QDrag* drag = new QDrag(this);
         QMimeData* mimeData = new QMimeData();
@@ -18,12 +16,13 @@ void HTreeView::mousePressEvent(QMouseEvent *event){
         mimeData->setProperty("type", currentItem()->data(0, Qt::ItemDataRole::UserRole));
         drag->setMimeData(mimeData);
         Qt::DropAction dropAction = drag->exec();
+
     }
 
 
 }
 
-void HTreeView::addRootHeader(QString name){
+void haevn::core::custom_objects::HTreeView::addRootHeader(QString name){
 
     QTreeWidgetItem* treeItemButton = new QTreeWidgetItem();
     treeItemButton->setText(0, name);
@@ -31,7 +30,7 @@ void HTreeView::addRootHeader(QString name){
 
 }
 
-void HTreeView::insertData(int level, e_haevn_objects t_type){
+void haevn::core::custom_objects::HTreeView::insertData(int level, e_haevn_objects t_type){
 
     if(level >= getTopLevelCount()){
         return;
@@ -147,7 +146,7 @@ void HTreeView::insertData(int level, e_haevn_objects t_type){
     }
 }
 
-int HTreeView::getTopLevelCount(){
+int haevn::core::custom_objects::HTreeView::getTopLevelCount(){
     return topLevelItemCount();
 }
 

@@ -1,51 +1,35 @@
 #include "scene.h"
 
-#include <QDebug>
-#include <QPushButton>
-#include <QGraphicsItem>
-#include <QLabel>
-#include <QTreeWidget>
-#include "core/custom_objects/htreeview.h"
-#include "core/enumerations.h"
-#include "core/objects/buttons/hbutton.h"
-
-using namespace haevn::core;
-
-Scene::Scene(QObject *parent) : QGraphicsScene(parent){
-    m_model = haevn::core::Model::getInstance();
-    connect(m_model, &Model::itemAdded, this, &Scene::AddItem);
+haevn::core::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
+    m_selectionModel = haevn::core::SelectionModel::getInstance();
 }
 
-void Scene::AddItem(QWidget* t_item){
-    qDebug() << "Item added";
-    QGraphicsScene::addWidget(t_item);
-}
-
-void Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
+void haevn::core::Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
     QGraphicsScene::dragEnterEvent(event);
 }
 
-void Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
+void haevn::core::Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
 
 }
 
-void Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
+void haevn::core::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
 }
 
 
-void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
+void haevn::core::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     haevn::core::e_haevn_objects t_type = static_cast<haevn::core::e_haevn_objects>(event->mimeData()->property("type").toInt());
-    core::objects::IAbstractObject* item2 = nullptr;
 
-    QWidget* item;
+    QWidget* item = nullptr;
     switch(t_type){
         // Control part
         case e_haevn_objects::control_Button:
-            item = new objects::buttons::HButton();
+            item = new QPushButton();
        break;
         case e_haevn_objects::control_CheckBox:
+            item = new QCheckBox();
             break;
         case e_haevn_objects::control_RadioButton:
+            item = new QRadioButton();
             break;
 
         // input part
@@ -95,43 +79,56 @@ void Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     }
 
     if(nullptr != item){
-        int x = event->scenePos().x();
-        int y = event->scenePos().y();
-        item->move(x, y);
-        selectedItem = item;
 
-        m_model->addItem(item);
-        addWidget(item);
-        emit selectedItemChanged(selectedItem);
+        int x = static_cast<int>(event->scenePos().x());
+        int y = static_cast<int>(event->scenePos().y());
+        item->resize(100,30);
+        m_selectionModel->selectWidget(item);
+        m_selectionModel->setPosition(x, y);
+        addWidget(m_selectionModel->getSelectedwidget());
+
+        emit selectedItemChanged(m_selectionModel->getSelectedwidget());
     }
 }
 
-void Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void haevn::core::Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
     if(event->button() == Qt::MouseButton::LeftButton){
         m_grab = true;
-        qDebug() << itemAt(event->scenePos().x(), event->scenePos().y(), QTransform())->isWidget();
-
-        QWidget* tmp = dynamic_cast<QWidget*>(itemAt(event->scenePos().x(), event->scenePos().y(), QTransform()));
-
-            selectedItem = tmp;
-            emit selectedItemChanged(selectedItem);
-
+        QGraphicsItem* item = itemAt(event->scenePos(), QTransform());
+        if(nullptr != item){
+            QGraphicsProxyWidget* tmp = static_cast<QGraphicsProxyWidget*>(item);
+            m_selectionModel->selectWidget(tmp->widget());
+            //m_selectionModel->setPosition(event->scenePos().x(), event->scenePos().y());
+            emit(selectedItemChanged(m_selectionModel->getSelectedwidget()));
+        }
+    }else if(event->button() == Qt::MouseButton::RightButton){
+        QGraphicsItem* item = itemAt(event->scenePos(), QTransform());
+        if(nullptr != item){
+            removeItem(item);
+        }
     }
 }
 
-void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
-   // if(m_grab && selectedItem != nullptr) selectedItem->move(event->scenePos().x(), event->scenePos().y());
-    qDebug() << event->scenePos().x() << " " << event->scenePos().y();
-}
+void haevn::core::Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+    if(m_grab && m_selectionModel->getSelectedwidget() != nullptr){
+        int x = static_cast<int>(event->scenePos().x());
+        int y = static_cast<int>(event->scenePos().y());
+        m_selectionModel->setPosition(x, y);
+    }
 
-void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+}
+void haevn::core::Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     if(event->button() == Qt::MouseButton::LeftButton){
         m_grab = false;
     }
 }
 
-QWidget* Scene::getSelectedWidget(){
-    return selectedItem;
+haevn::core::SelectionModel* haevn::core::Scene::getSelectionModel(){
+    return m_selectionModel;
+}
+
+QList<QGraphicsItem*> haevn::core::Scene::getItems(){
+    return items();
 }
 

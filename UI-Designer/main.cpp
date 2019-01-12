@@ -1,6 +1,5 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
-#include "core/model.h"
 #include "core/scene.h"
 
 

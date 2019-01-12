@@ -79,56 +79,56 @@
       <property name="bottomMargin">
        <number>10</number>
       </property>
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="lbObjectWidth">
         <property name="text">
          <string>Width</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="lbObjectMaxWidth">
         <property name="text">
          <string>Max width</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="lbObjectMinWidth">
         <property name="text">
          <string>Min width</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="lbObjectHeight">
         <property name="text">
          <string>Height</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="lbObjectMaxHeight">
         <property name="text">
          <string>Max height</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="lbObjectMinHeight">
         <property name="text">
          <string>Min height</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="lbPosX">
         <property name="text">
          <string>Position X</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="7" column="1">
        <widget class="QSpinBox" name="spPosX">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -141,14 +141,14 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="lbPosY">
         <property name="text">
          <string>position Y</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="8" column="1">
        <widget class="QSpinBox" name="spPosY">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -161,41 +161,41 @@
         </property>
        </widget>
       </item>
-      <item row="8" column="0">
+      <item row="9" column="0">
        <widget class="QLabel" name="lbContent">
         <property name="text">
          <string>Content</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="1">
+      <item row="9" column="1">
        <widget class="QLineEdit" name="leContent"/>
       </item>
-      <item row="9" column="0">
+      <item row="10" column="0">
        <widget class="QLabel" name="lbTooltip">
         <property name="text">
          <string>Toltip</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="1">
+      <item row="10" column="1">
        <widget class="QLineEdit" name="leTooltip"/>
       </item>
-      <item row="10" column="0">
+      <item row="11" column="0">
        <widget class="QLabel" name="lbVisibility">
         <property name="text">
          <string>Visibility</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="1">
+      <item row="11" column="1">
        <widget class="QCheckBox" name="cbVisibility">
         <property name="text">
          <string>Visible</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QSpinBox" name="sbObjectWidth">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -208,7 +208,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QSpinBox" name="sbObjectMaxWidth">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -221,7 +221,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QSpinBox" name="sbObjectMinWidth">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -234,7 +234,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QSpinBox" name="sbObjectHeight">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -247,7 +247,7 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QSpinBox" name="sbObjectMaxHeight">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -260,7 +260,7 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QSpinBox" name="sbObjectMinHeight">
         <property name="buttonSymbols">
          <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -272,6 +272,16 @@
          <number>10</number>
         </property>
        </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="leName"/>
       </item>
      </layout>
     </widget>

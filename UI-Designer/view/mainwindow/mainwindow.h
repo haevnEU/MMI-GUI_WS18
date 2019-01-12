@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include "core/scene.h"
-#include "core/model.h"
-#include "core/objects/iabstractobject.h"
 #include "core/custom_objects/htreeview.h"
 
 namespace Ui {
@@ -29,13 +27,15 @@ namespace haevn {
 
             void contentChanged(QString t_content);
             void tooltipChanged(QString t_tooltip);
-
+            void nameChanged(QString t_name);
             void posXChanged(int t_x);
             void posYChanged(int t_y);
 
+            void positionChanged(int t_x, int t_y);
+
             void visibilityChanged(int t_visibility);
 
-            void selectedItemChanged(QWidget* widget);
+            void selectedWidgetChanged(QWidget* widget);
 
         public:
             explicit MainWindow(QWidget *parent = nullptr);
@@ -43,11 +43,9 @@ namespace haevn {
             void resizeEvent(QResizeEvent* t_event);
          //   void mousePressEvent(QMouseEvent* event);
         private:
-            core::objects::IAbstractObject* selectedItem;
 
             haevn::core::custom_objects::HTreeView* tools;
 
-            core::Model* m_model;
             core::Scene* m_scene;
             Ui::MainWindow *ui;
         };

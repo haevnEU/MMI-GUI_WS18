@@ -11,6 +11,7 @@
 #include <QDrag>
 #include <QMimeData>
 
+
 #include "core/enumerations.h"
 
 namespace haevn {
@@ -56,6 +57,8 @@ namespace haevn {
                  * @return
                  */
                 int getTopLevelCount();
+
+               // virtual void dragEvent(QDragEvent *event);
             private:
 
 

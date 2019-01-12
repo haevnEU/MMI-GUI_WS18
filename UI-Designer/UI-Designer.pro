@@ -29,18 +29,16 @@ SOURCES += \
         view/mainwindow/mainwindow.cpp \
     core/scene.cpp \
     core/model.cpp \
-    #core/objects/iabstractobject.cpp \
-    core/objects/buttons/hbutton.cpp \
-    core/custom_objects/htreeview.cpp
+    core/custom_objects/htreeview.cpp \
+    core/selectionmodel.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
     core/scene.h \
     core/model.h \
-    #core/objects/iabstractobject.h \
-    core/objects/buttons/hbutton.h \
     core/custom_objects/htreeview.h \
-    core/enumerations.h
+    core/enumerations.h \
+    core/selectionmodel.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui
