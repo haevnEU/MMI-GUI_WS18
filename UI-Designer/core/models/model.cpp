@@ -1,5 +1,7 @@
 #include "model.h"
 
+#include <QDebug>
+
 haevn::core::models::Model* haevn::core::models::Model::s_instance = nullptr;
 haevn::core::models::Model* haevn::core::models::Model::getInstance(QObject* parent){
     if(s_instance == nullptr){
@@ -20,10 +22,19 @@ haevn::core::models::Model::~Model(){
 
 }
 
+
+QList<QWidget*>* haevn::core::models::Model::getScenegraph(){
+    return m_items;
+}
+
+
+void haevn::core::models::Model::removeItem(QWidget* t_item){
+    m_items->removeOne(t_item);
+}
+
 void haevn::core::models::Model::addItem(QWidget* t_item){
     if(t_item == nullptr){
         return;
     }
     m_items->insert(m_items->size() + 1, t_item);
-    emit itemAdded(t_item);
 }

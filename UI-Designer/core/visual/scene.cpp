@@ -3,6 +3,7 @@
 
 haevn::core::visual::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
     m_selectionModel = haevn::core::models::SelectionModel::getInstance();
+    m_applicationModel = haevn::core::models::Model::getInstance();
     m_scenegraph = new QList<QWidget*>();
 
     m_buttonCounter = 0;
@@ -173,6 +174,7 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
         m_selectionModel->selectWidget(item);
         m_selectionModel->setPosition(x, y);
         m_selectionModel->setName(name);
+        m_applicationModel->addItem(item);
         addWidget(m_selectionModel->getSelectedwidget());
         m_scenegraph->push_back(m_selectionModel->getSelectedwidget());
         emit selectedItemChanged(m_selectionModel->getSelectedwidget());
@@ -193,14 +195,13 @@ void haevn::core::visual::Scene::mousePressEvent(QGraphicsSceneMouseEvent *event
     }else if(event->button() == Qt::MouseButton::RightButton){
         QGraphicsItem* item = itemAt(event->scenePos(), QTransform());
         if(nullptr != item){
-
             if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(item)){
                 m_scenegraph->removeOne(proxyWidget->widget());
+                m_applicationModel->removeItem(proxyWidget->widget());
                 removeItem(item);
                 m_selectionModel->selectWidget(nullptr);
                 emit(selectedItemChanged(m_selectionModel->getSelectedwidget()));
             }
-
         }
     }
 }

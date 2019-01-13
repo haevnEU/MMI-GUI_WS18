@@ -109,14 +109,13 @@ void haevn::core::models::SelectionModel::setPosition(int t_x, int t_y){
     emit positionChanged(t_x, t_y);
 }
 
-void haevn::core::models::SelectionModel::setVisibility(bool t_visibility) {
+void haevn::core::models::SelectionModel::setEnabled(bool t_visibility) {
     if(m_visibility == t_visibility || selectedWidget == nullptr){
         return;
     }
     m_visibility = t_visibility;
-    selectedWidget->setVisible(m_visibility);
-
-    emit visibilityChanged(t_visibility);
+    selectedWidget->setEnabled(m_visibility);
+    emit enabledChanged(t_visibility);
 }
 
 void haevn::core::models::SelectionModel::setTooltip(QString t_tooltip){

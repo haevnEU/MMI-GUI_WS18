@@ -94,7 +94,7 @@ namespace haevn{
 
                   void nameChanged(QString name);
 
-                  void visibilityChanged(bool visibility);
+                  void enabledChanged(bool visibility);
                   void tooltipChanged(QString tooltip);
 
                public slots:
@@ -147,7 +147,7 @@ namespace haevn{
                     * @brief setVisibility
                     * @param t_visibility
                     */
-                   virtual void setVisibility(bool t_visibility) ;
+                   virtual void setEnabled(bool t_visibility) ;
 
                   virtual void setTooltip(QString t_tooltip);
 

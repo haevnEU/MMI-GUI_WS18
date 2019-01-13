@@ -1,7 +1,9 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
-#include "core/visual/scene.h"
 
+#include "core/models/model.h"
+#include "core/models/selectionmodel.h"
+#include "core/export/dataexport.h"
 
 int main(int argc, char *argv[]){
 
@@ -9,5 +11,13 @@ int main(int argc, char *argv[]){
     haevn::view::MainWindow w;
     w.show();
 
-    return a.exec();
+    int retCode = a.exec();
+
+    // Clean up singleton
+    delete haevn::core::models::Model::getInstance();
+    delete haevn::core::models::Model::getInstance();
+    delete haevn::core::models::SelectionModel::getInstance();
+    delete haevn::core::exporting::DataExport::getInstance();
+
+    return retCode;
 }

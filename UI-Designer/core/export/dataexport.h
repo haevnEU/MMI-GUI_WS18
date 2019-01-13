@@ -6,6 +6,8 @@
 #include <QGraphicsItem>
 #include <QWidget>
 
+#include "core/models/model.h"
+
 // singleton
 
 // end singleton
@@ -56,6 +58,7 @@ namespace haevn{
                 // private variables
                 private:
                     QList<QWidget*>* m_scenegraph;
+                    haevn::core::models::Model* m_model;
 
                 signals:
 

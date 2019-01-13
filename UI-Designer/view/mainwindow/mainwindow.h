@@ -54,7 +54,7 @@ namespace haevn {
             void contentChanged(QString t_content);
             void tooltipChanged(QString t_tooltip);
 
-            void visibilityChanged(int t_visibility);
+            void enabledChanged(int t_visibility);
 
             void selectedWidgetChanged(QWidget* widget);
 

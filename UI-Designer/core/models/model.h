@@ -26,6 +26,8 @@ namespace haevn{
 
                 virtual ~Model();
 
+                QList<QWidget*>* getScenegraph();
+
             // private methods
             private:
                 ///
@@ -41,11 +43,6 @@ namespace haevn{
 
             signals:
 
-                /**
-                 * @brief itemAdded
-                 * @param newItem
-                 */
-                void itemAdded(QWidget* newItem);
 
             public slots:
 
@@ -54,7 +51,7 @@ namespace haevn{
                  * @param t_item
                  */
                 void addItem(QWidget* t_item);
-
+                void removeItem(QWidget* t_item);
             };
         }
     }

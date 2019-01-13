@@ -1,20 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "core/export/dataexport.h"
 
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
 
-    haevn::core::exporting::DataExport* exp = haevn::core::exporting::DataExport::getInstance();
     // Create custom scene//
     m_scene = new haevn::core::visual::Scene();
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
     ui->canvas->setScene(m_scene);
-
     tools = new haevn::core::visual::HTreeView();
 
     tools->addRootHeader("Control");
@@ -69,7 +66,7 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     connect(ui->leTooltip, SIGNAL(textChanged(QString)), this, SLOT(tooltipChanged(QString)));
     connect(ui->leName, SIGNAL(textChanged(QString)), this, SLOT(nameChanged(QString)));
 
-    connect(ui->cbVisibility, SIGNAL(stateChanged(int)), this, SLOT(visibilityChanged(int)));
+    connect(ui->cbEnabled, SIGNAL(stateChanged(int)), this, SLOT(enabledChanged(int)));
 
     connect(ui->actionLoad, SIGNAL(triggered(bool)), this, SLOT(loadTriggered(bool)));
     connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveTriggered(bool)));
@@ -224,10 +221,17 @@ void haevn::view::MainWindow::tooltipChanged(QString t_tooltip){
     }
 }
 
-void haevn::view::MainWindow::visibilityChanged(int t_visibility){
-    bool state = t_visibility == Qt::CheckState::Checked ? true : false;
+void haevn::view::MainWindow::enabledChanged(int t_visibility){
+    bool state = t_visibility == Qt::CheckState::Unchecked ? false : true;
     if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setVisibility(state);
+        m_scene->getSelectionModel()->setEnabled(state);
+        if(t_visibility == Qt::CheckState::Checked){
+            ui->cbEnabled->setText("Enabled");
+        } else if(t_visibility == Qt::CheckState::Unchecked){
+            ui->cbEnabled->setText("Disbaled");
+        } else {
+            ui->cbEnabled->setText("State unknown");
+        }
     }
 
 }
@@ -245,7 +249,7 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
         ui->sbObjectMaxHeight->setValue(0);
         ui->sbObjectMinHeight->setValue(0);
 
-        ui->cbVisibility->setCheckState(Qt::CheckState::PartiallyChecked);
+        ui->cbEnabled->setCheckState(Qt::CheckState::Unchecked);
         ui->leTooltip->setText("");
         ui->leName->setText("Nothing selected");
     }
@@ -262,25 +266,18 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
         ui->sbObjectMaxHeight->setValue(widget->maximumHeight());
         ui->sbObjectMinHeight->setValue(widget->minimumHeight());
 
-        ui->cbVisibility->setCheckState(widget->isEnabled() == true ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
+        ui->cbEnabled->setCheckState(widget->isEnabled() == true ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
         ui->leTooltip->setText(widget->toolTip());
         ui->leName->setText(widget->whatsThis());
     }
 }
 
 void haevn::view::MainWindow::loadTriggered(bool checked){
-    qDebug() << "Load triggered";
+
 }
 
 void haevn::view::MainWindow::saveTriggered(bool checked){
 
-    for(QWidget* item : *m_scene->getScenegraph()){
-         qDebug() << item << " x: " << item->pos().x() << " y: " << item->pos().y();
-
-    }
-
-    haevn::core::exporting::DataExport* exp = haevn::core::exporting::DataExport::getInstance();
-    qDebug() << exp->toString();
 }
 
 // End slots

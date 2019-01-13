@@ -14,11 +14,10 @@ haevn::core::exporting::DataExport* haevn::core::exporting::DataExport::getInsta
 // End singleton pattern
 
 haevn::core::exporting::DataExport::DataExport(QObject *parent) : QObject(parent){
-    m_scenegraph = new QList<QWidget*>();
+    m_model = haevn::core::models::Model::getInstance();
+    m_scenegraph = m_model->getScenegraph();
 }
-haevn::core::exporting::DataExport::~DataExport(){
-    delete m_scenegraph;
-}
+haevn::core::exporting::DataExport::~DataExport(){}
 
 int haevn::core::exporting::DataExport::getWidth(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
