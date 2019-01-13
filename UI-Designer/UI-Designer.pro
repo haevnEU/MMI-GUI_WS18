@@ -27,18 +27,20 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         view/mainwindow/mainwindow.cpp \
-    core/scene.cpp \
-    core/model.cpp \
-    core/custom_objects/htreeview.cpp \
-    core/selectionmodel.cpp
+    core/visual/scene.cpp \
+    core/models/model.cpp \
+    core/visual/htreeview.cpp \
+    core/models/selectionmodel.cpp \
+    core/export/dataexport.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
-    core/scene.h \
-    core/model.h \
-    core/custom_objects/htreeview.h \
+    core/visual/scene.h \
+    core/models/model.h \
+    core/visual/htreeview.h \
     core/enumerations.h \
-    core/selectionmodel.h
+    core/models/selectionmodel.h \
+    core/export/dataexport.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui
@@ -47,3 +49,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    core/visual/bla

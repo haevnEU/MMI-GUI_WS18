@@ -1,44 +1,34 @@
 #include "selectionmodel.h"
 #include <QDebug>
 
-haevn::core::SelectionModel* haevn::core::SelectionModel::s_instance = nullptr;
+// Singleton pattern
 
-haevn::core::SelectionModel* haevn::core::SelectionModel::getInstance(){
+haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::s_instance = nullptr;
+haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::getInstance(){
     if(s_instance == nullptr){
         s_instance = new SelectionModel();
     }
     return s_instance;
 }
 
-haevn::core::SelectionModel::SelectionModel(){
+haevn::core::models::SelectionModel::SelectionModel(){
     selectedWidget = nullptr;
 }
 
-haevn::core::SelectionModel::~SelectionModel(){
+// end singleton pattern
+
+haevn::core::models::SelectionModel::~SelectionModel(){
     if(nullptr != selectedWidget){
         delete selectedWidget;
         selectedWidget = nullptr;
     }
 }
 
-void haevn::core::SelectionModel::setName(QString t_name){
-     if(t_name == m_name){
-        return;
-    }
-
-     // TODO
-
-     selectedWidget->setProperty("Name", t_name);
-     qDebug() << "t_name " << t_name;
-    qDebug() << "Whatsthis: " << selectedWidget->property("Name");
-    emit nameChanged(m_name);
-}
-
-QWidget* haevn::core::SelectionModel::getSelectedwidget(){
+QWidget* haevn::core::models::SelectionModel::getSelectedwidget(){
     return selectedWidget;
 }
 
-void haevn::core::SelectionModel::selectWidget(QWidget* selection){
+void haevn::core::models::SelectionModel::selectWidget(QWidget* selection){
     if(selectedWidget == selection){
         return;
     }
@@ -47,7 +37,7 @@ void haevn::core::SelectionModel::selectWidget(QWidget* selection){
     emit selectedWidgetChanged(selectedWidget);
 }
 
-void haevn::core::SelectionModel::setHeight(int t_height){
+void haevn::core::models::SelectionModel::setHeight(int t_height){
     if(m_height == t_height || selectedWidget == nullptr){
         return;
     }
@@ -57,7 +47,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
     emit heightChanged(t_height);
 }
 
- void haevn::core::SelectionModel::setMaxHeight(int t_maxHeight) {
+void haevn::core::models::SelectionModel::setMaxHeight(int t_maxHeight) {
      if(m_maxHeight == t_maxHeight || selectedWidget == nullptr){
          return;
      }
@@ -67,7 +57,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
      emit heightChanged(t_maxHeight);
 }
 
- void haevn::core::SelectionModel::setMinHeight(int t_minHeight) {
+void haevn::core::models::SelectionModel::setMinHeight(int t_minHeight) {
      if(m_minHeight == t_minHeight || selectedWidget == nullptr){
          return;
      }
@@ -77,7 +67,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
      emit heightChanged(t_minHeight);
 }
 
- void haevn::core::SelectionModel::setWidth(int t_width) {
+void haevn::core::models::SelectionModel::setWidth(int t_width) {
      if(m_width == t_width || selectedWidget == nullptr){
          return;
      }
@@ -86,7 +76,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
     emit widthChanged(t_width);
 }
 
- void haevn::core::SelectionModel::setMaxWidth(int t_maxWidth) {
+void haevn::core::models::SelectionModel::setMaxWidth(int t_maxWidth) {
      if(m_maxWidth == t_maxWidth || selectedWidget == nullptr){
          return;
      }
@@ -96,7 +86,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
      emit widthChanged(t_maxWidth);
 }
 
- void haevn::core::SelectionModel::setMinWidth(int t_minWidth) {
+void haevn::core::models::SelectionModel::setMinWidth(int t_minWidth) {
      if(m_minWidth == t_minWidth || selectedWidget == nullptr){
          return;
      }
@@ -106,7 +96,7 @@ void haevn::core::SelectionModel::setHeight(int t_height){
      emit widthChanged(t_minWidth);
 }
 
-void haevn::core::SelectionModel::setPosition(int t_x, int t_y){
+void haevn::core::models::SelectionModel::setPosition(int t_x, int t_y){
     if(m_posX == t_x && m_posY == t_y || selectedWidget == nullptr){
         return;
     }
@@ -116,7 +106,7 @@ void haevn::core::SelectionModel::setPosition(int t_x, int t_y){
     emit positionChanged(t_x, t_y);
 }
 
-void haevn::core::SelectionModel::setVisibility(bool t_visibility) {
+void haevn::core::models::SelectionModel::setVisibility(bool t_visibility) {
     if(m_visibility == t_visibility || selectedWidget == nullptr){
         return;
     }
@@ -126,7 +116,7 @@ void haevn::core::SelectionModel::setVisibility(bool t_visibility) {
     emit visibilityChanged(t_visibility);
 }
 
-void haevn::core::SelectionModel::setTooltip(QString t_tooltip){
+void haevn::core::models::SelectionModel::setTooltip(QString t_tooltip){
     if(m_tooltip == t_tooltip || selectedWidget == nullptr){
         return;
     }
@@ -134,4 +124,17 @@ void haevn::core::SelectionModel::setTooltip(QString t_tooltip){
     selectedWidget->setToolTip(m_tooltip);
 
     emit tooltipChanged(t_tooltip);
+}
+
+void haevn::core::models::SelectionModel::setName(QString t_name){
+    if(t_name == m_name){
+        return;
+    }
+
+     // TODO
+
+    selectedWidget->setProperty("Name", t_name);
+    qDebug() << "t_name " << t_name;
+    qDebug() << "Whatsthis: " << selectedWidget->property("Name").data();
+    emit nameChanged(m_name);
 }

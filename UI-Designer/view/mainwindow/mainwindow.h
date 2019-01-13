@@ -1,9 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QDebug>
+#include <iostream>
+#include <QMouseEvent>
 #include <QMainWindow>
-#include "core/scene.h"
-#include "core/custom_objects/htreeview.h"
+
+#include <QSpinBox>
+
+#include "core/enumerations.h"
+#include "core/visual/scene.h"
+#include "core/visual/htreeview.h"
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +21,20 @@ namespace haevn {
         class MainWindow : public QMainWindow
         {
             Q_OBJECT
+
+        // public methods
+        public:
+            explicit MainWindow(QWidget *parent = nullptr);
+            ~MainWindow();
+            void resizeEvent(QResizeEvent* t_event);
+
+        // private variables
+        private:
+
+            haevn::core::visual::HTreeView* tools;
+            haevn::core::visual::Scene* m_scene;
+            Ui::MainWindow *ui;
+
         signals:
 
         public slots:
@@ -25,29 +46,21 @@ namespace haevn {
             void maxHeightChanged(int t_height);
             void minHeightChanged(int t_height);
 
-            void contentChanged(QString t_content);
-            void tooltipChanged(QString t_tooltip);
-            void nameChanged(QString t_name);
+            void positionChanged(int t_x, int t_y);
             void posXChanged(int t_x);
             void posYChanged(int t_y);
 
-            void positionChanged(int t_x, int t_y);
+            void nameChanged(QString t_name);
+            void contentChanged(QString t_content);
+            void tooltipChanged(QString t_tooltip);
 
             void visibilityChanged(int t_visibility);
 
             void selectedWidgetChanged(QWidget* widget);
 
-        public:
-            explicit MainWindow(QWidget *parent = nullptr);
-            ~MainWindow();
-            void resizeEvent(QResizeEvent* t_event);
-         //   void mousePressEvent(QMouseEvent* event);
-        private:
+            void loadTriggered(bool checked = false);
+            void saveTriggered(bool checked = false);
 
-            haevn::core::custom_objects::HTreeView* tools;
-
-            core::Scene* m_scene;
-            Ui::MainWindow *ui;
         };
 
     }

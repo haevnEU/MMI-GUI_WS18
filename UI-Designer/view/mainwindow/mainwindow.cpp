@@ -1,28 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QDebug>
-#include <iostream>
-#include <QMouseEvent>
-#include "core/scene.h"
 
-#include "core/enumerations.h"
-#include <QSpinBox>
-
-using namespace haevn::view;
-
-MainWindow::MainWindow(QWidget *parent) :
+haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
     // Create custom scene//
-    m_scene = new core::Scene();
+    m_scene = new haevn::core::visual::Scene();
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
     ui->canvas->setScene(m_scene);
 
-    tools = new haevn::core::custom_objects::HTreeView();
+    tools = new haevn::core::visual::HTreeView();
 
     tools->addRootHeader("Control");
     tools->insertData(0, core::e_haevn_objects::control_Button);
@@ -60,7 +51,6 @@ MainWindow::MainWindow(QWidget *parent) :
     tools->setDragEnabled(true);
     layout()->addWidget(tools);
 
-
     // UI Signal-Slot
     connect(ui->spPosX, SIGNAL(valueChanged(int)), this, SLOT(posXChanged(int)));
     connect(ui->spPosY, SIGNAL(valueChanged(int)), this, SLOT(posYChanged(int)));
@@ -79,6 +69,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->cbVisibility, SIGNAL(stateChanged(int)), this, SLOT(visibilityChanged(int)));
 
+    connect(ui->actionLoad, SIGNAL(triggered(bool)), this, SLOT(loadTriggered(bool)));
+    connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveTriggered(bool)));
 
     // Scene Signal-Slot
     connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
@@ -86,8 +78,96 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+haevn::view::MainWindow::~MainWindow(){
+    if(m_scene != nullptr){
+        delete m_scene;
+        m_scene = nullptr;
+    }
+    delete ui;
+}
 
-void MainWindow::positionChanged(int t_x, int t_y){
+// Events
+
+void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
+
+    int posY = ui->menuBar->height() + 10;
+    int height = size().height() - (posY + 20);
+
+    int canvasPosX = 320;
+    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
+
+    int detailsPosX = (canvasWidth) + 320;
+
+
+    tools->resize(300, height);
+    tools->move(10, posY);
+
+    ui->canvas->resize(canvasWidth, height);
+    ui->canvas->move(canvasPosX, posY);
+
+    ui->details->resize(300, height);
+    ui->details->move(detailsPosX, posY);
+}
+
+//End events
+
+// Slots
+
+void haevn::view::MainWindow::widthChanged(int t_width){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setWidth(t_width);
+    }
+    if(ui->sbObjectWidth->value() != t_width){
+        ui->sbObjectWidth->setValue(t_width);
+    }
+}
+
+void haevn::view::MainWindow::maxWidthChanged(int t_width){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setMaxWidth(t_width);
+    }
+    if(ui->sbObjectMaxWidth->value() != t_width){
+        ui->sbObjectMaxWidth->setValue(t_width);
+    }
+}
+
+void haevn::view::MainWindow::minWidthChanged(int t_width){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setMinWidth(t_width);
+    }
+    if(ui->sbObjectMinWidth->value() != t_width){
+        ui->sbObjectMinWidth->setValue(t_width);
+    }
+}
+
+void haevn::view::MainWindow::heightChanged(int t_height){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setHeight(t_height);
+    }
+    if(ui->sbObjectHeight->value() != t_height){
+        ui->sbObjectHeight->setValue(t_height);
+    }
+}
+
+void haevn::view::MainWindow::maxHeightChanged(int t_height){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setMaxHeight(t_height);
+    }
+    if(ui->sbObjectMaxHeight->value() != t_height){
+        ui->sbObjectMaxHeight->setValue(t_height);
+    }
+}
+
+void haevn::view::MainWindow::minHeightChanged(int t_height){
+    if(m_scene != nullptr) {
+        m_scene->getSelectionModel()->setMinHeight(t_height);
+    }
+    if(ui->sbObjectMinHeight->value() != t_height){
+        ui->sbObjectMinHeight->setValue(t_height);
+    }
+}
+
+void haevn::view::MainWindow::positionChanged(int t_x, int t_y){
     if(m_scene != nullptr) {
         m_scene->getSelectionModel()->setPosition(t_x, t_y);
     }
@@ -99,7 +179,7 @@ void MainWindow::positionChanged(int t_x, int t_y){
     }
 }
 
-void MainWindow::posXChanged(int t_x){
+void haevn::view::MainWindow::posXChanged(int t_x){
     if(m_scene != nullptr) {
         m_scene->getSelectionModel()->setPosition(t_x, ui->spPosY->value());
     }
@@ -108,70 +188,16 @@ void MainWindow::posXChanged(int t_x){
     }
 }
 
-void MainWindow::posYChanged(int t_y){
+void haevn::view::MainWindow::posYChanged(int t_y){
     if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setPosition(ui->spPosY->value(), t_y);
+        m_scene->getSelectionModel()->setPosition(ui->spPosX->value(), t_y);
     }
     if(ui->spPosY->value() != t_y){
         ui->spPosX->setValue(t_y);
     }
 }
 
-void MainWindow::widthChanged(int t_width){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setWidth(t_width);
-    }
-    if(ui->sbObjectWidth->value() != t_width){
-        ui->sbObjectWidth->setValue(t_width);
-    }
-}
-
-void MainWindow::maxWidthChanged(int t_width){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setMaxWidth(t_width);
-    }
-    if(ui->sbObjectMaxWidth->value() != t_width){
-        ui->sbObjectMaxWidth->setValue(t_width);
-    }
-}
-
-void MainWindow::minWidthChanged(int t_width){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setMinWidth(t_width);
-    }
-    if(ui->sbObjectMinWidth->value() != t_width){
-        ui->sbObjectMinWidth->setValue(t_width);
-    }
-}
-
-void MainWindow::heightChanged(int t_height){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setHeight(t_height);
-    }
-    if(ui->sbObjectHeight->value() != t_height){
-        ui->sbObjectHeight->setValue(t_height);
-    }
-}
-
-void MainWindow::maxHeightChanged(int t_height){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setMaxHeight(t_height);
-    }
-    if(ui->sbObjectMaxHeight->value() != t_height){
-        ui->sbObjectMaxHeight->setValue(t_height);
-    }
-}
-
-void MainWindow::minHeightChanged(int t_height){
-    if(m_scene != nullptr) {
-        m_scene->getSelectionModel()->setMinHeight(t_height);
-    }
-    if(ui->sbObjectMinHeight->value() != t_height){
-        ui->sbObjectMinHeight->setValue(t_height);
-    }
-}
-
-void MainWindow::nameChanged(QString t_name){
+void haevn::view::MainWindow::nameChanged(QString t_name){
     if(m_scene != nullptr){
         m_scene->getSelectionModel()->setName(t_name);
 
@@ -182,12 +208,12 @@ void MainWindow::nameChanged(QString t_name){
     }
 }
 
-void MainWindow::contentChanged(QString t_content){
+void haevn::view::MainWindow::contentChanged(QString t_content){
 
     qDebug() << t_content;
 }
 
-void MainWindow::tooltipChanged(QString t_tooltip){
+void haevn::view::MainWindow::tooltipChanged(QString t_tooltip){
     if(m_scene != nullptr) {
         //m_scene->getSelectionModel()->setToolTip(t_tooltip);
     }
@@ -196,7 +222,7 @@ void MainWindow::tooltipChanged(QString t_tooltip){
     }
 }
 
-void MainWindow::visibilityChanged(int t_visibility){
+void haevn::view::MainWindow::visibilityChanged(int t_visibility){
     bool state = t_visibility == Qt::CheckState::Checked ? true : false;
     if(m_scene != nullptr) {
         m_scene->getSelectionModel()->setVisibility(state);
@@ -204,7 +230,7 @@ void MainWindow::visibilityChanged(int t_visibility){
 
 }
 
-void MainWindow::selectedWidgetChanged(QWidget* widget){
+void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
     if(nullptr != widget){
         m_scene->getSelectionModel()->selectWidget(widget);
         ui->spPosX->setValue(widget->pos().x());
@@ -225,34 +251,12 @@ void MainWindow::selectedWidgetChanged(QWidget* widget){
     }
 }
 
-MainWindow::~MainWindow(){
-    if(m_scene != nullptr){
-        delete m_scene;
-        m_scene = nullptr;
-    }
-    delete ui;
+void haevn::view::MainWindow::loadTriggered(bool checked){
+    qDebug() << "Load triggered";
 }
 
-
-void MainWindow::resizeEvent(QResizeEvent* t_event){
-
-    int posY = 10;
-    int height = size().height() - 20;
-
-    int canvasPosX = 320;
-    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
-
-    int detailsPosX = (canvasWidth) + 320;
-
-
-    tools->resize(300, height);
-    tools->move(10, posY);
-
-    ui->canvas->resize(canvasWidth, height);
-    ui->canvas->move(canvasPosX, posY);
-
-    ui->details->resize(300, height);
-    ui->details->move(detailsPosX, posY);
-
-
+void haevn::view::MainWindow::saveTriggered(bool checked){
+    qDebug() << "Save triggered";
 }
+
+// End slots

@@ -16,7 +16,7 @@
 
 namespace haevn {
     namespace core {
-        namespace custom_objects{
+        namespace visual{
 
             /**
              * @brief The HTreeView class
@@ -24,7 +24,7 @@ namespace haevn {
             class HTreeView : public QTreeWidget {
                 Q_OBJECT
 
-
+            // public methods
             public:
 
                 /**
@@ -33,6 +33,13 @@ namespace haevn {
                  */
                 explicit HTreeView(QWidget *parent = nullptr);
 
+                /**
+                 * @brief mousePressEvent
+                 * @param event
+                 */
+                void mousePressEvent(QMouseEvent* event);
+
+                void startDrag(Qt::DropActions supportedActions);
                 /**
                  * @brief addRootHeader
                  * @param name
@@ -46,21 +53,12 @@ namespace haevn {
                  */
                 void insertData(int level, e_haevn_objects t_type);
 
-                /**
-                 * @brief mousePressEvent
-                 * @param event
-                 */
-                void mousePressEvent(QMouseEvent* event);
 
                 /**
                  * @brief getTopLevelCount
                  * @return
                  */
                 int getTopLevelCount();
-
-               // virtual void dragEvent(QDragEvent *event);
-            private:
-
 
             signals:
 

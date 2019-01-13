@@ -1,6 +1,6 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
-#include "core/scene.h"
+#include "core/visual/scene.h"
 
 
 int main(int argc, char *argv[]){

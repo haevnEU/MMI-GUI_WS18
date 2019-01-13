@@ -1,20 +1,18 @@
 #include "model.h"
 
-haevn::core::Model* haevn::core::Model::s_instance = nullptr;
-haevn::core::Model* haevn::core::Model::getInstance(QObject* parent){
+haevn::core::models::Model* haevn::core::models::Model::s_instance = nullptr;
+haevn::core::models::Model* haevn::core::models::Model::getInstance(QObject* parent){
     if(s_instance == nullptr){
         s_instance = new Model(parent);
     }
     return s_instance;
 }
 
-
-
-haevn::core::Model::Model(QObject *parent) : QObject(parent){
+haevn::core::models::Model::Model(QObject *parent) : QObject(parent){
    m_items = new QList<QWidget*>();
 }
 
-haevn::core::Model::~Model(){
+haevn::core::models::Model::~Model(){
     if(m_items != nullptr){
         delete m_items;
         m_items = nullptr;
@@ -22,7 +20,7 @@ haevn::core::Model::~Model(){
 
 }
 
-void haevn::core::Model::addItem(QWidget* t_item){
+void haevn::core::models::Model::addItem(QWidget* t_item){
     if(t_item == nullptr){
         return;
     }
