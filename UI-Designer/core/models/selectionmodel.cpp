@@ -41,10 +41,11 @@ void haevn::core::models::SelectionModel::setHeight(int t_height){
     if(m_height == t_height || selectedWidget == nullptr){
         return;
     }
-    m_height = t_height;
-    selectedWidget->resize(m_width, m_height);
-
-    emit heightChanged(t_height);
+    if(true || t_height <= m_maxHeight && t_height >= m_minHeight){
+        m_height = t_height;
+        selectedWidget->resize(m_width, m_height);
+    }
+    emit heightChanged(m_height);
 }
 
 void haevn::core::models::SelectionModel::setMaxHeight(int t_maxHeight) {
@@ -71,9 +72,11 @@ void haevn::core::models::SelectionModel::setWidth(int t_width) {
      if(m_width == t_width || selectedWidget == nullptr){
          return;
      }
-    m_width = t_width;
-    selectedWidget->resize(m_width, m_height);
-    emit widthChanged(t_width);
+     if(true || t_width <= m_maxWidth && t_width >= m_minWidth){
+        m_width = t_width;
+        selectedWidget->resize(m_width, m_height);
+     }
+     emit widthChanged(m_width);
 }
 
 void haevn::core::models::SelectionModel::setMaxWidth(int t_maxWidth) {
@@ -127,14 +130,11 @@ void haevn::core::models::SelectionModel::setTooltip(QString t_tooltip){
 }
 
 void haevn::core::models::SelectionModel::setName(QString t_name){
-    if(t_name == m_name){
+    if(t_name == m_name || selectedWidget == nullptr){
         return;
     }
-
      // TODO
-
-    selectedWidget->setProperty("Name", t_name);
-    qDebug() << "t_name " << t_name;
-    qDebug() << "Whatsthis: " << selectedWidget->property("Name").data();
+    m_name = t_name;
+    selectedWidget->setWhatsThis(t_name);
     emit nameChanged(m_name);
 }

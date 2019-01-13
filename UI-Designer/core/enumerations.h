@@ -4,6 +4,8 @@ namespace haevn{
     namespace core{
 
         typedef enum {
+            uncat_nothing,
+
             control_Button,
             control_RadioButton,
             control_CheckBox,

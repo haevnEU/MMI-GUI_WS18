@@ -4,8 +4,6 @@
 #include <QObject>
 #include <QList>
 #include <QGraphicsItem>
-#include <QGraphicsWidget>
-#include <QGraphicsProxyWidget>
 #include <QWidget>
 
 // singleton
@@ -19,7 +17,7 @@ namespace haevn{
 
                 // public static methods
                 public:
-                    DataExport* getInstance(QObject* parent = nullptr);
+                    static DataExport* getInstance(QObject* parent = nullptr);
 
                 // static variables
                 private:
@@ -29,7 +27,6 @@ namespace haevn{
                 public:
 
                     virtual ~DataExport();
-                    void setScenegraph(QList<QGraphicsItem*>* t_scenegraph);
 
                     int getWidth(int id);
                     int getMinWidth(int id);
@@ -46,20 +43,21 @@ namespace haevn{
                     QString getName(int id);
                     QString getContent(int id);
 
+                    QString toString();
+                    QString toString(int id);
+
                 // private methods
                 private:
-                    explicit DataExport(QObject *parent = nullptr) : QObject(parent){}
+                    explicit DataExport(QObject *parent = nullptr);
 
                     // No need for copy ctor
                     explicit DataExport(DataExport& another){}
 
                 // private variables
                 private:
-                    QList<QGraphicsItem*>* m_scenegraph;
+                    QList<QWidget*>* m_scenegraph;
 
                 signals:
-
-                public slots:
 
                 };
         }

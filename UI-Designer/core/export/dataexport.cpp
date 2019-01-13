@@ -13,101 +13,109 @@ haevn::core::exporting::DataExport* haevn::core::exporting::DataExport::getInsta
 
 // End singleton pattern
 
-haevn::core::exporting::DataExport::~DataExport(){}
-
-void haevn::core::exporting::DataExport::setScenegraph(QList<QGraphicsItem*>* t_scenegraph){
-    m_scenegraph = t_scenegraph;
+haevn::core::exporting::DataExport::DataExport(QObject *parent) : QObject(parent){
+    m_scenegraph = new QList<QWidget*>();
+}
+haevn::core::exporting::DataExport::~DataExport(){
+    delete m_scenegraph;
 }
 
 int haevn::core::exporting::DataExport::getWidth(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->width();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->width();
 }
 
 int haevn::core::exporting::DataExport::getMinWidth(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->minimumWidth();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->minimumWidth();
 }
 
 int haevn::core::exporting::DataExport::getMaxWidth(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->maximumWidth();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->maximumWidth();
 }
 
 int haevn::core::exporting::DataExport::getHeigth(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->height();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->height();
 }
 
 int haevn::core::exporting::DataExport::getMinHeight(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->minimumHeight();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->minimumHeight();
 }
 
 int haevn::core::exporting::DataExport::getMaxHeight(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->maximumHeight();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->maximumHeight();
 }
 
 int haevn::core::exporting::DataExport::getPosX(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->pos().x();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->pos().x();
 }
 
 int haevn::core::exporting::DataExport::getPosY(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->pos().y();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return -1;
+    return m_scenegraph->takeAt(id)->pos().y();
 }
 
 QString haevn::core::exporting::DataExport::getTooltip(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->toolTip();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return nullptr;
+    return m_scenegraph->takeAt(id)->toolTip();
 }
 
 QString haevn::core::exporting::DataExport::getName(int id){
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return proxyWidget->widget()->whatsThis();
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
+        return 0;
     }
-    return nullptr;
+    return m_scenegraph->takeAt(id)->whatsThis();
 }
 
 QString haevn::core::exporting::DataExport::getContent(int id){
-    if(m_scenegraph != nullptr && id > m_scenegraph->size()){
+    if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
+    return "";
+}
+QString haevn::core::exporting::DataExport::toString(){
 
-    QGraphicsItem* tmp = m_scenegraph->takeAt(id);
-    if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(tmp)){
-        return "";
+    QString str = "";
+    for(int i = 0; i < m_scenegraph->size(); i++){
+        str.append(toString(i));
     }
-    return nullptr;
+
+}
+
+QString haevn::core::exporting::DataExport::toString(int id){
+
+    return QString("Name: ").append(getName(id)).append("\n")
+            .append("Width: ").append(QString::number(getWidth(id))).append("\n")
+            .append("MaxWidth: ").append(QString::number(getMaxWidth(id))).append("\n")
+            .append("MinWidth: ").append(QString::number(getMinWidth(id))).append("\n")
+            .append("Height: ").append(QString::number(getHeigth(id))).append("\n")
+            .append("Height: ").append(QString::number(getMaxHeight(id))).append("\n")
+            .append("Height: ").append(QString::number(getMinHeight(id))).append("\n")
+            .append("Position [x/y]: [").append(QString::number(getPosX((id)))).append("/").append(QString::number(getPosY(id))).append("\n")
+            .append("Tooltip: ").append(getTooltip(id)).append("\n")
+            .append("Content: ").append(getContent(id)).append("\n");
 }
 

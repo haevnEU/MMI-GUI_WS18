@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1699</width>
-    <height>815</height>
+    <height>1100</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -24,10 +24,31 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>10</y>
+      <y>20</y>
       <width>661</width>
       <height>689</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="backgroundBrush">
+     <brush brushstyle="NoBrush">
+      <color alpha="255">
+       <red>255</red>
+       <green>0</green>
+       <blue>255</blue>
+      </color>
+     </brush>
+    </property>
+    <property name="foregroundBrush">
+     <brush brushstyle="NoBrush">
+      <color alpha="255">
+       <red>255</red>
+       <green>0</green>
+       <blue>255</blue>
+      </color>
+     </brush>
     </property>
    </widget>
    <widget class="QWidget" name="details" native="true">

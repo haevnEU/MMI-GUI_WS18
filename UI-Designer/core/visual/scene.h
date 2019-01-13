@@ -3,33 +3,59 @@
 
 #include <iostream>
 
+#include <QDebug>
+
 #include <QObject>
-#include <QGraphicsScene>
+#include <QList>
+#include <QMimeData>
+
+#include <QKeyEvent>
 #include <QMouseEvent>
+#include <QGraphicsSceneMouseEvent>
+#include <QFocusEvent>
+
+#include <QGraphicsItem>
+#include <QGraphicsScene>
+
 #include <QGraphicsSceneContextMenuEvent>
 #include <QGraphicsSceneDragDropEvent>
-#include <QFocusEvent>
-#include <QKeyEvent>
-#include <QGraphicsSceneMouseEvent>
-#include <QMimeData>
-#include <QList>
+
+#include <QWidget>
+#include <QGraphicsWidget>
+#include <QGraphicsProxyWidget>
 #include <QGraphicsItem>
-#include "core/models/selectionmodel.h"
+#include <QTreeWidget>
 
-
-#include <QDebug>
+// Control
 #include <QPushButton>
 #include <QCheckBox>
 #include <QRadioButton>
-#include <QGraphicsItem>
-#include <QLabel>
-#include <QTreeWidget>
 
+// Input
+#include <QTimeEdit>
+#include <QDateEdit>
+#include <QSpinBox>
+#include <QSlider>
+#include <QComboBox>
+#include <QLineEdit>
+
+// Display
+#include <QProgressBar>
+#include <QLabel>
+
+// Grouping
+#include <QGroupBox>
+#include <QRadioButton>
+
+// Items
+#include <QTreeWidget>
+#include <QTableWidget>
+#include <QListWidget>
+
+#include "core/models/selectionmodel.h"
 #include "core/visual/htreeview.h"
 #include "core/enumerations.h"
 
-#include <QGraphicsWidget>
-#include <QGraphicsProxyWidget>
 
 namespace haevn{
     namespace core {
@@ -94,7 +120,7 @@ namespace haevn{
 
                 haevn::core::models::SelectionModel* getSelectionModel();
 
-                QList<QGraphicsItem*> getScenegraph();
+                QList<QWidget*>* getScenegraph();
 
 
             // private variables
@@ -105,6 +131,25 @@ namespace haevn{
 
                 ///
                 bool m_grab = false;
+
+                QList<QWidget*>* m_scenegraph;
+
+                int m_buttonCounter;
+                int m_checkBoxCounter;
+                int m_radioButtonCounter;
+                int m_timeCounter;
+                int m_dateCounter;
+                int m_spinBoxCounter;
+                int m_sliderCounter;
+                int m_comboBoxCounter;
+                int m_textFieldCounter;
+
+                int m_labelCounter;
+                int m_progressBarCounter;
+
+                int m_treeWidgetCounter;
+                int m_tableWidgetCounter;
+                int m_listViewCounter;
 
             signals:
                 void itemAdded(QWidget* t_item);

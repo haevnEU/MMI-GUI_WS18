@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "core/export/dataexport.h"
 
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+
+    haevn::core::exporting::DataExport* exp = haevn::core::exporting::DataExport::getInstance();
     // Create custom scene//
     m_scene = new haevn::core::visual::Scene();
     // Set canvas center to the topleft point
@@ -102,11 +104,13 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
     tools->resize(300, height);
     tools->move(10, posY);
 
+
     ui->canvas->resize(canvasWidth, height);
-    ui->canvas->move(canvasPosX, posY);
+    ui->canvas->move(canvasPosX, ui->canvas->pos().y() - 10);
 
     ui->details->resize(300, height);
-    ui->details->move(detailsPosX, posY);
+    ui->details->move(detailsPosX, ui->details->pos().y());
+
 }
 
 //End events
@@ -200,8 +204,6 @@ void haevn::view::MainWindow::posYChanged(int t_y){
 void haevn::view::MainWindow::nameChanged(QString t_name){
     if(m_scene != nullptr){
         m_scene->getSelectionModel()->setName(t_name);
-
-        qDebug() << "Whatsthis: " << m_scene->getSelectionModel()->property("Name").data();
     }
     if(ui->leName->text() != t_name){
         ui->leName->setText(t_name);
@@ -215,7 +217,7 @@ void haevn::view::MainWindow::contentChanged(QString t_content){
 
 void haevn::view::MainWindow::tooltipChanged(QString t_tooltip){
     if(m_scene != nullptr) {
-        //m_scene->getSelectionModel()->setToolTip(t_tooltip);
+        m_scene->getSelectionModel()->setTooltip(t_tooltip);
     }
     if(ui->leTooltip->text() != t_tooltip){
         ui->leTooltip->setText(t_tooltip);
@@ -231,7 +233,23 @@ void haevn::view::MainWindow::visibilityChanged(int t_visibility){
 }
 
 void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
-    if(nullptr != widget){
+    if(nullptr == widget){
+        ui->spPosX->setValue(0);
+        ui->spPosY->setValue(0);
+
+        ui->sbObjectWidth->setValue(0);
+        ui->sbObjectMaxWidth->setValue(0);
+        ui->sbObjectMinWidth->setValue(0);
+
+        ui->sbObjectHeight->setValue(0);
+        ui->sbObjectMaxHeight->setValue(0);
+        ui->sbObjectMinHeight->setValue(0);
+
+        ui->cbVisibility->setCheckState(Qt::CheckState::PartiallyChecked);
+        ui->leTooltip->setText("");
+        ui->leName->setText("Nothing selected");
+    }
+    else{
         m_scene->getSelectionModel()->selectWidget(widget);
         ui->spPosX->setValue(widget->pos().x());
         ui->spPosY->setValue(widget->pos().y());
@@ -246,7 +264,6 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
 
         ui->cbVisibility->setCheckState(widget->isEnabled() == true ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
         ui->leTooltip->setText(widget->toolTip());
-        QString tmp = widget->whatsThis();
         ui->leName->setText(widget->whatsThis());
     }
 }
@@ -256,7 +273,14 @@ void haevn::view::MainWindow::loadTriggered(bool checked){
 }
 
 void haevn::view::MainWindow::saveTriggered(bool checked){
-    qDebug() << "Save triggered";
+
+    for(QWidget* item : *m_scene->getScenegraph()){
+         qDebug() << item << " x: " << item->pos().x() << " y: " << item->pos().y();
+
+    }
+
+    haevn::core::exporting::DataExport* exp = haevn::core::exporting::DataExport::getInstance();
+    qDebug() << exp->toString();
 }
 
 // End slots
