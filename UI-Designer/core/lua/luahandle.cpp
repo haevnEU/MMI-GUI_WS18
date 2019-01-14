@@ -105,6 +105,9 @@ int haevn::core::lua::LuaHandle::print(lua_State* L){
     }else if(lua_isnumber(L, -1)){
         double param = lua_tonumber(L, -1);
         qDebug() << param;
+    }else if(lua_isboolean(L, -1)){
+        double param = lua_toboolean(L, -1);
+        qDebug() << param;
     }
 
 }

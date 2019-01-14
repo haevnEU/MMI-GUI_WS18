@@ -131,7 +131,7 @@ width = GetWidth(0);
    
 
 ```lua
-maxWidth = GetWidth(0);
+maxWidth = GetMaxWidth(0);
 ```
 
 ### _[getMinWidth](#getMinWidth)_
@@ -142,7 +142,7 @@ maxWidth = GetWidth(0);
         1. Number: minimum width of the element
 
 ```lua
-minWidth = GetWidth(0);
+minWidth = GetMinWidth(0);
 ```
 
 ### _[getPositionX](#getPositionX)_
@@ -197,6 +197,6 @@ This method request the width of an element
         1. String: tooltip of the element  
 
 ```lua
-tooltip = GetName(0);
+tooltip = GetTooltip(0);
 ```
 [Oben](#inhalt)<br>
