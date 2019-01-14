@@ -12,7 +12,7 @@
 #include <QMimeData>
 
 
-#include "core/enumerations.h"
+#include "core/enums/enumerations.h"
 
 namespace haevn {
     namespace core {

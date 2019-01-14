@@ -103,7 +103,7 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
 
     ui->canvas->resize(canvasWidth, height);
-    ui->canvas->move(canvasPosX, ui->canvas->pos().y() - 10);
+    ui->canvas->move(canvasPosX, ui->details->pos().y());
 
     ui->details->resize(300, height);
     ui->details->move(detailsPosX, ui->details->pos().y());

@@ -40,6 +40,18 @@ namespace haevn{
                  */
                 QList<QWidget*>* getScenegraph();
 
+                /**
+                 * @brief setResourcePath
+                 * @param t_resourcePath
+                 */
+                void setResourcePath(QString t_resourcePath);
+
+                /**
+                 * @brief getResourcePath
+                 * @return
+                 */
+                QString getResourcePath();
+
             // private methods
             private:
                 /**
@@ -54,11 +66,21 @@ namespace haevn{
                  */
                 explicit Model(Model& another){}
 
+                /**
+                 * @brief operator =
+                 * @param another
+                 * @return
+                 */
+                Model& operator=(Model& another){}
+
             // private variables
             private:
 
                 ///
                 QList<QWidget*>* m_items;
+
+                ///
+                QString m_resourcePath;
 
             signals:
 

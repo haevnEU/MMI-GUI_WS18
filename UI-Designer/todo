@@ -1,15 +1,18 @@
 DONE (28.12.2018)
 [x] Resizeable window 
 
-TODO 
-[ ] Find Layout for toolbox
+DONE(14.01.2019)
+[x] Find Layout for toolbox
 [x] Add toolitems
-[ ] Enable drag and drop into canvas
-[ ] Implement JavaFX, QT and XML parser
-	[ ] Implement as script (javascript, lua, custom, etc)
-		[ ] Create API for accessing widget data (Getter/Setter)
+[x] Enable drag and drop into canvas
+[x] Implement script parser (javascript, lua, custom, etc) => lua
+		[x] Create API for accessing widget data (Getter/Setter) => Only getter
+
+TODO
 [ ] Add Shortcut for saving
 [ ] Add Shortcut for opening
+[ ] Write script
+[ ] Create doc
 
 OFFLINE
 [x] Redraw scetch papers

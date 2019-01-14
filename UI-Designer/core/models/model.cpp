@@ -22,11 +22,17 @@ haevn::core::models::Model::~Model(){
 
 }
 
-
 QList<QWidget*>* haevn::core::models::Model::getScenegraph(){
     return m_items;
 }
 
+void haevn::core::models::Model::setResourcePath(QString t_resourcePath){
+    m_resourcePath = t_resourcePath;
+}
+
+QString haevn::core::models::Model::getResourcePath(){
+    return m_resourcePath;
+}
 
 void haevn::core::models::Model::removeItem(QWidget* t_item){
     m_items->removeOne(t_item);

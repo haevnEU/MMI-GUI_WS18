@@ -58,19 +58,33 @@ namespace haevn{
 
                     ~LuaHandle();
                     void runScript(const char* file, haevn::core::models::Model* model);
-
+                // private methods
                 private:
+
+                    /**
+                     * @brief LuaHandle
+                     */
+                    explicit LuaHandle();
+
+                    /**
+                     * @brief LuaHandle
+                     * @param another
+                     */
+                    explicit LuaHandle(LuaHandle& another){}
+
+                    /**
+                     * @brief operator =
+                     * @param another
+                     * @return
+                     */
+                    LuaHandle& operator=(const LuaHandle& another){}
 
                     void closeScript(lua_State* L);
                     void open(lua_State* L);
+
                 // private methods
                 private:
                     bool isOpen;
-                    ///
-                    explicit LuaHandle();
-                    // Either Copy ctor nor assign operate are required
-                    explicit LuaHandle(LuaHandle& another){}
-                    LuaHandle& operator=(const LuaHandle& another){}
 
             };
         }

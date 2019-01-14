@@ -8,7 +8,7 @@
 
 #include <QSpinBox>
 
-#include "core/enumerations.h"
+#include "core/enums/enumerations.h"
 #include "core/visual/scene.h"
 #include "core/visual/htreeview.h"
 

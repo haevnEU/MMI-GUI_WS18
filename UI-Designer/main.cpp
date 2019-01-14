@@ -17,7 +17,6 @@ int main(int argc, char *argv[]){
 
     int retCode = a.exec();
 
-    luaHandler->runScript("C:\\Users\\nilsm\\OneDrive\\Desktop\\javaFX.lua", model);
     delete haevn::core::lua::LuaHandle::getInstance();
     delete haevn::core::models::Model::getInstance();
     delete haevn::core::models::SelectionModel::getInstance();

@@ -6,7 +6,7 @@
 [Benutzung](#benutzung)<br>
 [API](#api)
 
-##  [Ziel](#ziel)
+## [Ziel](#ziel)
 Dieses Projekt ist entstanden durch mangelnde Verfügbarkeit von UI Designer die Unabhngig von Sprachen operieren. Die verfügbaren Alternativen sind zu Kostenintensiv. <br>
 Geplannt ist die Erstellung von einfügbaren code in der jeweiligen Zielsprache, mit Skripten soll jede verfügbare Sprache unterstützt werden.<br>
 Dieses Projekt unterstützt simple Objekte wie Button, ListView, CheckBox, etc. komplexere Elemente werden nach und nach hinzugefügt.<br><br>
@@ -17,20 +17,20 @@ Hier wird die grundlegende Nutzung beschrieben.
 ## [API](#api)
 It is possible to use own scripts, all available access methods will be listed here.
 
-1. [GetSceneGraphSize](#getscenegraphsize) <br>
+1. [GetSceneGraphSize](#Getscenegraphsize) <br>
 2. [Print](#Print)<br>
 3. [DisplayMessageBox](#DisplayMessageBox)<br>
 4. [GetHeight](#GetHeight) <br>
 5. [GetMaxHeight](#GetMaxHeight)<br>
-6. [getMinHeight](#getMinHeight)<br>
-7. [getWidth](#getWidth) <br>
-8. [getMaxWidth](#getMaxWidth) <br>
-9. [getMinWidth](#getMinWidth) <br>
-10. [getPositionX](#getPositionX)<br>
-11. [getPositionY](#getPositionY)<br>
-12. [getName](#getName) <br>
-13. [getEnabled](#getEnabled)<br>
-14. [getTooltip](#getTooltip)<br>
+6. [GetMinHeight](#GetMinHeight)<br>
+7. [GetWidth](#GetWidth) <br>
+8. [GetMaxWidth](#GetMaxWidth) <br>
+9. [GetMinWidth](#GetMinWidth) <br>
+10. [GetPositionX](#GetPositionX)<br>
+11. [GetPositionY](#GetPositionY)<br>
+12. [GetName](#GetName) <br>
+13. [GetEnabled](#GetEnabled)<br>
+14. [GetTooltip](#GetTooltip)<br>
 15. [Example](#example)<br>
 
 
@@ -53,7 +53,7 @@ Print("Hello World")
 ```
 <br>
 
-### _[GetSceneGraphSize](#getscenegraphsize)_
+### _[GetSceneGraphSize](#Getscenegraphsize)_
 This method will return the ammount of existing widgets inside the scenegraph
 + Parameter:
     1. None
@@ -100,7 +100,7 @@ height = GetHeight(0);
 maxHeight = GetMaxHeight(0);
 ```
 
-### _[getMinHeight](#getMinHeight)_
+### _[GetMinHeight](#GetMinHeight)_
    This method request the minimum height of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -111,7 +111,7 @@ maxHeight = GetMaxHeight(0);
 minHeight = GetMinHeight(0);
 ```
 
-### _[getWidth](#getWidth)_
+### _[GetWidth](#GetWidth)_
    This method request the width of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -123,7 +123,7 @@ minHeight = GetMinHeight(0);
 width = GetWidth(0);
 ```
 
-### _[getMaxWidth](#getMaxWidth)_
+### _[GetMaxWidth](#GetMaxWidth)_
    This method request the maximum width of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -135,7 +135,7 @@ width = GetWidth(0);
 maxWidth = GetMaxWidth(0);
 ```
 
-### _[getMinWidth](#getMinWidth)_
+### _[GetMinWidth](#GetMinWidth)_
    This method request the minimum width of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -146,7 +146,7 @@ maxWidth = GetMaxWidth(0);
 minWidth = GetMinWidth(0);
 ```
 
-### _[getPositionX](#getPositionX)_
+### _[GetPositionX](#GetPositionX)_
    This method request the x coordinate of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -157,7 +157,7 @@ minWidth = GetMinWidth(0);
 posX = GetPositionX(0);
 ```
 
-### _[getPositionY](#getPositionY)_
+### _[GetPositionY](#GetPositionY)_
    This method request the y coordinate of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -168,7 +168,7 @@ posX = GetPositionX(0);
 posY = GetPositionY(0);
 ```
 
-### _[getName](#getName)_
+### _[GetName](#GetName)_
 This method request the name of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -179,7 +179,7 @@ This method request the name of an element
 name = GetName(0);
 ```
 
-### _[getEnabled](#getEnabled)_
+### _[GetEnabled](#GetEnabled)_
 This method request the enabled state of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -190,7 +190,7 @@ This method request the enabled state of an element
 enabled = GetEnabled(0);
 ```
 
-### _[getTooltip](#GetTooltip)_
+### _[GetTooltip](#GetTooltip)_
 This method request the width of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size

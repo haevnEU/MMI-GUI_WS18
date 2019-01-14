@@ -74,7 +74,7 @@ HEADERS += \
     core/visual/scene.h \
     core/models/model.h \
     core/visual/htreeview.h \
-    core/enumerations.h \
+    core/enums/enumerations.h \
     core/models/selectionmodel.h \
     core/export/dataexport.h \
     core/lua/src/lapi.h \
