@@ -15,37 +15,37 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     tools = new haevn::core::visual::HTreeView();
 
     tools->addRootHeader("Control");
-    tools->insertData(0, core::e_haevn_objects::control_Button);
-    tools->insertData(0, core::e_haevn_objects::control_RadioButton);
-    tools->insertData(0, core::e_haevn_objects::control_CheckBox);
+    tools->insertData(0, haevn::core::enums::e_Widget::control_Button);
+    tools->insertData(0, haevn::core::enums::e_Widget::control_RadioButton);
+    tools->insertData(0, haevn::core::enums::e_Widget::control_CheckBox);
 
     tools->addRootHeader("Input");
-    tools->insertData(1, core::e_haevn_objects::input_TextField);
-    tools->insertData(1, core::e_haevn_objects::input_ComboBox);
-    tools->insertData(1, core::e_haevn_objects::input_Slider);
-    tools->insertData(1, core::e_haevn_objects::input_SpinBox);
-    tools->insertData(1, core::e_haevn_objects::input_Date);
-    tools->insertData(1, core::e_haevn_objects::input_Time);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_TextField);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_ComboBox);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_Slider);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_SpinBox);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_Date);
+    tools->insertData(1, haevn::core::enums::e_Widget::input_Time);
 
     tools->addRootHeader("Display");
-    tools->insertData(2,  core::e_haevn_objects::display_Label);
-    tools->insertData(2,  core::e_haevn_objects::display_ProgressBar);
-    tools->insertData(2,  core::e_haevn_objects::display_WebView);
+    tools->insertData(2,  haevn::core::enums::e_Widget::display_Label);
+    tools->insertData(2,  haevn::core::enums::e_Widget::display_ProgressBar);
+    tools->insertData(2,  haevn::core::enums::e_Widget::display_WebView);
 
     tools->addRootHeader("Grouping");
-    tools->insertData(3, core::e_haevn_objects::grouping_GroupBox);
-    tools->insertData(3, core::e_haevn_objects::grouping_RadioButtonGroup);
+    tools->insertData(3, haevn::core::enums::e_Widget::grouping_GroupBox);
+    tools->insertData(3, haevn::core::enums::e_Widget::grouping_RadioButtonGroup);
 
     tools->addRootHeader("Items");
-    tools->insertData(4, core::e_haevn_objects::dataVisualization_ListView);
-    tools->insertData(4, core::e_haevn_objects::dataVisualization_TableView);
-    tools->insertData(4, core::e_haevn_objects::dataVisualization_TreeView);
+    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_ListView);
+    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_TableView);
+    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_TreeView);
 
     tools->addRootHeader("Layout");
-    tools->insertData(5, core::e_haevn_objects::layout_Grid);
-    tools->insertData(5, core::e_haevn_objects::layout_Canvas);
-    tools->insertData(5, core::e_haevn_objects::layout_HBox);
-    tools->insertData(5, core::e_haevn_objects::layout_VBox);
+    tools->insertData(5, haevn::core::enums::e_Widget::layout_Grid);
+    tools->insertData(5, haevn::core::enums::e_Widget::layout_Canvas);
+    tools->insertData(5, haevn::core::enums::e_Widget::layout_HBox);
+    tools->insertData(5, haevn::core::enums::e_Widget::layout_VBox);
 
     tools->setDragEnabled(true);
     layout()->addWidget(tools);

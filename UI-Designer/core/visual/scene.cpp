@@ -38,9 +38,9 @@ void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *eve
 }
 
 void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
-    haevn::core::e_haevn_objects t_type = static_cast<haevn::core::e_haevn_objects>(event->mimeData()->property("type").toInt());
+    haevn::core::enums::e_Widget t_type = static_cast<haevn::core::enums::e_Widget>(event->mimeData()->property("type").toInt());
 
-    if(t_type == haevn::core::e_haevn_objects::uncat_nothing){
+    if(t_type == haevn::core::enums::e_Widget::uncat_nothing){
         return;
     }
 
@@ -52,21 +52,21 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     QWidget* item = nullptr;
     switch(t_type){
         // Control part
-        case e_haevn_objects::control_Button:
+        case haevn::core::enums::e_Widget::control_Button:
             item = new QPushButton("Button");
             width = 150;
             height = 30;
             m_buttonCounter++;
             name = "Button" + QString::number(m_buttonCounter);
        break;
-        case e_haevn_objects::control_CheckBox:
+        case haevn::core::enums::e_Widget::control_CheckBox:
             item = new QCheckBox("CheckBox");
             width = 150;
             height = 30;
             m_checkBoxCounter++;
             name = "CheckBox" + QString::number(m_checkBoxCounter);
             break;
-        case e_haevn_objects::control_RadioButton:
+        case haevn::core::enums::e_Widget::control_RadioButton:
             item = new QRadioButton("RadioButton");
             width = 150;
             height = 30;
@@ -75,33 +75,33 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
             break;
 
         // input part
-        case e_haevn_objects::input_Date:
+        case haevn::core::enums::e_Widget::input_Date:
 
             break;
-        case e_haevn_objects::input_Time:
+        case haevn::core::enums::e_Widget::input_Time:
             break;
-        case e_haevn_objects::input_Slider:
+        case haevn::core::enums::e_Widget::input_Slider:
             item = new QSlider();
             width = 160;
             height = 30;
             m_sliderCounter++;
             name = "Slider" + QString::number(m_sliderCounter);
             break;
-        case e_haevn_objects::input_SpinBox:
+        case haevn::core::enums::e_Widget::input_SpinBox:
             item = new QSpinBox();
             width = 45;
             height = 30;
             m_spinBoxCounter++;
             name = "SpinBox" + QString::number(m_spinBoxCounter);
             break;
-        case e_haevn_objects::input_ComboBox:
+        case haevn::core::enums::e_Widget::input_ComboBox:
             item = new QComboBox();
             width = 150;
             height = 30;
             m_comboBoxCounter++;
             name = "ComboBox" + QString::number(m_comboBoxCounter);
             break;
-        case e_haevn_objects::input_TextField:
+        case haevn::core::enums::e_Widget::input_TextField:
             item = new QLineEdit();
             width = 150;
             height = 30;
@@ -110,16 +110,16 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
             break;
 
         // Display part
-        case e_haevn_objects::display_Label:
+        case haevn::core::enums::e_Widget::display_Label:
             item = new QLabel("Label");
             width = 150;
             height = 30;
 
             name = "Label" + QString::number(m_textFieldCounter);
             break;
-        case e_haevn_objects::display_WebView:
+        case haevn::core::enums::e_Widget::display_WebView:
             break;
-        case e_haevn_objects::display_ProgressBar:
+        case haevn::core::enums::e_Widget::display_ProgressBar:
             item = new QProgressBar();
             width = 150;
             height = 30;
@@ -128,37 +128,37 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
             break;
 
         // Layout part
-        case e_haevn_objects::layout_Grid:
+        case haevn::core::enums::e_Widget::layout_Grid:
             break;
-        case e_haevn_objects::layout_Canvas:
+        case haevn::core::enums::e_Widget::layout_Canvas:
             break;
-        case e_haevn_objects::layout_HBox:
+        case haevn::core::enums::e_Widget::layout_HBox:
             break;
-        case e_haevn_objects::layout_VBox:
+        case haevn::core::enums::e_Widget::layout_VBox:
             break;
 
         // Grouping part
-        case e_haevn_objects::grouping_GroupBox:
+        case haevn::core::enums::e_Widget::grouping_GroupBox:
             item = new QGroupBox();
             break;
-        case e_haevn_objects::grouping_RadioButtonGroup:
+        case haevn::core::enums::e_Widget::grouping_RadioButtonGroup:
             break;
         // Items part
-        case e_haevn_objects::dataVisualization_ListView:
+        case haevn::core::enums::e_Widget::dataVisualization_ListView:
             item = new QListWidget();
             width = 250;
             height = 250;
             m_listViewCounter++;
             name = "ListWidget" + QString::number(m_listViewCounter);
             break;
-        case e_haevn_objects::dataVisualization_TreeView:
+        case haevn::core::enums::e_Widget::dataVisualization_TreeView:
             item = new QTreeWidget();
             width = 250;
             height = 250;
             m_treeWidgetCounter++;
             name = "TreeWidget" + QString::number(m_treeWidgetCounter);
             break;
-        case e_haevn_objects::dataVisualization_TableView:
+        case haevn::core::enums::e_Widget::dataVisualization_TableView:
             item = new QTableWidget();
             width = 250;
             height = 250;

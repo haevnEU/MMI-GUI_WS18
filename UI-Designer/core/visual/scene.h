@@ -117,16 +117,28 @@ namespace haevn{
                  */
                 virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+                /**
+                 * @brief isGrabbed
+                 * @return
+                 */
                 bool isGrabbed();
 
+                /**
+                 * @brief getSelectionModel
+                 * @return
+                 */
                 haevn::core::models::SelectionModel* getSelectionModel();
 
+                /**
+                 * @brief getScenegraph
+                 * @return
+                 */
                 QList<QWidget*>* getScenegraph();
 
 
             // private variables
             private:
-
+                ///
                 haevn::core::models::Model* m_applicationModel;
 
                 ///
@@ -135,27 +147,63 @@ namespace haevn{
                 ///
                 bool m_grab = false;
 
+                ///
                 QList<QWidget*>* m_scenegraph;
 
+                ///
                 int m_buttonCounter;
+
+                ///
                 int m_checkBoxCounter;
+
+                ///
                 int m_radioButtonCounter;
+
+                ///
                 int m_timeCounter;
+
+                ///
                 int m_dateCounter;
+
+                ///
                 int m_spinBoxCounter;
+
+                ///
                 int m_sliderCounter;
+
+                ///
                 int m_comboBoxCounter;
+
+                ///
                 int m_textFieldCounter;
 
+                ///
                 int m_labelCounter;
+
+                ///
                 int m_progressBarCounter;
 
+                ///
                 int m_treeWidgetCounter;
+
+                ///
                 int m_tableWidgetCounter;
+
+                ///
                 int m_listViewCounter;
 
             signals:
+
+                /**
+                 * @brief itemAdded
+                 * @param t_item
+                 */
                 void itemAdded(QWidget* t_item);
+
+                /**
+                 * @brief selectedItemChanged
+                 * @param widget
+                 */
                 void selectedItemChanged(QWidget* widget);
 
             public slots:

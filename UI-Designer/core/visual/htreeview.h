@@ -51,7 +51,7 @@ namespace haevn {
                  * @param level
                  * @param t_type
                  */
-                void insertData(int level, e_haevn_objects t_type);
+                void insertData(int level, haevn::core::enums::e_Widget t_type);
 
 
                 /**

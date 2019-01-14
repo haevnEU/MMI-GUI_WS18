@@ -27,7 +27,7 @@ void haevn::core::visual::HTreeView::addRootHeader(QString name){
     addTopLevelItem(treeItemButton);
 }
 
-void haevn::core::visual::HTreeView::insertData(int level, e_haevn_objects t_type){
+void haevn::core::visual::HTreeView::insertData(int level, haevn::core::enums::e_Widget t_type){
 
     if(level >= getTopLevelCount()){
         return;
@@ -38,98 +38,98 @@ void haevn::core::visual::HTreeView::insertData(int level, e_haevn_objects t_typ
     // Used to set different UI types as tree view data
     switch(t_type){
         // Control part
-        case e_haevn_objects::control_Button:
+        case haevn::core::enums::e_Widget::control_Button:
           tooltip = "Button";
-          item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::control_Button);
+          item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::control_Button);
           break;
-        case e_haevn_objects::control_CheckBox:
+        case haevn::core::enums::e_Widget::control_CheckBox:
           tooltip = "CheckBox";
-          item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::control_CheckBox);
+          item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::control_CheckBox);
           break;
-        case e_haevn_objects::control_RadioButton:
+        case haevn::core::enums::e_Widget::control_RadioButton:
           tooltip = "RadioButton";
-          item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::control_RadioButton);
+          item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::control_RadioButton);
           break;
 
         // input part
-        case e_haevn_objects::input_Date:
+        case haevn::core::enums::e_Widget::input_Date:
           tooltip = "Date";
-          item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_Date);
+          item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_Date);
           break;
-        case e_haevn_objects::input_Time:
+        case haevn::core::enums::e_Widget::input_Time:
           tooltip = "Time";
-          item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_Time);
+          item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_Time);
           break;
-        case e_haevn_objects::input_Slider:
+        case haevn::core::enums::e_Widget::input_Slider:
             tooltip = "Slider";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_Slider);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_Slider);
             break;
-        case e_haevn_objects::input_SpinBox:
+        case haevn::core::enums::e_Widget::input_SpinBox:
             tooltip = "SpinBox";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_SpinBox);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_SpinBox);
             break;
-        case e_haevn_objects::input_ComboBox:
+        case haevn::core::enums::e_Widget::input_ComboBox:
             tooltip = "ComboBox";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_ComboBox);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_ComboBox);
             break;
-        case e_haevn_objects::input_TextField:
+        case haevn::core::enums::e_Widget::input_TextField:
             tooltip = "TextField";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::input_TextField);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::input_TextField);
             break;
 
         // Display part
-        case e_haevn_objects::display_Label:
+        case haevn::core::enums::e_Widget::display_Label:
             tooltip = "Label";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::display_Label);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::display_Label);
             break;
-        case e_haevn_objects::display_WebView:
+        case haevn::core::enums::e_Widget::display_WebView:
             tooltip = "WebView";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::display_WebView);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::display_WebView);
             break;
-        case e_haevn_objects::display_ProgressBar:
+        case haevn::core::enums::e_Widget::display_ProgressBar:
             tooltip = "ProgressBar";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::display_ProgressBar);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::display_ProgressBar);
             break;
 
         // Layout part
-        case e_haevn_objects::layout_Grid:
+        case haevn::core::enums::e_Widget::layout_Grid:
             tooltip = "Grid";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::layout_Grid);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::layout_Grid);
             break;
-        case e_haevn_objects::layout_Canvas:
+        case haevn::core::enums::e_Widget::layout_Canvas:
             tooltip = "Canvas";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::layout_Canvas);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::layout_Canvas);
             break;
-        case e_haevn_objects::layout_HBox:
+        case haevn::core::enums::e_Widget::layout_HBox:
             tooltip = "HBox";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::layout_HBox);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::layout_HBox);
             break;
-        case e_haevn_objects::layout_VBox:
+        case haevn::core::enums::e_Widget::layout_VBox:
             tooltip = "VBox";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::layout_VBox);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::layout_VBox);
             break;
 
         // Grouping part
-        case e_haevn_objects::grouping_GroupBox:
+        case haevn::core::enums::e_Widget::grouping_GroupBox:
             tooltip = "GroupBox";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::grouping_GroupBox);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::grouping_GroupBox);
             break;
-        case e_haevn_objects::grouping_RadioButtonGroup:
+        case haevn::core::enums::e_Widget::grouping_RadioButtonGroup:
             tooltip = "RadioButtonGroup";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::grouping_RadioButtonGroup);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::grouping_RadioButtonGroup);
             break;
         // Items part
-        case e_haevn_objects::dataVisualization_ListView:
+        case haevn::core::enums::e_Widget::dataVisualization_ListView:
             tooltip = "ListView";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::dataVisualization_ListView);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::dataVisualization_ListView);
             break;
-        case e_haevn_objects::dataVisualization_TreeView:
+        case haevn::core::enums::e_Widget::dataVisualization_TreeView:
             tooltip = "TreeView";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::dataVisualization_TreeView);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::dataVisualization_TreeView);
             break;
-        case e_haevn_objects::dataVisualization_TableView:
+        case haevn::core::enums::e_Widget::dataVisualization_TableView:
             tooltip = "TableView";
-            item->setData(0, Qt::ItemDataRole::UserRole, e_haevn_objects::dataVisualization_TableView);
+            item->setData(0, Qt::ItemDataRole::UserRole, haevn::core::enums::e_Widget::dataVisualization_TableView);
             break;
     }
 

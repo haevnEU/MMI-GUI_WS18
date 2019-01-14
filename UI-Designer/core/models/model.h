@@ -15,24 +15,43 @@ namespace haevn{
 
             // public static methods
             public:
+                /**
+                 * @brief getInstance
+                 * @param parent
+                 * @return
+                 */
                 static Model* getInstance(QObject* parent = nullptr);
 
             // static variables
             private:
+                ///
                 static Model* s_instance;
 
              // public methods
              public:
-
+                /**
+                 * @brief ~Model
+                 */
                 virtual ~Model();
 
+                /**
+                 * @brief getScenegraph
+                 * @return
+                 */
                 QList<QWidget*>* getScenegraph();
 
             // private methods
             private:
-                ///
+                /**
+                 * @brief Model
+                 * @param parent
+                 */
                 explicit Model(QObject *parent = nullptr);
-                // No need for copy ctor
+
+                /**
+                 * @brief Model
+                 * @param another
+                 */
                 explicit Model(Model& another){}
 
             // private variables
@@ -51,6 +70,11 @@ namespace haevn{
                  * @param t_item
                  */
                 void addItem(QWidget* t_item);
+
+                /**
+                 * @brief removeItem
+                 * @param t_item
+                 */
                 void removeItem(QWidget* t_item);
             };
         }

@@ -8,28 +8,67 @@
 namespace haevn{
     namespace core{
         namespace models{
+            /**
+             * @brief The SelectionModel class
+             */
             class SelectionModel : public QObject{
                 Q_OBJECT
             // public static methods
             public:
+
+                /**
+                 * @brief getInstance
+                 * @return
+                 */
                 static SelectionModel* getInstance();
             // static variables
             private:
+
+                ///
                 static SelectionModel* s_instance;
+
+                ///
                 static haevn::core::models::Model* s_model;
+
             // public methods
             public:
+
+                /**
+                 * @brief ~SelectionModel
+                 */
                 virtual ~SelectionModel();
 
+                /**
+                 * @brief selectWidget
+                 * @param selection
+                 */
                 void selectWidget(QWidget* selection);
+
+                /**
+                 * @brief getSelectedwidget
+                 * @return
+                 */
                 QWidget* getSelectedwidget();
 
                 // private methods
             private:
+                /**
+                 * @brief SelectionModel
+                 */
                 explicit SelectionModel();
 
-                // no need for copy ctor
+                /**
+                 * @brief SelectionModel
+                 * @param another
+                 */
                 SelectionModel(SelectionModel& another){}
+
+                /**
+                 * @brief operator =
+                 * @param another
+                 * @return
+                 */
+                SelectionModel& operator=(SelectionModel& another){}
 
             // protected variables
             protected:
@@ -78,81 +117,136 @@ namespace haevn{
                 QWidget* selectedWidget;
 
             signals:
+
+                /**
+                 * @brief selectedWidgetChanged
+                 * @param visibility
+                 */
                 void selectedWidgetChanged(QWidget* visibility);
 
-                  void heightChanged(int height);
-                  void maxHeightChanged(int maxHeight);
-                  void minHeightChanged(int minHeight);
+                /**
+                 * @brief heightChanged
+                 * @param height
+                 */
+                void heightChanged(int height);
 
+                /**
+                 * @brief maxHeightChanged
+                 * @param maxHeight
+                 */
+                void maxHeightChanged(int maxHeight);
 
-                  void widthChanged(int width);
-                  void maxWidthChanged(int maxWidth);
-                  void minWidthChanged(int minWidth);
+                /**
+                 * @brief minHeightChanged
+                 * @param minHeight
+                 */
+                void minHeightChanged(int minHeight);
 
-                  void positionChanged(int x, int y);
-                 // void positionXChanged(int x);
-                 // void positionYChanged(int y);
+                /**
+                 * @brief widthChanged
+                 * @param width
+                 */
+                void widthChanged(int width);
 
-                  void nameChanged(QString name);
+                /**
+                 * @brief maxWidthChanged
+                 * @param maxWidth
+                 */
+                void maxWidthChanged(int maxWidth);
 
-                  void enabledChanged(bool visibility);
-                  void tooltipChanged(QString tooltip);
+                /**
+                 * @brief minWidthChanged
+                 * @param minWidth
+                 */
+                void minWidthChanged(int minWidth);
 
-               public slots:
+                /**
+                 * @brief positionChanged
+                 * @param x
+                 * @param y
+                 */
+                void positionChanged(int x, int y);
 
-                   /**
-                    * @brief setHeight
-                    * @param t_height
-                    */
-                   virtual void setHeight(int t_height) ;
+                /**
+                 * @brief nameChanged
+                 * @param name
+                 */
+                void nameChanged(QString name);
 
-                   /**
-                    * @brief setMaxHeight
-                    * @param t_maxHeight
-                    */
-                   virtual void setMaxHeight(int t_maxHeight) ;
+                /**
+                 * @brief enabledChanged
+                 * @param visibility
+                 */
+                void enabledChanged(bool visibility);
 
-                   /**
-                    * @brief setMinHeight
-                    * @param t_minHeight
-                    */
-                   virtual void setMinHeight(int t_minHeight) ;
+                /**
+                 * @brief tooltipChanged
+                 * @param tooltip
+                 */
+                void tooltipChanged(QString tooltip);
 
-                   /**
-                    * @brief setWidth
-                    * @param t_width
-                    */
-                   virtual void setWidth(int t_width) ;
+              public slots:
 
-                   /**
-                    * @brief setMaxWidth
-                    * @param t_maxWidth
-                    */
-                   virtual void setMaxWidth(int t_maxWidth) ;
+                /**
+                 * @brief setHeight
+                 * @param t_height
+                 */
+                virtual void setHeight(int t_height) ;
 
-                   /**
-                    * @brief setMinWidth
-                    * @param t_minWidth
-                    */
-                   virtual void setMinWidth(int t_minWidth) ;
+                /**
+                 * @brief setMaxHeight
+                 * @param t_maxHeight
+                 */
+                virtual void setMaxHeight(int t_maxHeight) ;
 
+                /**
+                 * @brief setMinHeight
+                 * @param t_minHeight
+                 */
+                virtual void setMinHeight(int t_minHeight) ;
 
-                  virtual void setPosition(int t_x, int t_y);
+                /**
+                 * @brief setWidth
+                 * @param t_width
+                 */
+                virtual void setWidth(int t_width) ;
 
-                  virtual void setName(QString t_name);
+                /**
+                 * @brief setMaxWidth
+                 * @param t_maxWidth
+                 */
+                virtual void setMaxWidth(int t_maxWidth) ;
 
-                  //virtual void setPositionX(int t_x);
+                /**
+                 * @brief setMinWidth
+                 * @param t_minWidth
+                 */
+                virtual void setMinWidth(int t_minWidth) ;
 
-                  //virtual void setPositionY(int t_y);
-                   /**
-                    * @brief setVisibility
-                    * @param t_visibility
-                    */
-                   virtual void setEnabled(bool t_visibility) ;
+                /**
+                 * @brief setPosition
+                 * @param t_x
+                 * @param t_y
+                 */
+                virtual void setPosition(int t_x, int t_y);
 
-                  virtual void setTooltip(QString t_tooltip);
+                /**
+                 * @brief setName
+                 * @param t_name
+                 */
+                virtual void setName(QString t_name);
 
+                /**
+                 * @brief setVisibility
+                 * @param t_visibility
+                 */
+                virtual void setEnabled(bool t_visibility) ;
 
+                /**
+                 * @brief setTooltip
+                 * @param t_tooltip
+                 */
+                virtual void setTooltip(QString t_tooltip);
 
             };
         }

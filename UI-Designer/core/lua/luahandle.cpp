@@ -11,7 +11,6 @@ haevn::core::lua::LuaHandle* haevn::core::lua::LuaHandle::getInstance(){
     return s_instance;
 }
 
-
 haevn::core::lua::LuaHandle::LuaHandle(){
     isOpen = false;
 }
@@ -128,9 +127,7 @@ int haevn::core::lua::LuaHandle::getHeight(lua_State* L){
     if(idx >= s_model->getScenegraph()->size()){
         return 0;
     }
-    qDebug() << "idx " << idx;
     int value = s_model->getScenegraph()->at(idx)->height();
-    qDebug() << "value " << value;
     lua_pushinteger(L, value);
     return 1;
 }
