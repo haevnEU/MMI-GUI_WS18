@@ -19,7 +19,7 @@ It is possible to use own scripts, all available access methods will be listed h
 
 1. [GetSceneGraphSize](#getscenegraphsize) <br>
 2. [Print](#Print)<br>
-3. [CreateMessageBox_](#CreateMessageBox)<br>
+3. [DisplayMessageBox](#DisplayMessageBox)<br>
 4. [GetHeight](#GetHeight) <br>
 5. [GetMaxHeight](#GetMaxHeight)<br>
 6. [getMinHeight](#getMinHeight)<br>
@@ -31,6 +31,7 @@ It is possible to use own scripts, all available access methods will be listed h
 12. [getName](#getName) <br>
 13. [getEnabled](#getEnabled)<br>
 14. [getTooltip](#getTooltip)<br>
+15. [Example](#example)<br>
 
 
 ### _[Print](#Print)_
@@ -62,8 +63,8 @@ This method will return the ammount of existing widgets inside the scenegraph
 amountOfWidgets = GetSceneGraphSize()
 ```
 
-### _[CreateMessageBox](#CreateMessageBox)_
-This Mmethod will create a new messagebox which is immidately displayed.
+### _[DisplayMessageBox](#DisplayMessageBox)_
+This method will create a new messagebox which is immidately displayed.
 + Parameter:
     1. String: Short info
     2. String: Body details
@@ -189,7 +190,7 @@ This method request the enabled state of an element
 enabled = GetEnabled(0);
 ```
 
-### _[getTooltip](#getTooltip)_
+### _[getTooltip](#GetTooltip)_
 This method request the width of an element
    + Parameter:
         1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
@@ -199,4 +200,12 @@ This method request the width of an element
 ```lua
 tooltip = GetTooltip(0);
 ```
-[Oben](#inhalt)<br>
+
+### [Example](#example)
+This file script will create a code which implements the UI inside javaFX using code behind.
+```lua
+
+TODO
+
+```
+<br>[Oben](#inhalt)<br>

@@ -23,70 +23,70 @@ int haevn::core::exporting::DataExport::getWidth(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->width();
+    return m_scenegraph->at(id)->width();
 }
 
 int haevn::core::exporting::DataExport::getMinWidth(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->minimumWidth();
+    return m_scenegraph->at(id)->minimumWidth();
 }
 
 int haevn::core::exporting::DataExport::getMaxWidth(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->maximumWidth();
+    return m_scenegraph->at(id)->maximumWidth();
 }
 
 int haevn::core::exporting::DataExport::getHeigth(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->height();
+    return m_scenegraph->at(id)->height();
 }
 
 int haevn::core::exporting::DataExport::getMinHeight(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->minimumHeight();
+    return m_scenegraph->at(id)->minimumHeight();
 }
 
 int haevn::core::exporting::DataExport::getMaxHeight(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->maximumHeight();
+    return m_scenegraph->at(id)->maximumHeight();
 }
 
 int haevn::core::exporting::DataExport::getPosX(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->pos().x();
+    return m_scenegraph->at(id)->pos().x();
 }
 
 int haevn::core::exporting::DataExport::getPosY(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->pos().y();
+    return m_scenegraph->at(id)->pos().y();
 }
 
 QString haevn::core::exporting::DataExport::getTooltip(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->toolTip();
+    return m_scenegraph->at(id)->toolTip();
 }
 
 QString haevn::core::exporting::DataExport::getName(int id){
     if(m_scenegraph == nullptr || id > m_scenegraph->size()){
         return 0;
     }
-    return m_scenegraph->takeAt(id)->whatsThis();
+    return m_scenegraph->at(id)->whatsThis();
 }
 
 QString haevn::core::exporting::DataExport::getContent(int id){

@@ -57,6 +57,7 @@ void haevn::core::lua::LuaHandle::runScript(const char* file, haevn::core::model
         result = lua_pcall(L, 0, LUA_MULTRET, 0);
     }
     if(result){
+        qDebug() << "Result " << result;
         // TODO Handle lua error
         qDebug() << "Error occured parsing lua";
     }
