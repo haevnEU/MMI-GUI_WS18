@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QObject>
+#include "core/models/model.h"
 
 namespace haevn{
     namespace core{
@@ -15,7 +16,7 @@ namespace haevn{
             // static variables
             private:
                 static SelectionModel* s_instance;
-
+                static haevn::core::models::Model* s_model;
             // public methods
             public:
                 virtual ~SelectionModel();
