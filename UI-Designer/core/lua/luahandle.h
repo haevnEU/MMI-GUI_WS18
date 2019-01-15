@@ -13,14 +13,15 @@ extern "C"{
 
 namespace haevn{
     namespace core{
+        // This namespace contains everything about lua interaction
         namespace lua{
             class LuaHandle{
 
-                // public static methods
-                public:
-                    static LuaHandle* getInstance();
-
                 private:
+
+                    lua_State* L;
+
+                    static haevn::core::models::Model* s_model;
 
                     static int print(lua_State* L);
 
@@ -49,22 +50,31 @@ namespace haevn{
                     static int getEnabled(lua_State* L);
 
                     static int getTooltip(lua_State* L);
-                // static variables
-                private:
-                    static LuaHandle* s_instance;
+
 
                 // public methods
                 public:
 
-                    ~LuaHandle();
-                    void runScript(const char* file, haevn::core::models::Model* model);
-                // private methods
-                private:
-
                     /**
                      * @brief LuaHandle
                      */
-                    explicit LuaHandle();
+                    explicit LuaHandle(haevn::core::models::Model* t_model = nullptr);
+
+                    ~LuaHandle();
+                    /**
+                     * @brief runScript
+                     * @param file
+                     * @param model
+                     */
+                    void runScript(const char* file);
+
+                    double getNumber(const char* name);
+                    int getInt(const char* name);
+                    const char* getString(const char* name);
+                    bool getBool(const char* name);
+                // private methods
+                private:
+
 
                     /**
                      * @brief LuaHandle
@@ -78,9 +88,6 @@ namespace haevn{
                      * @return
                      */
                     LuaHandle& operator=(const LuaHandle& another){}
-
-                    void closeScript(lua_State* L);
-                    void open(lua_State* L);
 
                 // private methods
                 private:

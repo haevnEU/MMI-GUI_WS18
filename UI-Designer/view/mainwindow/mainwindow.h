@@ -70,7 +70,7 @@ namespace haevn {
             /**
              * @brief Sets the width of the selected widget.
              * @details This method will set the width of the selected widget.
-             * Nothin will change or emitted if t_width == m_Scene->getSelectionModel()->getWidth().
+             * Nothing will change or emitted if t_width == m_Scene->getSelectionModel()->getWidth().
              * @param t_widtht - New width of the selected widget
              */
             void widthChanged(int t_width);
@@ -78,7 +78,7 @@ namespace haevn {
             /**
              * @brief Sets the maximum width of the selected widget.
              * @details This method will set the maximum width of the selected widget.
-             * Nothin will change or emitted if t_width == m_Scene->getSelectionModel()->getMaxWidth().
+             * Nothing will change or emitted if t_width == m_Scene->getSelectionModel()->getMaxWidth().
              * @param t_width - New maximum width of the selected widget
              */
             void maxWidthChanged(int t_width);
@@ -86,7 +86,7 @@ namespace haevn {
             /**
              * @brief Sets the minimum width of the selected widget.
              * @details This method will set the minimum width of the selected widget.
-             * Nothin will change or emitted if t_width == m_Scene->getSelectionModel()->getMinWidth().
+             * Nothing will change or emitted if t_width == m_Scene->getSelectionModel()->getMinWidth().
              * @param t_width - New minimum width of the selected widget
              */
             void minWidthChanged(int t_width);
@@ -94,7 +94,7 @@ namespace haevn {
             /**
              * @brief Sets the height of the selected widget.
              * @details This method will set the height of the selected widget.
-             * Nothin will change or emitted if t_height == m_Scene->getSelectionModel()->getHeight().
+             * Nothing will change or emitted if t_height == m_Scene->getSelectionModel()->getHeight().
              * @param t_height - New height of the selected widget
              */
             void heightChanged(int t_height);
@@ -102,7 +102,7 @@ namespace haevn {
             /**
              * @brief Sets the maximum height of the selected widget.
              * @details This method will set the maximum height of the selected widget.
-             * Nothin will change or emitted if t_height == m_Scene->getSelectionModel()->getMaxHeight().
+             * Nothing will change or emitted if t_height == m_Scene->getSelectionModel()->getMaxHeight().
              * @param t_height - New maximum height of the selected widget
              */
             void maxHeightChanged(int t_height);
@@ -110,7 +110,7 @@ namespace haevn {
             /**
              * @brief Sets the minimum height of the selected widget.
              * @details This method will set the minimum height of the selected widget.
-             * Nothin will change or emitted if t_height == m_Scene->getSelectionModel()->getMinHeight().
+             * Nothing will change or emitted if t_height == m_Scene->getSelectionModel()->getMinHeight().
              * @param t_height - New minimum height of the selected widget
              */
             void minHeightChanged(int t_height);
@@ -118,7 +118,7 @@ namespace haevn {
             /**
              * @brief Sets the position of the selected widget.
              * @details This method will set the position of the selected widget.
-             * Nothin will change or emitted if
+             * Nothing will change or emitted if
              * t_x == m_Scene->getSelectionModel()->getPosX() && t_Y == m_scene->getSelectionModel()-getPosY().
              * @param t_x - New x coordinate of the selected widget
              * @param t_y - New y coordinate of the selected widget
@@ -128,7 +128,7 @@ namespace haevn {
             /**
              * @brief Sets the x coordinate of the selected widget.
              * @details This method will set the x coordinate of the selected widget.
-             * Nothin will change or emitted if t_x == m_Scene->getSelectionModel()->getPosX().
+             * Nothing will change or emitted if t_x == m_Scene->getSelectionModel()->getPosX().
              * @param t_x - New x coordinate of the selected widget
              */
             void posXChanged(int t_x);
@@ -136,7 +136,7 @@ namespace haevn {
             /**
              * @brief Sets the y coordinate of the selected widget.
              * @details This method will set the y coordinate of the selected widget.
-             * Nothin will change or emitted if t_y == m_Scene->getSelectionModel()->getPosY().
+             * Nothing will change or emitted if t_y == m_Scene->getSelectionModel()->getPosY().
              * @param t_y - New y coordinate of the selected widget
              */
             void posYChanged(int t_y);
@@ -144,7 +144,7 @@ namespace haevn {
             /**
              * @brief Sets the name of the selected widget.
              * @details This method will set the name of the selected widget.
-             * Nothin will change or emitted if t_name == m_Scene->getSelectionModel()->getName().
+             * Nothing will change or emitted if t_name == m_Scene->getSelectionModel()->getName().
              * @param t_name - New name of the selected widget
              */
             void nameChanged(QString t_name);
@@ -152,7 +152,7 @@ namespace haevn {
             /**
              * @brief Sets the content of the selected widget.
              * @details This method will set the content of the selected widget.
-             * Nothin will change or emitted if t_content == m_Scene->getSelectionModel()->gettContent().
+             * Nothing will change or emitted if t_content == m_Scene->getSelectionModel()->gettContent().
              * @param t_content - New content of the selected widget
              */
             void contentChanged(QString t_content);
@@ -160,7 +160,7 @@ namespace haevn {
             /**
              * @brief Sets the tooltip of the selected widget.
              * @details This method will set the tooltip of the selected widget.
-             * Nothin will change or emitted if t_tooltip == m_Scene->getSelectionModel()->getTooltip().
+             * Nothing will change or emitted if t_tooltip == m_Scene->getSelectionModel()->getTooltip().
              * @param t_tooltip - New tooltip of the selected widget
              */
             void tooltipChanged(QString t_tooltip);
@@ -168,7 +168,7 @@ namespace haevn {
             /**
              * @brief Sets the state of the selected widget.
              * @details This method will set the state of the selected widget.
-             * Nothin will change or emitted if t_state == m_Scene->getSelectionModel()->gettState().
+             * Nothing will change or emitted if t_state == m_Scene->getSelectionModel()->gettState().
              * @param t_state - New tooltip of the selected widget
              */
             void enabledChanged(int t_state);
@@ -176,7 +176,7 @@ namespace haevn {
             /**
              * @brief Sets the seleected widget.
              * @details This method will set the selected widget.
-             * Nothin will change or emitted if widget == m_Scene->getSelectionModel()->getSelectedWidget().
+             * Nothing will change or emitted if widget == m_Scene->getSelectionModel()->getSelectedWidget().
              * @param widget - New selected widget
              */
             void selectedWidgetChanged(QWidget* widget);            

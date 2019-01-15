@@ -31,7 +31,6 @@ SOURCES += \
     core/models/model.cpp \
     core/visual/htreeview.cpp \
     core/models/selectionmodel.cpp \
-    core/export/dataexport.cpp \
     core/lua/src/lapi.c \
     core/lua/src/lauxlib.c \
     core/lua/src/lbaselib.c \
@@ -67,7 +66,8 @@ SOURCES += \
     core/lua/src/lutf8lib.c \
     core/lua/src/lvm.c \
     core/lua/src/lzio.c \
-    core/lua/luahandle.cpp
+    core/lua/luahandle.cpp \
+    core/export/fileio.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
@@ -76,7 +76,6 @@ HEADERS += \
     core/visual/htreeview.h \
     core/enums/enumerations.h \
     core/models/selectionmodel.h \
-    core/export/dataexport.h \
     core/lua/src/lapi.h \
     core/lua/src/lauxlib.h \
     core/lua/src/lcode.h \
@@ -103,7 +102,8 @@ HEADERS += \
     core/lua/src/lundump.h \
     core/lua/src/lvm.h \
     core/lua/src/lzio.h \
-    core/lua/luahandle.h
+    core/lua/luahandle.h \
+    core/export/fileio.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui

@@ -2,29 +2,16 @@
 
 #include <QDebug>
 
-static haevn::core::models::Model* s_model = nullptr;
-haevn::core::lua::LuaHandle* haevn::core::lua::LuaHandle::s_instance = nullptr;
-haevn::core::lua::LuaHandle* haevn::core::lua::LuaHandle::getInstance(){
-    if(s_instance == nullptr){
-        s_instance = new LuaHandle();
-    }
-    return s_instance;
-}
 
-haevn::core::lua::LuaHandle::LuaHandle(){
+haevn::core::models::Model* haevn::core::lua::LuaHandle::s_model = nullptr;
+
+haevn::core::lua::LuaHandle::LuaHandle(haevn::core::models::Model* t_model){
     isOpen = false;
-}
-
-haevn::core::lua::LuaHandle::~LuaHandle(){
-
-}
-
-void haevn::core::lua::LuaHandle::open(lua_State* L){
-    if(isOpen){
-        return;
-    }
+    s_model = t_model;
+    L = luaL_newstate();
     luaL_openlibs(L);
-
+    // export lua api
+    // @see readme.md
     lua_register(L, "Print", print);
     lua_register(L, "GetSceneGraphSize", getSceneGraphSize);
     lua_register(L, "GetHeight", getHeight);
@@ -39,19 +26,14 @@ void haevn::core::lua::LuaHandle::open(lua_State* L){
     lua_register(L, "GetEnabled", getEnabled);
     lua_register(L, "GetTooltip", getTooltip);
     lua_register(L, "DisplayMessageBox", createMessageBox);
-    isOpen = true;
 }
 
-void haevn::core::lua::LuaHandle::closeScript(lua_State* L){
+haevn::core::lua::LuaHandle::~LuaHandle(){
     lua_close(L);
-    isOpen = false;
 }
 
-void haevn::core::lua::LuaHandle::runScript(const char* file, haevn::core::models::Model* model){
+void haevn::core::lua::LuaHandle::runScript(const char* file){
 
-    lua_State* L = luaL_newstate();
-    open(L);
-    s_model = model;
     int result = luaL_loadfile(L, file);
     if(!result){
         result = lua_pcall(L, 0, LUA_MULTRET, 0);
@@ -61,11 +43,38 @@ void haevn::core::lua::LuaHandle::runScript(const char* file, haevn::core::model
         // TODO Handle lua error
         qDebug() << "Error occured parsing lua";
     }
-    closeScript(L);
 }
 
+double haevn::core::lua::LuaHandle::getNumber(const char* name){
+    lua_getglobal(L, name);
+    return lua_isnumber(L, -1) ? lua_tonumber(L, -1) : 0;
+}
+
+int haevn::core::lua::LuaHandle::getInt(const char* name){
+    lua_getglobal(L, name);
+    return lua_isinteger(L, -1) ? lua_tointeger(L, -1) : 0;
+}
+
+const char* haevn::core::lua::LuaHandle::getString(const char* name){
+    lua_getglobal(L, name);
+    return lua_isstring(L, -1) ? lua_tostring(L, -1) : nullptr;
+}
+
+bool haevn::core::lua::LuaHandle::getBool(const char* name){
+    lua_getglobal(L, name);
+    return lua_isboolean(L, -1) ? lua_toboolean(L, -1) : false;
+}
+
+
+
+
+
+
+
+// API which lua could call
+
 int haevn::core::lua::LuaHandle::createMessageBox(lua_State* L){
-     if(L == nullptr){
+    if(L == nullptr){
         return 0;
     }
 

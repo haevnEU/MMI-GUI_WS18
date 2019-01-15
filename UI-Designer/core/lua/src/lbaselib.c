@@ -457,10 +457,10 @@ static const luaL_Reg base_funcs[] = {
   //{"error", luaB_error},
   //{"getmetatable", luaB_getmetatable},
   //{"ipairs", luaB_ipairs},
-  {"loadfile", luaB_loadfile},
-  {"load", luaB_load},
+  //{"loadfile", luaB_loadfile},
+  //{"load", luaB_load},
 #if defined(LUA_COMPAT_LOADSTRING)
-  {"loadstring", luaB_load},
+  //{"loadstring", luaB_load},
 #endif
   //{"next", luaB_next},
   //{"pairs", luaB_pairs},
@@ -472,8 +472,8 @@ static const luaL_Reg base_funcs[] = {
   //{"rawset", luaB_rawset},
   //{"select", luaB_select},
   //{"setmetatable", luaB_setmetatable},
-  {"tonumber", luaB_tonumber},
-  {"tostring", luaB_tostring},
+  //{"tonumber", luaB_tonumber},
+  //{"tostring", luaB_tostring},
   //{"type", luaB_type},
   //{"xpcall", luaB_xpcall},
   /* placeholders */

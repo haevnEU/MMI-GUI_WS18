@@ -11,7 +11,6 @@
 #include <QDrag>
 #include <QMimeData>
 
-
 #include "core/enums/enumerations.h"
 
 namespace haevn {
