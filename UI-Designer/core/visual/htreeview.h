@@ -19,7 +19,12 @@ namespace haevn {
         namespace visual{
 
             /**
-             * @brief The HTreeView class
+             * @brief This class is a custom implementation of a
+             * QTreeWidget. It is used to enable drag and drop operation.
+             * It also mades the insertion of new elements a lot easier.
+             * @author Nils Milewski
+             * @version 1.0
+             * @date Jan 15, 2019
              */
             class HTreeView : public QTreeWidget {
                 Q_OBJECT
@@ -28,35 +33,55 @@ namespace haevn {
             public:
 
                 /**
-                 * @brief HTreeView
-                 * @param parent
+                 * @brief Constructor
+                 * @details The constructor will create and initialize important data.
+                 * @param parent - default = nullptr, it could be a reference to the parent.
                  */
                 explicit HTreeView(QWidget *parent = nullptr);
 
                 /**
-                 * @brief mousePressEvent
-                 * @param event
+                 * @brief Mouse press event occurres if the mouse is pressed.
+                 * @details This event occurred iff the mouse was pressed.
+                 * This method will handle all interaction which is aociated
+                 * with the mouse.
+                 * @param event - This param contains all information about the mouse state.
                  */
                 void mousePressEvent(QMouseEvent* event);
 
-                void startDrag(Qt::DropActions supportedActions);
                 /**
-                 * @brief addRootHeader
-                 * @param name
+                 * @brief startDrag slot
+                 * @details This slot is called iff a drag operation started.
+                 * This function will handle everythin which is done by dragging.
+                 * Example: Dragging an object into the scenegraph.
+                 * @param supportedActions - This param contains the supported actions.
+                 */
+                void startDrag(Qt::DropActions supportedActions);
+
+                /**
+                 * @brief Adds a new section to the widget.
+                 * @details This method adds a new section into the widget.
+                 * It wrapps the insertion of an element into the QTreeWidget and made
+                 * it available by one call.
+                 * @param name - This param is the content of new section.
                  */
                 void addRootHeader(QString name);
 
                 /**
-                 * @brief insertData
-                 * @param level
-                 * @param t_type
+                 * @brief Inserts data into the widget.
+                 * @details This add a new object into the widget.
+                 * Doing so it requires an enum which represent the type of widget.
+                 * It wraps the insertion procedure into one call.
+                 * @param level - Id of the section where the widget should be isnerted
+                 * @param t_type - Type of the widget which should be inserted.
                  */
                 void insertData(int level, haevn::core::enums::e_Widget t_type);
 
 
                 /**
-                 * @brief getTopLevelCount
-                 * @return
+                 * @brief Returns the amount of section.
+                 * @details This method will return the ammount of existing section.
+                 * It returns 0 if there is no section.
+                 * @return Ammount of sections
                  */
                 int getTopLevelCount();
 

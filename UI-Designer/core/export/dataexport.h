@@ -14,21 +14,32 @@
 namespace haevn{
     namespace core{
         namespace exporting{
+
+                /**
+                 * @brief This class handles the filesystem interaction
+                 * @details The DataExport class will handle every operation
+                 * which are required to interact with OS specific filesystem.
+                 * @author Nils Milewski
+                 * @version 1.0
+                 * @date Jan 15, 2019
+                 */
                 class DataExport : public QObject{
                     Q_OBJECT
 
                 // public static methods
                 public:
                     /**
-                     * @brief getInstance
-                     * @param parent
-                     * @return
+                     * @brief Gets the instance
+                     * @details GetInstance returns the existing instance,
+                     * new one is created iff theres no existing one.
+                     * @param parent null by default, could be antoher QObject
+                     * @return DataExport instance
                      */
                     static DataExport* getInstance(QObject* parent = nullptr);
 
                 // static variables
                 private:
-                    ///
+                    /// This variable is used to implement the singleton pattern
                     static DataExport* s_instance;
 
                 // public methods
@@ -37,7 +48,7 @@ namespace haevn{
                     virtual ~DataExport();
 
                     /**
-                     * @brief getWidth
+                     * @brief Gets the width o
                      * @param id
                      * @return
                      */
