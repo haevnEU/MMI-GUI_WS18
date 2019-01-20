@@ -29,6 +29,8 @@ namespace haevn{
 
                     static int createMessageBox(lua_State* L);
 
+                    static int exportData(lua_State* L);
+
                     static int getHeight(lua_State* L) ;
 
                     static int getMaxHeight(lua_State* L) ;
@@ -51,6 +53,7 @@ namespace haevn{
 
                     static int getTooltip(lua_State* L);
 
+                    static int getType(lua_State* L);
 
                 // public methods
                 public:
@@ -60,13 +63,14 @@ namespace haevn{
                      */
                     explicit LuaHandle(haevn::core::models::Model* t_model = nullptr);
 
+
                     ~LuaHandle();
                     /**
                      * @brief runScript
                      * @param file
                      * @param model
                      */
-                    void runScript(const char* file);
+                    int runScript(const char* file);
 
                     double getNumber(const char* name);
                     int getInt(const char* name);

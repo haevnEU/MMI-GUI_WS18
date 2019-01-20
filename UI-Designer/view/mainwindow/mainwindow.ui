@@ -324,31 +324,24 @@
     <addaction name="actionSave"/>
     <addaction name="actionLoad"/>
     <addaction name="separator"/>
-    <addaction name="actionNew_2"/>
+    <addaction name="actionNewScene"/>
    </widget>
    <widget class="QMenu" name="menuCreate">
     <property name="title">
      <string>Run</string>
     </property>
-    <addaction name="actionRun_Inspector"/>
     <addaction name="actionBuild"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-    <addaction name="actionCreationscript"/>
-    <addaction name="actionDefault"/>
-    <addaction name="actionTheme"/>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCreate"/>
-   <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionSave">
@@ -391,9 +384,24 @@
     <string>Theme</string>
    </property>
   </action>
-  <action name="actionNew_2">
+  <action name="actionNewScene">
    <property name="text">
     <string>New</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>

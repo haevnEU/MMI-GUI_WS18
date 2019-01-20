@@ -26,23 +26,22 @@ haevn::core::lua::LuaHandle::LuaHandle(haevn::core::models::Model* t_model){
     lua_register(L, "GetEnabled", getEnabled);
     lua_register(L, "GetTooltip", getTooltip);
     lua_register(L, "DisplayMessageBox", createMessageBox);
+    lua_register(L, "Export", exportData);
+
 }
 
 haevn::core::lua::LuaHandle::~LuaHandle(){
     lua_close(L);
 }
 
-void haevn::core::lua::LuaHandle::runScript(const char* file){
+int haevn::core::lua::LuaHandle::runScript(const char* file){
 
     int result = luaL_loadfile(L, file);
     if(!result){
         result = lua_pcall(L, 0, LUA_MULTRET, 0);
     }
-    if(result){
-        qDebug() << "Result " << result;
-        // TODO Handle lua error
-        qDebug() << "Error occured parsing lua";
-    }
+    return result;
+
 }
 
 double haevn::core::lua::LuaHandle::getNumber(const char* name){
@@ -122,12 +121,32 @@ int haevn::core::lua::LuaHandle::print(lua_State* L){
 
 }
 
+int haevn::core::lua::LuaHandle::exportData(lua_State* L){
+    if(lua_isstring(L, -1)){
+        const char* data = lua_tostring(L, -1);
+        qDebug() << data;
+    }
+}
 int haevn::core::lua::LuaHandle::getSceneGraphSize(lua_State *L){
     if(nullptr == L || nullptr == s_model){
         return 0;
     }
     int value = s_model->getScenegraph()->size();
     lua_pushinteger(L, value);
+    return 1;
+}
+
+int haevn::core::lua::LuaHandle::getType(lua_State* L){
+    if(nullptr == L || nullptr == s_model){
+        return 0;
+    }
+    int idx = lua_tointeger(L, -1);
+    if(idx >= s_model->getScenegraph()->size()){
+        return 0;
+    }
+    //int value = s_model->getScenegraph()->at(idx);
+
+    //lua_pushinteger(L, value);
     return 1;
 }
 

@@ -75,18 +75,21 @@ function createTreeView(name, width, maxwidth, minwidth, height, maxheight, mine
     return ""
 end
 
---idx = 0
---name = GetName(idx)
---width = GetWidth(idx)
---maxWidth = GetMaxWidth(idx)
---minWidth = GetMinWidth(idx)
---height = GetHeight(idx)
---maxHeight = GetMaxHeight(idx)
---minHeight = GetMinHeight(idx)
---positionX = GetPositionX(idx)
---positionY = GetPositionY(idx)
---tooltip = GetTooltip(idx)
---visibility = GetEnabled(idx)
-
-
-DisplayMessageBox("Information", "BYE", 3)
+maxItems = GetSceneGraphSize()
+Export("BLA " .. maxItems)
+for idx = 0, maxItems, 1
+do
+    type = GetType(idx)
+    name = GetName(idx)
+    width = GetWidth(idx)
+    maxWidth = GetMaxWidth(idx)
+    minWidth = GetMinWidth(idx)
+    height = GetHeight(idx)
+    maxHeight = GetMaxHeight(idx)
+    minHeight = GetMinHeight(idx)
+    positionX = GetPositionX(idx)
+    positionY = GetPositionY(idx)
+    tooltip = GetTooltip(idx)
+    visibility = GetEnabled(idx)
+    
+end

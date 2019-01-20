@@ -24,6 +24,18 @@ haevn::core::visual::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
     m_listViewCounter = 0;
 }
 
+void haevn::core::visual::Scene::clear(){
+    m_applicationModel->getScenegraph()->clear();
+
+    QList<QGraphicsItem*> all = items();
+    for (int i = 0; i < all.size(); i++){
+        QGraphicsItem *gi = all[i];
+        if(gi->parentItem() == nullptr){
+            delete gi;
+        }
+    }
+}
+
 // Events
 
 void haevn::core::visual::Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
@@ -38,11 +50,15 @@ void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *eve
 }
 
 void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
+    if(nullptr == event){
+        return;
+    }
     haevn::core::enums::e_Widget t_type = static_cast<haevn::core::enums::e_Widget>(event->mimeData()->property("type").toInt());
 
     if(t_type == haevn::core::enums::e_Widget::uncat_nothing){
         return;
     }
+
 
     int x = static_cast<int>(event->scenePos().x());
     int y = static_cast<int>(event->scenePos().y());
@@ -168,13 +184,16 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     }
 
     if(nullptr != item){
-        item->move(x,y);
-        item->setWhatsThis(name);
-        item->resize(width, height);
+
+        qDebug() << x << " " << y;
+        m_applicationModel->addItem(item);
         m_selectionModel->selectWidget(item);
         m_selectionModel->setPosition(x, y);
         m_selectionModel->setName(name);
-        m_applicationModel->addItem(item);
+
+        item->move(x,y);
+        item->setWhatsThis(name);
+        item->resize(width, height);
         addWidget(m_selectionModel->getSelectedwidget());
         m_scenegraph->push_back(m_selectionModel->getSelectedwidget());
         emit selectedItemChanged(m_selectionModel->getSelectedwidget());

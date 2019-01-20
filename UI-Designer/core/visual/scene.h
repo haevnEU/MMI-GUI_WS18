@@ -245,7 +245,7 @@ namespace haevn{
                 void selectedItemChanged(QWidget* t_item);
 
             public slots:
-
+                void clear();
             };
         }
     }

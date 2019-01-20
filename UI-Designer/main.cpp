@@ -15,8 +15,6 @@ int main(int argc, char *argv[]){
     haevn::core::lua::LuaHandle* handler = new haevn::core::lua::LuaHandle();
     handler->runScript("D:\\dev\\MMI-GUI\\UI-Designer\\res\\scripts\\config.lua");
 
-
-
     w.show();
 
     int retCode = a.exec();

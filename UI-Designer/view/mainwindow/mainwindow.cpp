@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "core/lua/luahandle.h"
+#include "QDesktopServices"
 
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -72,10 +73,19 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionLoad, SIGNAL(triggered(bool)), this, SLOT(loadTriggered(bool)));
     connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveTriggered(bool)));
+    connect(ui->actionNewScene, SIGNAL(triggered(bool)), this, SLOT(newSceneTriggered(bool)));
 
-    // Scene Signal-Slot
+    connect(ui->actionBuild, SIGNAL(triggered(bool)), this, SLOT(buildTriggered(bool)));
+
+    connect(ui->actionHelp, SIGNAL(triggered(bool)), this, SLOT(helpTriggered(bool)));
+    connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered(bool)));
+    connect(ui->actionAbout_Qt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered(bool)));
+
+
+
     connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
     connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
+
 
 }
 
@@ -274,11 +284,37 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
     }
 }
 
+
 void haevn::view::MainWindow::loadTriggered(bool checked){
 
 }
 
 void haevn::view::MainWindow::saveTriggered(bool checked){
+
 }
+
+void haevn::view::MainWindow::newSceneTriggered(bool checked){
+    m_scene->clear();
+}
+
+void haevn::view::MainWindow::buildTriggered(bool checked){
+    haevn::core::lua::LuaHandle* handler = new haevn::core::lua::LuaHandle(haevn::core::models::Model::getInstance());
+    qDebug() << handler->runScript("D:\\dev\\MMI-GUI\\UI-Designer\\res\\scripts\\javaFX.lua");
+
+}
+
+void haevn::view::MainWindow::aboutTriggered(bool checked){
+    QMessageBox::about(this, "GUI Designer", "This application is develop and maintained by Nils Milewski\n\nLast update: Jan 20 2019");
+}
+
+void haevn::view::MainWindow::aboutQtTriggered(bool checked){
+    QMessageBox::aboutQt(this, "GUI Designer");
+}
+
+
+void haevn::view::MainWindow::helpTriggered(bool checked){
+    QDesktopServices::openUrl(QUrl("https://github.com/nimile/MMI-GUI/wiki", QUrl::TolerantMode));
+}
+
 
 // End slots

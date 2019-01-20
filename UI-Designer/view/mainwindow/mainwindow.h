@@ -197,6 +197,44 @@ namespace haevn {
              */
             void saveTriggered(bool checked = false);
 
+            /**
+             * @brief This slot is triggered when the menu build was clicked.
+             * @details This method will handle the translation process into a specific lnaguage
+             * It will use any lua script.
+             * @param checked - Qt internal.
+             */
+            void buildTriggered(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu new scene was clicked.
+             * @details This method will create a new scene
+             * @param checked - Qt internal.
+             */
+            void newSceneTriggered(bool checked = false);
+
+
+            /**
+             * @brief This slot is triggered when the menu help was clicked.
+             * @details This method will show the help file
+             * @param checked - Qt internal.
+             */
+            void helpTriggered(bool checked = false);
+
+
+            /**
+             * @brief This slot is triggered when the menu about was clicked.
+             * @details This method will show information and credits about the app
+             * @param checked - Qt internal.
+             */
+            void aboutTriggered(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu aboutQt was clicked.
+             * @details This method will show information about the Qt library
+             * @param checked - Qt internal.
+             */
+            void aboutQtTriggered(bool checked = false);
+
         };
 
     }
