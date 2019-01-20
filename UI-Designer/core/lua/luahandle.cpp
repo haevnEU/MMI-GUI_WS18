@@ -41,6 +41,8 @@ int haevn::core::lua::LuaHandle::runScript(const char* file){
     int result = luaL_loadfile(L, file);
     if(!result){
         result = lua_pcall(L, 0, LUA_MULTRET, 0);
+    }else {
+        qDebug() << lua_tostring(L, -1);
     }
     return result;
 
@@ -126,6 +128,7 @@ int haevn::core::lua::LuaHandle::print(lua_State* L){
 int haevn::core::lua::LuaHandle::exportData(lua_State* L){
     if(lua_isstring(L, -1)){
         const char* data = lua_tostring(L, -1);
+        haevn::core::FileIO::write(data);
         qDebug() << data;
     }
 }

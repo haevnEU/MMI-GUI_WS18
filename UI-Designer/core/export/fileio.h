@@ -18,7 +18,8 @@ namespace haevn{
                 const char seperator = '/';
             #endif
 
-            void write(const char* path, const char* data);
+                void write(const char* path, const char* data);
+                void write(const char* data);
 
             const char* read(const char* path);
 

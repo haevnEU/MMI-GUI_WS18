@@ -299,8 +299,33 @@ void haevn::view::MainWindow::newSceneTriggered(bool checked){
 
 void haevn::view::MainWindow::buildTriggered(bool checked){
     haevn::core::lua::LuaHandle* handler = new haevn::core::lua::LuaHandle(haevn::core::models::Model::getInstance());
-    qDebug() << handler->runScript("D:\\dev\\MMI-GUI\\UI-Designer\\res\\scripts\\javaFX.lua");
-
+    int result = handler->runScript("D:\\dev\\MMI-GUI\\UI-Designer\\res\\scripts\\javaFX.lua");
+    switch(result){
+        case LUA_OK:
+            qDebug() << "No errors";
+            break;
+        case LUA_YIELD:
+            qDebug() << "LUA_YIELD";
+            break;
+        case LUA_ERRRUN:
+            qDebug() << "LUA_ERRRUN";
+            break;
+        case LUA_ERRSYNTAX:
+            qDebug() << "LUA_ERRSYNTAX";
+            break;
+        case LUA_ERRMEM:
+            qDebug() << "LUA_ERRMEM";
+            break;
+        case LUA_ERRGCMM:
+            qDebug() << "LUA_ERRGCMM";
+            break;
+        case LUA_ERRERR:
+            qDebug() << "No LUA_ERRERR";
+            break;
+        default:
+            qDebug() << "UKNOWN";
+        break;
+    }
 }
 
 void haevn::view::MainWindow::aboutTriggered(bool checked){

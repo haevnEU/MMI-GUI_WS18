@@ -59,9 +59,6 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
         return;
     }
 
-
-    qDebug() << event->scenePos();
-    qDebug() << event->pos();
     int x = static_cast<int>(event->scenePos().x());
     int y = static_cast<int>(event->scenePos().y());
     int width = 100;

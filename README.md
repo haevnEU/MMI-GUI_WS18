@@ -12,28 +12,33 @@ Geplannt ist die Erstellung von einfügbaren code in der jeweiligen Zielsprache,
 Dieses Projekt unterstützt simple Objekte wie Button, ListView, CheckBox, etc. komplexere Elemente werden nach und nach hinzugefügt.<br><br>
 [Oben](#inhalt)
 ## [Benutzung](#benutzung)
-Hier wird die grundlegende Nutzung beschrieben.
+### Menu
+Das Menu beinhaltet Laden, Speichern, Exportieren sowie Hilfe und eine Info.<br>
+Der Eintrag File besitzt die Möglichkeit zu Speichern, Laden und Alles zu löschen. <br>
+Der Eintrag ... beinhaltet den Eintrag Run der ein Script ausführt und exportiert.<br>
+Der Eintrag Hilfe beinhaltet ein Link zur wiki sowie Infos über das Programm sowie Qt.<br>
+Laden und Speichern werden noch nicht unterstüzt.
 [Oben](#inhalt)<br>
 ## [API](#api)
 It is possible to use own scripts, all available access methods will be listed here.
 
-1. [GetSceneGraphSize](#Getscenegraphsize) <br>
-2. [Print](#Print)<br>
-3. [DisplayMessageBox](#DisplayMessageBox)<br>
-4. [Export](#Export)
-4. [GetType](#GetType)<br>
-4. [GetHeight](#GetHeight) <br>
-5. [GetMaxHeight](#GetMaxHeight)<br>
-6. [GetMinHeight](#GetMinHeight)<br>
-7. [GetWidth](#GetWidth) <br>
-8. [GetMaxWidth](#GetMaxWidth) <br>
-9. [GetMinWidth](#GetMinWidth) <br>
-10. [GetPositionX](#GetPositionX)<br>
-11. [GetPositionY](#GetPositionY)<br>
-12. [GetName](#GetName) <br>
-13. [GetEnabled](#GetEnabled)<br>
-14. [GetTooltip](#GetTooltip)<br>
-15. [Example](#example)<br>
+1. [Print](#Print)<br>
+2. [DisplayMessageBox](#DisplayMessageBox)<br>
+3. [GetSceneGraphSize](#Getscenegraphsize) <br>
+4. [Export](#Export)<br>
+5. [GetType](#GetType)<br>
+6. [GetHeight](#GetHeight) <br>
+7. [GetMaxHeight](#GetMaxHeight)<br>
+8. [GetMinHeight](#GetMinHeight)<br>
+9. [GetWidth](#GetWidth) <br>
+10. [GetMaxWidth](#GetMaxWidth) <br>
+11. [GetMinWidth](#GetMinWidth) <br>
+12. [GetPositionX](#GetPositionX)<br>
+13. [GetPositionY](#GetPositionY)<br>
+14. [GetName](#GetName) <br>
+15. [GetEnabled](#GetEnabled)<br>
+16. [GetTooltip](#GetTooltip)<br>
+17. [Example](#example)<br>
 
 
 ### _[Print](#Print)_

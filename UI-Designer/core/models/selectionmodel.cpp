@@ -35,7 +35,8 @@ void haevn::core::models::SelectionModel::selectWidget(QWidget* selection){
 
     m_width = selection->width();
     m_height = selection->height();
-
+    m_posX = selection->pos().x();
+    m_posY = selection->pos().y();
     selectedWidget = selection;
     emit selectedWidgetChanged(selectedWidget);
 }

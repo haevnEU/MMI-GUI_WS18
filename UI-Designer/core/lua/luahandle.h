@@ -4,6 +4,8 @@
 #include <Qt>
 #include <QMessageBox>
 #include "core/models/model.h"
+#include "core/export/fileio.h"
+
 extern "C"{
 
     #include "core/lua/src/lua.h"
