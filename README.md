@@ -20,6 +20,8 @@ It is possible to use own scripts, all available access methods will be listed h
 1. [GetSceneGraphSize](#Getscenegraphsize) <br>
 2. [Print](#Print)<br>
 3. [DisplayMessageBox](#DisplayMessageBox)<br>
+4. [Export](#Export)
+4. [GetType](#GetType)<br>
 4. [GetHeight](#GetHeight) <br>
 5. [GetMaxHeight](#GetMaxHeight)<br>
 6. [GetMinHeight](#GetMinHeight)<br>
@@ -78,12 +80,60 @@ This method will create a new messagebox which is immidately displayed.
 CreateMessageBox("Information", "Hello World", 3)
 ```
 
+### _[Export](#Export)_
+This method will export the create UI file into a language specific file. The language was determine in the execution script.
++ Parameter:
+    1. String: Path to the place where the file should be saved on disk
++ Return: Nothing<br>
+
+Windows:
+```lua
+Export("C:\\Users\\name\\Test.xml")
+```
+Unix/Max
+```lua
+Export("/User/name/Test.xml")
+```
+### _[GetType](#GetType)_
+This method will receive the type of the selected object.
++ Parameter:
+    1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
++ Retruns
+    1. Number: Number which represent the object type
+
+```
+ 0: uncat_nothing
+ 1: control_Button
+ 2: control_RadioButton  
+ 3: control_CheckBox
+ 4: input_ComboBox
+ 5: input_TextField
+ 6: input_SpinBox
+ 7: input_Date
+ 8: input_Time
+ 9: input_Slider
+10: display_Label
+11: display_ProgressBar
+12: display_WebView
+13: grouping_GroupBox
+14: grouping_RadioButtonGroup
+15: dataVisualization_ListView
+16: dataVisualization_TableView
+17: dataVisualization_TreeView
+18: layout_Grid
+19: layout_Canvas
+20: layout_HBox
+21: layout_VBox
+```
+```lua
+height = GetType(0);
+```
 ### _[GetHeight](#GetHeight)_
-   This method request the height of an element
-   + Parameter:
-        1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
-    + Retruns
-        1. Number: Height of the element 
+This method request the height of an element
++ Parameter:
+    1. Number: Index of the element in scenegraph, important nothin will returned if the value exceed the scenegraph size
++ Retruns
+    1. Number: Height of the element 
 
 ```lua
 height = GetHeight(0);

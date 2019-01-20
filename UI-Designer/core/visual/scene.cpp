@@ -60,6 +60,8 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
     }
 
 
+    qDebug() << event->scenePos();
+    qDebug() << event->pos();
     int x = static_cast<int>(event->scenePos().x());
     int y = static_cast<int>(event->scenePos().y());
     int width = 100;
@@ -185,7 +187,6 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
 
     if(nullptr != item){
 
-        qDebug() << x << " " << y;
         m_applicationModel->addItem(item);
         m_selectionModel->selectWidget(item);
         m_selectionModel->setPosition(x, y);

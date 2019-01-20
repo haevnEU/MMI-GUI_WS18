@@ -6,8 +6,13 @@
 #include "core/export/fileio.h"
 #include "core/lua/luahandle.h"
 #include <QPushButton>
+#include <QWidget>
+#include <QCheckBox>
+
+#include <QDebug>
 
 int main(int argc, char *argv[]){
+
 
     QApplication a(argc, argv);
     haevn::view::MainWindow w;

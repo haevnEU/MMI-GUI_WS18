@@ -29,9 +29,12 @@ QWidget* haevn::core::models::SelectionModel::getSelectedwidget(){
 }
 
 void haevn::core::models::SelectionModel::selectWidget(QWidget* selection){
-    if(selectedWidget == selection){
+    if(selection == nullptr || selectedWidget == selection){
         return;
     }
+
+    m_width = selection->width();
+    m_height = selection->height();
 
     selectedWidget = selection;
     emit selectedWidgetChanged(selectedWidget);

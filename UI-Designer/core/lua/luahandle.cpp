@@ -1,7 +1,8 @@
 #include "luahandle.h"
-
+#include "core/enums/enumerations.h"
 #include <QDebug>
 
+#include "core/util/widgethelper.h"
 
 haevn::core::models::Model* haevn::core::lua::LuaHandle::s_model = nullptr;
 
@@ -14,6 +15,7 @@ haevn::core::lua::LuaHandle::LuaHandle(haevn::core::models::Model* t_model){
     // @see readme.md
     lua_register(L, "Print", print);
     lua_register(L, "GetSceneGraphSize", getSceneGraphSize);
+    lua_register(L, "GetType", getType);
     lua_register(L, "GetHeight", getHeight);
     lua_register(L, "GetMaxHeight", getMaxHeight);
     lua_register(L, "GetMinHeight", getMinHeight);
@@ -144,9 +146,10 @@ int haevn::core::lua::LuaHandle::getType(lua_State* L){
     if(idx >= s_model->getScenegraph()->size()){
         return 0;
     }
-    //int value = s_model->getScenegraph()->at(idx);
-
-    //lua_pushinteger(L, value);
+    QWidget* item = s_model->getScenegraph()->at(idx);
+    haevn::core::util::WidgetHelper helper;
+    int type = helper.getType(item);
+    lua_pushinteger(L, type);
     return 1;
 }
 

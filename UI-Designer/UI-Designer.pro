@@ -67,7 +67,8 @@ SOURCES += \
     core/lua/src/lvm.c \
     core/lua/src/lzio.c \
     core/lua/luahandle.cpp \
-    core/export/fileio.cpp
+    core/export/fileio.cpp \
+    core/util/widgethelper.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
@@ -103,7 +104,8 @@ HEADERS += \
     core/lua/src/lvm.h \
     core/lua/src/lzio.h \
     core/lua/luahandle.h \
-    core/export/fileio.h
+    core/export/fileio.h \
+    core/util/widgethelper.h
 
 FORMS += \
         view/mainwindow/mainwindow.ui
