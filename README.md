@@ -59,8 +59,8 @@ Name | Beispiel | Bedeutung
 --- | --- | ---
 width | 500 | Breite des Fenster
 height | 500 |Höhe des Fenster
-posX | 0 |X Koordinate
-posY | 0| Y Koordinate
+posX | 0 | X Koordinate
+posY | 0 | Y Koordinate
 background | #004040 | Hintergrundfarbe 
 foreground | #ffffff | Vordegrundfarbe
 
