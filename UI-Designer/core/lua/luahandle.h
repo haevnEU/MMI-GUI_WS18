@@ -21,40 +21,58 @@ namespace haevn{
 
                 private:
 
+                    /// Internal usage
                     lua_State* L;
 
+                    /// Internal usage
                     static haevn::core::models::Model* s_model;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int print(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getSceneGraphSize(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int createMessageBox(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int exportData(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getHeight(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getMaxHeight(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getMinHeight(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getWidth(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getMaxWidth(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getMinWidth(lua_State* L) ;
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getPositionX(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getPositionY(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getName(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getEnabled(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getTooltip(lua_State* L);
 
+                    /// Internal usage, part of LUA UI-Designer API
                     static int getType(lua_State* L);
 
                 // public methods
@@ -78,6 +96,7 @@ namespace haevn{
                     int getInt(const char* name);
                     const char* getString(const char* name);
                     bool getBool(const char* name);
+
                 // private methods
                 private:
 

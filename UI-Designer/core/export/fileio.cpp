@@ -3,44 +3,29 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
-void haevn::core::FileIO::write(const char* path, const char* data){
-    std::ofstream file;
-    try {
-        file.open (path, std::ios::out | std::ios::binary);
-        file << data;
-        file.flush();
-    } catch(std::ofstream::failure f){
-        qDebug() << f.what();
-    }
-    if(file.is_open()){
-        file.close();
-    }
-
-}
-
 void haevn::core::FileIO::write(const char* data){
-    std::ofstream file;
-    const char* path = "";
+    // Open a new File save dialog
+    QString fileName = QFileDialog::getSaveFileName(nullptr, "Export scenegraph", "", "(*.*);;All Files (*)");
 
-    QString fileName = QFileDialog::getSaveFileName(nullptr,
-           "Export scenegraph", "",
-           "(*.*);;All Files (*)");
+    // Determine if the user canceled, nothing will be saved and it is possible to return
+    if (fileName.isEmpty()){
+        return;
+    }
+    QFile file(fileName);
+    // open the file if an error occurred display a message and return
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::information(nullptr, "Unable to open file", file.errorString());
+        return;
+    }
 
-       if (fileName.isEmpty())
-           return;
-       else {
-           QFile file(fileName);
-           if (!file.open(QIODevice::WriteOnly)) {
-               QMessageBox::information(nullptr, "Unable to open file",
-                   file.errorString());
-               return;
-           }
 
-           QDataStream out(&file);
-           out.setVersion(QDataStream::Qt_4_5);
-           out << data;
+    // Write the data to disk using streams
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+    out << data;
+    file.flush();
+    file.close();
 
-       }
 }
 
 const char* haevn::core::FileIO::read(const char* path){
@@ -56,12 +41,10 @@ const char* haevn::core::FileIO::read(const char* path){
         file.close();
     }
 
-
-    return 0;
+    return nullptr;
 }
 
 bool haevn::core::FileIO::fileExist(const char* path){
     std::ifstream file(path);
     return file.good();
-
 }
