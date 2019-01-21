@@ -20,6 +20,7 @@ namespace haevn{
                 const char seperator = '/';
             #endif
 
+            // const char* resourcePath = qApp->applicationDirPath().append("/res");
 
             /**
              * @brief This method write a text to the disk

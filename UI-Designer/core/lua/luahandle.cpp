@@ -68,7 +68,13 @@ bool haevn::core::lua::LuaHandle::getBool(const char* name){
     return lua_isboolean(L, -1) ? lua_toboolean(L, -1) : false;
 }
 
-
+const char* haevn::core::lua::LuaHandle::getError(){
+    if(nullptr != L && lua_isstring(L, -1)){
+    return lua_tostring(L, -1);
+    } else {
+      return "Unknown problem.";
+    }
+}
 
 
 

@@ -3,6 +3,7 @@
 
 #include "core/lua/luahandle.h"
 #include "QDesktopServices"
+#include <QFileDialog>
 
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -80,16 +81,33 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionHelp, SIGNAL(triggered(bool)), this, SLOT(helpTriggered(bool)));
     connect(ui->actionAbout, SIGNAL(triggered(bool)), this, SLOT(aboutTriggered(bool)));
     connect(ui->actionAbout_Qt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered(bool)));
-
+    connect(ui->actionAbout_LUA, SIGNAL(triggered(bool)), this, SLOT(aboutLuaTriggered(bool)));
 
 
     connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
     connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
 
+    std::string setupScript = qApp->applicationDirPath().append("/init.lua").toStdString();
+    qDebug() << setupScript.c_str();
+    haevn::core::lua::LuaHandle initHandler(nullptr);
+    if(initHandler.runScript(setupScript.c_str()) == LUA_OK){
+        int width = initHandler.getInt("width");
+        int height = initHandler.getInt("height");
+        if(width > 0 && height > 0){
+            resize(width, height);
+        }
+
+        int posX = initHandler.getInt("posX");
+        int posY = initHandler.getInt("posY");
+        if(width >= 0 && posX >= 0){
+            move(posX, posY);
+        }
+    }
 
 }
 
 haevn::view::MainWindow::~MainWindow(){
+
     if(m_scene != nullptr){
         delete m_scene;
         m_scene = nullptr;
@@ -298,38 +316,26 @@ void haevn::view::MainWindow::newSceneTriggered(bool checked){
 }
 
 void haevn::view::MainWindow::buildTriggered(bool checked){
-    haevn::core::lua::LuaHandle* handler = new haevn::core::lua::LuaHandle(haevn::core::models::Model::getInstance());
-    int result = handler->runScript("D:\\dev\\MMI-GUI\\UI-Designer\\res\\scripts\\javaFX.lua");
-    switch(result){
-        case LUA_OK:
-            qDebug() << "No errors";
-            break;
-        case LUA_YIELD:
-            qDebug() << "LUA_YIELD";
-            break;
-        case LUA_ERRRUN:
-            qDebug() << "LUA_ERRRUN";
-            break;
-        case LUA_ERRSYNTAX:
-            qDebug() << "LUA_ERRSYNTAX";
-            break;
-        case LUA_ERRMEM:
-            qDebug() << "LUA_ERRMEM";
-            break;
-        case LUA_ERRGCMM:
-            qDebug() << "LUA_ERRGCMM";
-            break;
-        case LUA_ERRERR:
-            qDebug() << "No LUA_ERRERR";
-            break;
-        default:
-            qDebug() << "UKNOWN";
-        break;
-    }
+
+    // Open Filechoser dialog and save the result into a string
+    QString fileName = QFileDialog::getOpenFileName(this, "Select a script", qApp->applicationDirPath(), "LUA Script (*.lua);");
+    if (!fileName.isEmpty()){
+        // If a file was selected hand them to the script.
+        // The script required a c string
+        // => Convert QString to std::string to c string.
+        executeScript(fileName.toStdString().c_str());
+     }
 }
 
 void haevn::view::MainWindow::aboutTriggered(bool checked){
-    QMessageBox::about(this, "GUI Designer", "This application is develop and maintained by Nils Milewski\n\nLast update: Jan 20 2019");
+
+    // Ask user to open the browser
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "GUI Designer", "This application is develop and maintained by Nils Milewski"
+                                        "\n\nLast update: Jan 20 2019"
+                                        "\n\nAt GitHub you can find more details.\nOpen GitHub website?", QMessageBox::Yes|QMessageBox::No).exec()){
+        // Open the browser with the github repo
+        QDesktopServices::openUrl(QUrl("https://github.com/nimile/MMI-GUI", QUrl::TolerantMode));
+    }
 }
 
 void haevn::view::MainWindow::aboutQtTriggered(bool checked){
@@ -337,9 +343,84 @@ void haevn::view::MainWindow::aboutQtTriggered(bool checked){
 }
 
 
+void haevn::view::MainWindow::aboutLuaTriggered(bool checked){
+    /*Copyright © 1994–2018 Lua.org, PUC-Rio.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining
+     * a copy of this software and associated documentation files (the
+     * "Software"), to deal in the Software without restriction, including
+     * without limitation the rights to use, copy, modify, merge, publish,
+     * distribute, sublicense, and/or sell copies of the Software, and to permit
+     * persons to whom the Software is furnished to do so, subject to the
+     * following conditions:
+     *
+     * The above copyright notice and this permission notice shall be
+     * included in all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+     * ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+     * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+     * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+     * SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+     * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+     * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+     * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+     * OTHER DEALINGS IN THE SOFTWARE.
+    */
+    // Ask the user to review the LUA license
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "Open LUA license?", "You can find the LUA license at the official LUA website"
+                                        "\nOpen default browser?", QMessageBox::Yes|QMessageBox::No).exec()){
+        // Open the license inside the browser
+        QDesktopServices::openUrl(QUrl("https://www.lua.org/license.html", QUrl::TolerantMode));
+    }
+}
+
 void haevn::view::MainWindow::helpTriggered(bool checked){
-    QDesktopServices::openUrl(QUrl("https://github.com/nimile/MMI-GUI/wiki", QUrl::TolerantMode));
+    // Ask the user to view the online help
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "Open GitHub repo?", "You can find the help inside the GitHub repo."
+                                        "\nOpen Now?", QMessageBox::Yes|QMessageBox::No).exec()){
+        // Open the help page inside the GitHub repo
+        QDesktopServices::openUrl(QUrl("https://github.com/nimile/MMI-GUI", QUrl::TolerantMode));
+    }
 }
 
 
 // End slots
+
+void haevn::view::MainWindow::executeScript(const char* path, bool displayResult){
+
+    haevn::core::lua::LuaHandle handler(haevn::core::models::Model::getInstance());
+
+    int result = handler.runScript(path);
+
+    // Only show results if it was requested
+    if(displayResult){
+        // Switch between results
+        switch(result){
+            case LUA_OK:
+                QMessageBox::about(this, "Build", "Script executed without problems.");
+                break;
+            case LUA_YIELD:
+               QMessageBox::about(this, "LUA_YIELD", handler.getError());
+               break;
+            case LUA_ERRRUN:
+                QMessageBox::about(this, "Runtime error", handler.getError());
+                break;
+            case LUA_ERRSYNTAX:
+                QMessageBox::about(this, "Syntax error", handler.getError());
+                break;
+            case LUA_ERRMEM:
+                QMessageBox::about(this, "Memory error", handler.getError());
+                break;
+            case LUA_ERRGCMM:
+                QMessageBox::about(this, "LUA_ERRGCMM", handler.getError());
+                break;
+            case LUA_ERRERR:
+                QMessageBox::about(this, "LUA_ERRERR", handler.getError());
+                break;
+            default:
+                QMessageBox::about(this, "UNKNOWN ERROR", handler.getError());
+            break;
+        }
+    }
+}

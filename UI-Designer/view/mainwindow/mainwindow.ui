@@ -339,6 +339,7 @@
     <addaction name="actionHelp"/>
     <addaction name="actionAbout"/>
     <addaction name="actionAbout_Qt"/>
+    <addaction name="actionAbout_LUA"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCreate"/>
@@ -402,6 +403,11 @@
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout_LUA">
+   <property name="text">
+    <string>About LUA</string>
    </property>
   </action>
  </widget>

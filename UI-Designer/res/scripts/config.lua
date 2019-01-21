@@ -3,15 +3,11 @@
 
 -- Appsettings
 -- Enables auto saveing
-autosave = true
+-- autosave = true -- Not implemented
 -- enables auto loading
-autoload = false
+-- autoload = false -- Not implemented
 -- this is the path to the resource folder, your scripts must be placed inside $resourePath\\scripts
 resourcePath = "D:\\dev\\MMI-GUI\\UI-Designer\\res"
--- default export language
-defaultLang = "javaFX"
--- default extension
-defaultExtension = ".txt"
 -- end Appsettings
 
 -- Mainwindow settings

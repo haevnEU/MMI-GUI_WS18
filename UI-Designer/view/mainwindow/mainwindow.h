@@ -63,6 +63,15 @@ namespace haevn {
             /// Qt variable
             Ui::MainWindow *ui;
 
+            /**
+             * @brief This method executes a LUA script
+             * @details This method will execute a LUA script specified by path.
+             * It will display a result window iff the displayResult is true
+             * @param path - LUA File path
+             * @param displyResult - Enable/Disable a result feedback, default enabled
+            */
+            void executeScript(const char* path, bool displayResult = true);
+
         signals:
 
         public slots:
@@ -234,6 +243,13 @@ namespace haevn {
              * @param checked - Qt internal.
              */
             void aboutQtTriggered(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu aboutLUA was clicked.
+             * @details This method will open the webbrowser with the lua website.
+             * @param checked - Qt internal.
+             */
+            void aboutLuaTriggered(bool checked = false);
 
         };
 
