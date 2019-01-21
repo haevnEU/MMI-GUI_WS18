@@ -55,7 +55,7 @@ Die Widgets innerhalb des Scenegraphs sind über Mausbewegungen neu positionierb
 ## [Einstellung](#einstellung)
 
 Die Datei init.lua enthält grundlegende Einstellungen für das Programm. <br>
-Name | Beispiel |Bedeutung 
+Name | Beispiel | Bedeutung 
 --- | --- | ---
 width | 500 | Breite des Fenster
 height | 500 |Höhe des Fenster
