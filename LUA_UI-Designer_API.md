@@ -1,4 +1,4 @@
-# [API](#api)
+# LUA UI-Designer API
 It is possible to use own scripts, all available access methods will be listed here.
 
 + [Print](#Print)<br>
@@ -579,4 +579,3 @@ end
 -- Export the result
 Export(result)
 ```
-<br>[Oben](#inhalt)<br>
