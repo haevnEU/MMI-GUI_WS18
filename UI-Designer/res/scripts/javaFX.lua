@@ -1,4 +1,3 @@
-
 --[[
     +---------------------------------------------------------------------------------------------------------------+
     |                                                   README                                                      |
@@ -48,6 +47,14 @@
     +---------------------------------------------------------------------------------------------------------------+
  ]]
  
+--[[
+    +---------------------------------------------------------------------------------------------+
+    | This file exports the scenegraph into a JavaFX source code.                                 |
+    | This script has been tested and is readable, changing it can lead to a faulty execution.    |
+    | For this reason, the modification is prohibited.                                            |
+    | If there are any suggested changes please share them.                                       |   
+    +---------------------------------------------------------------------------------------------+
+]]
  
 function createButton(name, width, maxwidth, minwidth, height, maxheight, mineight, x, y, tooltip, visibility)
     ret = "// Create a new Button\n"

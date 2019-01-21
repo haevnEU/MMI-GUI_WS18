@@ -1,7 +1,5 @@
 #include "model.h"
 
-#include <QDebug>
-
 haevn::core::models::Model* haevn::core::models::Model::s_instance = nullptr;
 haevn::core::models::Model* haevn::core::models::Model::getInstance(){
     if(s_instance == nullptr){

@@ -1,14 +1,22 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "core/lua/luahandle.h"
-#include "QDesktopServices"
-#include <QFileDialog>
+/*
+ *
+ +--------------------------------------+
+ | TODO                                 |
+ +--------------------------------------+
+ | [ ] Implement method contentChanged  |
+ | [ ] Implement save method            |
+ | [ ] Implement load method            |
+ |                                      |
+ +--------------------------------------+
+ *
+ */
 
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
-
 
     // Create custom scene//
     m_scene = new haevn::core::visual::Scene();
@@ -88,7 +96,6 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
 
     std::string setupScript = qApp->applicationDirPath().append("/init.lua").toStdString();
-    qDebug() << setupScript.c_str();
     haevn::core::lua::LuaHandle initHandler(nullptr);
     if(initHandler.runScript(setupScript.c_str()) == LUA_OK){
         int width = initHandler.getInt("width");
@@ -127,10 +134,8 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
     int detailsPosX = (canvasWidth) + 320;
 
-
     tools->resize(300, height);
     tools->move(10, posY);
-
 
     ui->canvas->resize(canvasWidth, height);
     ui->canvas->move(canvasPosX, ui->details->pos().y());
@@ -239,7 +244,6 @@ void haevn::view::MainWindow::nameChanged(QString t_name){
 
 void haevn::view::MainWindow::contentChanged(QString t_content){
 
-    qDebug() << t_content;
 }
 
 void haevn::view::MainWindow::tooltipChanged(QString t_tooltip){
@@ -367,6 +371,7 @@ void haevn::view::MainWindow::aboutLuaTriggered(bool checked){
      * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
      * OTHER DEALINGS IN THE SOFTWARE.
     */
+
     // Ask the user to review the LUA license
     if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "Open LUA license?", "You can find the LUA license at the official LUA website"
                                         "\nOpen default browser?", QMessageBox::Yes|QMessageBox::No).exec()){
@@ -384,7 +389,6 @@ void haevn::view::MainWindow::helpTriggered(bool checked){
     }
 }
 
-
 // End slots
 
 void haevn::view::MainWindow::executeScript(const char* path, bool displayResult){
@@ -398,28 +402,28 @@ void haevn::view::MainWindow::executeScript(const char* path, bool displayResult
         // Switch between results
         switch(result){
             case LUA_OK:
-                QMessageBox::about(this, "Build", "Script executed without problems.");
+                QMessageBox(QMessageBox::Information, "Script result", "Script executed successfully", QMessageBox::Ok).exec();
                 break;
             case LUA_YIELD:
-               QMessageBox::about(this, "LUA_YIELD", handler.getError());
+               QMessageBox(QMessageBox::Information, "LUA_YIELD", handler.getError(), QMessageBox::Ok).exec();
                break;
             case LUA_ERRRUN:
-                QMessageBox::about(this, "Runtime error", handler.getError());
+                QMessageBox(QMessageBox::Information, "Runtime error", handler.getError(), QMessageBox::Ok).exec();
                 break;
             case LUA_ERRSYNTAX:
-                QMessageBox::about(this, "Syntax error", handler.getError());
+                QMessageBox(QMessageBox::Information, "Syntax error", handler.getError(), QMessageBox::Ok).exec();
                 break;
             case LUA_ERRMEM:
-                QMessageBox::about(this, "Memory error", handler.getError());
+                QMessageBox(QMessageBox::Information, "Memory error", handler.getError(), QMessageBox::Ok).exec();
                 break;
             case LUA_ERRGCMM:
-                QMessageBox::about(this, "LUA_ERRGCMM", handler.getError());
+                QMessageBox(QMessageBox::Information, "LUA_ERRGCMM", handler.getError(), QMessageBox::Ok).exec();
                 break;
             case LUA_ERRERR:
-                QMessageBox::about(this, "LUA_ERRERR", handler.getError());
+                QMessageBox(QMessageBox::Information, "LUA_ERRERR", handler.getError(), QMessageBox::Ok).exec();
                 break;
             default:
-                QMessageBox::about(this, "UNKNOWN ERROR", handler.getError());
+                QMessageBox(QMessageBox::Information, "Unknown error", handler.getError(), QMessageBox::Ok).exec();
             break;
         }
     }

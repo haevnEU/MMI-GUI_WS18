@@ -1,8 +1,6 @@
 #include "selectionmodel.h"
-#include <QDebug>
 
 // Singleton pattern
-
 haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::s_instance = nullptr;
 haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::getInstance(){
     if(s_instance == nullptr){
@@ -45,10 +43,9 @@ void haevn::core::models::SelectionModel::setHeight(int t_height){
     if(m_height == t_height || selectedWidget == nullptr){
         return;
     }
-    if(true || t_height <= m_maxHeight && t_height >= m_minHeight){
-        m_height = t_height;
-        selectedWidget->resize(m_width, m_height);
-    }
+    m_height = t_height;
+    selectedWidget->resize(m_width, m_height);
+
     emit heightChanged(m_height);
 }
 
@@ -76,10 +73,9 @@ void haevn::core::models::SelectionModel::setWidth(int t_width) {
      if(m_width == t_width || selectedWidget == nullptr){
          return;
      }
-     if(true || t_width <= m_maxWidth && t_width >= m_minWidth){
-        m_width = t_width;
-        selectedWidget->resize(m_width, m_height);
-     }
+     m_width = t_width;
+     selectedWidget->resize(m_width, m_height);
+
      emit widthChanged(m_width);
 }
 

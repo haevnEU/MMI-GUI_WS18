@@ -1,23 +1,24 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QDebug>
 #include <iostream>
 #include <QMouseEvent>
 #include <QMainWindow>
+#include <QDesktopServices>
+#include <QFileDialog>
 
-#include <QSpinBox>
 
 #include "core/enums/enumerations.h"
 #include "core/visual/scene.h"
 #include "core/visual/htreeview.h"
+#include "core/lua/luahandle.h"
 
 namespace Ui {
 class MainWindow;
 }
+
 namespace haevn {
     namespace view {
-
 
         /**
          * @brief This class is the main window, which is the root

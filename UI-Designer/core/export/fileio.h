@@ -1,13 +1,32 @@
 #ifndef DATAEXPORT_H
 #define DATAEXPORT_H
 
+/*
+ *
+ +--------------------------------------+
+ | TODO                                 |
+ +--------------------------------------+
+ |                                      |
+ | [ ] Implement method getResourcePath |
+ | [ ] Implement method getDataPath     |
+ | [ ] Implement method read            |
+ |                                      |
+ +--------------------------------------+
+ *
+ */
+
+
 #include <iostream>
 #include <fstream>
 
 #include <QObject>
 #include <QList>
-#include <QGraphicsItem>
+#include <QFileDialog>
+#include <QTextStream>
+
 #include <QWidget>
+#include <QMessageBox>
+#include <QGraphicsItem>
 
 namespace haevn{
     namespace core{
@@ -20,8 +39,6 @@ namespace haevn{
                 const char seperator = '/';
             #endif
 
-            // const char* resourcePath = qApp->applicationDirPath().append("/res");
-
             /**
              * @brief This method write a text to the disk
              * @details This method will ask the user about a place to store
@@ -29,8 +46,6 @@ namespace haevn{
              * @param data - const char* this parameter contains the text which should be stored.
              */
             void write(const char* data);
-
-            const char* read(const char* path);
 
             /**
              * @brief This method will determine if a file exist.

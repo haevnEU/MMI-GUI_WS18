@@ -1,10 +1,9 @@
 --[[
+    DO NOT REMOVE THIS HEADER
     +---------------------------------------------------------------------------------------------------------------+
     |                                                   README                                                      |
     +---------------------------------------------------------------------------------------------------------------+
-    | Step 1: Modify the function                                                                                   |
-    | Step 2: Modify in line731 the languageName variable                                                           |
-    | Step 3: Modify the for loop from line 52                                                                      |
+    | Step 1: Modify marked function                                                                                |
     | Step 4: Post you script into github iff the language didnt exist                                              |
     | Step 5: Include following credit                                                                              |
     |                                                                                                               |
@@ -19,28 +18,9 @@
     | the new contributor have the same rules as the last one but have to include the last one                      |
     |                                                                                                               |
     +---------------------------------------------------------------------------------------------------------------+
-    | The term contributor refers to someone who added his own content to this file                                 |
-    |                                                                                                               |
-    +---------------------------------------------------------------------------------------------------------------+
     | You can modify the marked places to create your own export file,                                              |
-    | if you modify the build process share it inside the repo                                                      |
     | if you create a new language export script post it inside the repo                                            |
-    | The name of the new script shall be the same as specified by 'languageName' in line 52,                       |
     | with a .lua extension (eg. javaFX.lua, qt.lua, cs.lua, ...)                                                   |
-    |                                                                                                               |
-    +---------------------------------------------------------------------------------------------------------------+
-    | Longversion                                                                                                   |
-    | This file is a blueprint you have to create and implement all of the following functions.                     |
-    | Every function is used as an appliance rule for the build process.                                            |
-    | At the bottom you have to iterate of the scenegraph using a iterative for loop.                               |
-    | Inside this for loop you have to request every variable you need.                                             |
-    | After youve created your object add it to a string.                                                           |
-    | Finally you have to call c method Export with a string which represent your file.                             |
-    | You are explicit allowed to modify this process but you have to share it inside the repo.                     |
-    | You are also allowed to create your own language export script but post it inside the repo                    | 
-    |                                                                                                               |
-    | The name of the new script shall be the same as specified by 'languageName' in line 52,                       |
-    | with a .lua extension (eg. javaFX.lua, qt.lua, cs.lua, ...)                                                   | 
     |                                                                                                               |
     | Jan 14 2019 by Nils Milewski (haevn)                                                                          |
     |                                                                                                               |
@@ -153,7 +133,10 @@ function createTreeView(name, width, maxwidth, minwidth, height, maxheight, mine
     return ""
 end
 
-
+--[[
+Modifying the following lines may result in an undefined state.
+It is therefore not allowed to modify them, should you have suggestions for changes, please share them.
+]]
 
 -- This variables are equivalent to the enum which the programm use
 uncat_nothing = 0
@@ -182,14 +165,13 @@ layout_VBox = 21
 -- Request scenegraph size
 maxItems = GetSceneGraphSize()
 -- Fileheader
-result =           "+--------------------------------------------------+\n";
-result = result .. "| Youre only a few step away from your interface.  |\n";
-result = result .. "| To use this content you have to copy all content |\n";
-result = result .. "| Do not copy this line                            |\n";
-result = result .. "| Paste the code into your ui file                 |\n";
-result = result .. "| Build your application                           |\n";
-result = result .. "| Enjoy your interface.                            |\n";
-result = result .. "+--------------------------------------------------+\n";
+
+result =           "+----------------------------------------------------+\n";
+result = result .. "|To integrate the scene graph into your program,     |\"n"
+result = result .. "| you must copy the code at the bottom of the page.  |\n"
+result = result .. "| Do not copy this comment.                          |\n";
+result = result .. "| Paste the copied code into your ui file.           |\n";
+result = result .. "+----------------------------------------------------+\n";
 -- Iterate over the scenegraph
 for idx = 0, maxItems, 1 do
     -- Get the item type

@@ -56,6 +56,7 @@
 #include "core/models/selectionmodel.h"
 #include "core/visual/htreeview.h"
 #include "core/enums/enumerations.h"
+#include "core/export/fileio.h"
 
 
 namespace haevn{

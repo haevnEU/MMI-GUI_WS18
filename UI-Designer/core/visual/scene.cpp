@@ -1,5 +1,4 @@
 #include "scene.h"
-#include "core/export/fileio.h"
 
 haevn::core::visual::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
     m_selectionModel = haevn::core::models::SelectionModel::getInstance();
