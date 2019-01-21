@@ -26,16 +26,16 @@ QWidget* haevn::core::models::SelectionModel::getSelectedwidget(){
     return selectedWidget;
 }
 
-void haevn::core::models::SelectionModel::selectWidget(QWidget* selection){
-    if(selection == nullptr || selectedWidget == selection){
+void haevn::core::models::SelectionModel::selectWidget(QWidget* t_selection){
+    if(t_selection == nullptr || selectedWidget == t_selection){
         return;
     }
 
-    m_width = selection->width();
-    m_height = selection->height();
-    m_posX = selection->pos().x();
-    m_posY = selection->pos().y();
-    selectedWidget = selection;
+    m_width = t_selection->width();
+    m_height = t_selection->height();
+    m_posX = t_selection->pos().x();
+    m_posY = t_selection->pos().y();
+    selectedWidget = t_selection;
     emit selectedWidgetChanged(selectedWidget);
 }
 

@@ -33,10 +33,16 @@ namespace haevn{
             // static variables
             private:
 
-                /// Only allowed instance
+
+                /**
+                 * @brief  Only allowed instance
+                 */
                 static SelectionModel* s_instance;
 
-                /// Application model
+
+                /**
+                 * @brief  Application model
+                 */
                 static haevn::core::models::Model* s_model;
 
             // public methods
@@ -90,49 +96,79 @@ namespace haevn{
             // protected variables
             protected:
 
-                /// This variable represents the height.
+                /**
+                 * @brief  This variable represents the height.
+                 */
                 int m_height;
 
-                /// This variable represents the maximum height.
+                /**
+                 * @brief  This variable represents the maximum height.
+                 */
                 int m_maxHeight;
 
-                /// This variable represents the minimum height.
+                /**
+                 * @brief  This variable represents the minimum height.
+                 */
                 int m_minHeight;
 
-                /// This variable represents the width.
+                /**
+                 * @brief  This variable represents the width.
+                 */
                 int m_width;
 
-                /// This variable represents the maixmum width.
+                /**
+                 * @brief  This variable represents the maixmum width.
+                 */
                 int m_maxWidth;
 
-                /// This variable represents the minimum width.
+                /**
+                 * @brief  This variable represents the minimum width.
+                 */
                 int m_minWidth;
 
-                /// This variable represents the x coordinate.
+                /**
+                 * @brief  This variable represents the x coordinate.
+                 */
                 int m_posX;
 
-                /// This variable represents the y coordinate.
+                /**
+                 * @brief  This variable represents the y coordinate.
+                 */
                 int m_posY;
 
-                /// Iff this variable is true the object will be interactable.
+                /**
+                 * @brief  Iff this variable is true the object will be interactable.
+                 */
                 bool m_visibility;
 
-                /// This variable represents the tooltip.
+                /**
+                 * @brief  This variable represents the tooltip.
+                 */
                 QString m_tooltip;
 
-                /// This variable represents the content.
+                /**
+                 * @brief  This variable represents the content.
+                 */
                 QString m_content;
 
-                /// This variable represents the name of the object.
+                /**
+                 * @brief  This variable represents the name of the object.
+                 */
                 QString m_name;
 
-                /// This variable represents the background color.
+                /**
+                 * @brief  This variable represents the background color.
+                 */
                 QColor m_background;
 
-                /// This variable represents the foreground color.
+                /**
+                 * @brief  This variable represents the foreground color.
+                 */
                 QColor m_foreground;
 
-                /// This variable represent the current widget.
+                /**
+                 * @brief  This variable represent the current widget.
+                 */
                 QWidget* selectedWidget;
 
             signals:

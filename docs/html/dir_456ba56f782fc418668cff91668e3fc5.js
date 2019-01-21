@@ -1,4 +1,0 @@
-var dir_456ba56f782fc418668cff91668e3fc5 =
-[
-    [ "mainwindow", "dir_97eee50862614b284106440b6ae78610.html", "dir_97eee50862614b284106440b6ae78610" ]
-];

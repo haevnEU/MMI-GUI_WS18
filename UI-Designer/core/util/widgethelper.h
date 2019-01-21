@@ -57,7 +57,7 @@ namespace haevn{
                  * Polymorphism from QWidget.
                  * @param obj - QWidget which is the widget to convert
                  */
-                haevn::core::enums::e_Widget getType(QWidget* obj);
+                haevn::core::enums::e_widget getType(QWidget* obj);
 
             };
         }

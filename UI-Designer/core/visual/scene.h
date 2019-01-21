@@ -173,58 +173,96 @@ namespace haevn{
 
             // private variables
             private:
-                /// This variable represent the application model
+
+                /**
+                 * @brief  This variable represent the application model
+                 */
                 haevn::core::models::Model* m_applicationModel;
 
-                /// This variable represent the selection model
+                /**
+                 * @brief  This variable represent the selection model
+                 */
                 haevn::core::models::SelectionModel* m_selectionModel;
 
-                /// This variable determines if an object is grabbed.
+                /**
+                 * @brief  This variable determines if an object is grabbed.
+                 */
                 bool m_grab = false;
 
-                /// This variable contains all widgets, it must be synchronize with the model.
+                /**
+                 * @brief  This variable contains all widgets, it must be synchronize with the model.
+                 */
                 QList<QWidget*>* m_scenegraph;
 
-                /// This variable counts the instered buttons.
+                /**
+                 * @brief  This variable is used to count the instered buttons.
+                 */
                 int m_buttonCounter;
 
-                /// This variable counts the instered checkbox.
+                /**
+                 * @brief  This variable counts the instered checkbox.
+                 */
                 int m_checkBoxCounter;
 
-                /// This variable counts the instered radionbutton.
+                /**
+                 * @brief  This variable counts the instered radionbutton.
+                 */
                 int m_radioButtonCounter;
 
-                /// This variable counts the instered time input widgets.
+                /**
+                 * @brief  This variable counts the instered time input widgets.
+                 */
                 int m_timeCounter;
 
-                /// This variable counts the instered date input widgets.
+                /**
+                 * @brief  This variable counts the instered date input widgets.
+                 */
                 int m_dateCounter;
 
-                /// This variable counts the instered spinbox.
+                /**
+                 * @brief  This variable counts the instered spinbox.
+                 */
                 int m_spinBoxCounter;
 
-                /// This variable counts the instered slider.
+                /**
+                 * @brief  This variable counts the instered slider.
+                 */
                 int m_sliderCounter;
 
-                /// This variable counts the instered combobox.
+                /**
+                 * @brief  This variable counts the instered combobox.
+                 */
                 int m_comboBoxCounter;
 
-                /// This variable counts the instered inputfield.
+                /**
+                 * @brief  This variable counts the instered inputfield.
+                 */
                 int m_textFieldCounter;
 
-                /// This variable counts the instered label.
+                /**
+                 * @brief  This variable counts the instered label.
+                 */
                 int m_labelCounter;
 
-                /// This variable counts the instered progressbar.
+                /**
+                 * @brief  This variable counts the instered progressbar.
+                 */
                 int m_progressBarCounter;
 
-                /// This variable counts the instered treewidgets.
+
+                /**
+                 * @brief  This variable counts the instered treewidgets.
+                 */
                 int m_treeWidgetCounter;
 
-                /// This variable counts the instered tables.
+                /**
+                 * @brief  This variable counts the instered tables.
+                 */
                 int m_tableWidgetCounter;
 
-                /// This variable counts the instered listwidgets.
+                /**
+                 * @brief  This variable counts the instered listwidgets.
+                 */
                 int m_listViewCounter;
 
             signals:

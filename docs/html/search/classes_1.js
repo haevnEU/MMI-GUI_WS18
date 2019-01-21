@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blockcnt',['BlockCnt',['../struct_block_cnt.html',1,'']]]
+  ['luahandle',['LuaHandle',['../classhaevn_1_1core_1_1lua_1_1_lua_handle.html',1,'haevn::core::lua']]]
 ];

@@ -5,97 +5,128 @@ namespace haevn{
     namespace core{
         // this namespace contains all enumeration required by the application
         namespace enums{
-            typedef enum {
+            /**
+             * @brief This class maps all possible widgets to an enum
+             * @author Nils Milewski
+             * @version 1.0
+             * @date Jan 15, 2019
+             */
+                typedef enum {
 
-                /// Tool that describes nothing selected
+                /**
+                 * \brief Tool that describes nothing selected
+                 */
                 uncat_nothing,
 
-
-                /// Tool that describes a button is selected
+                /**
+                 * \brief Tool that describes button selected
+                 */
                 control_Button,
 
-
-                /// Tool that describes a radiobutton is selected
+                /**
+                 * \brief Tool that describes radiobutton selected
+                 */
                 control_RadioButton,
 
-
-                /// Tool that describes a checkbox is selected
+                /**
+                 * \brief Tool that describes checkbox selected
+                 */
                 control_CheckBox,
 
-
-                /// Tool that describes a combobox is selected
+                /**
+                 * \brief Tool that describes nothing selected
+                 */
                 input_ComboBox,
 
-
-                /// Tool that describes a text input field is selected
+                /**
+                 * \brief Tool that describes input field selected
+                 */
                 input_TextField,
 
-
-                /// Tool that describes a spinbox is selected
+                /**
+                 * \brief Tool that describes spinbox selected
+                 */
                 input_SpinBox,
 
-
-                /// Tool that describes a date input field is selected
+                /**
+                 * \brief Tool that describes date input field selected
+                 */
                 input_Date,
 
 
-                /// Tool that describes a time input field is selected
+                /**
+                 * \brief Tool that describes time input field selected
+                 */
                 input_Time,
 
-
-                /// Tool that describes a slider is selected
+                /**
+                 * \brief Tool that describes slider selected
+                 */
                 input_Slider,
 
-
-
-                /// Tool that describes a label is selected
+                /**
+                 * \brief Tool that describes label selected
+                 */
                 display_Label,
 
-
-                /// Tool that describes a progressbar is selected
+                /**
+                 * \brief Tool that describes progressbar selected
+                 */
                 display_ProgressBar,
 
-
-                /// Tool that describes webview is selected
+                /**
+                 * \brief Tool that describes webview selected
+                 */
                 display_WebView,
 
 
-                /// Tool that describes a groupbox is selected
+                    /// Tool that describes a groupbox is selected
+                /**
+                 * \brief Tool that describes nothing selected
+                 */
                 grouping_GroupBox,
 
-                /// Tool that describes a radiobutton group is selected
+                /**
+                 * \brief Tool that describes radiobutton group selected
+                 */
                 grouping_RadioButtonGroup,
 
-
-
-                /// Tool that describes a listview is selected
+                /**
+                 * \brief Tool that describes listview selected
+                 */
                 dataVisualization_ListView,
 
-
-                /// Tool that describes a table view is selected
+                /**
+                 * \brief Tool that describes table view selected
+                 */
                 dataVisualization_TableView,
 
-
-                /// Tool that describes a treeview is selected
+                /**
+                 * \brief Tool that describes treeview selected
+                 */
                 dataVisualization_TreeView,
 
-
-
-                /// Tool that describes a grid layout is selected
+                /**
+                 * \brief Tool that describes grid selected
+                 */
                 layout_Grid,
 
-
-                /// Tool that describes a canvas layout is selected
+                /**
+                 * \brief Tool that describes canvas selected
+                 */
                 layout_Canvas,
 
-
-                /// Tool that describes Horizontal box layout is selected
+                /**
+                 * \brief Tool that describes horizontal box selected
+                 */
                 layout_HBox,
 
-
-                /// Tool that describes a vertical box layout is selected
+                /**
+                 * \brief Tool that describes vertical box selected
+                 */
                 layout_VBox
-            }e_Widget;
+
+            } e_widget;
         }
     }
 }

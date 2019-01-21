@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['positionchanged',['positionChanged',['../classhaevn_1_1core_1_1models_1_1_selection_model.html#ab3d3be02b7f3449482b796faf1321f58',1,'haevn::core::models::SelectionModel::positionChanged()'],['../classhaevn_1_1view_1_1_main_window.html#a2855bc268db7b56f345bf377ab3268f7',1,'haevn::view::MainWindow::positionChanged()']]],
-  ['posxchanged',['posXChanged',['../classhaevn_1_1view_1_1_main_window.html#ac26bf3eba61fd2085b7f4241f737f406',1,'haevn::view::MainWindow']]],
-  ['posychanged',['posYChanged',['../classhaevn_1_1view_1_1_main_window.html#ab0aded39260d6b2cf3fdde46f61f9be8',1,'haevn::view::MainWindow']]]
+  ['namechanged',['nameChanged',['../classhaevn_1_1core_1_1models_1_1_selection_model.html#aab0883eaa51307fce13c7afe57385988',1,'haevn::core::models::SelectionModel::nameChanged()'],['../classhaevn_1_1view_1_1_main_window.html#a602fb290df5a0bb5daf64ed58cd9106d',1,'haevn::view::MainWindow::nameChanged()']]],
+  ['newscenetriggered',['newSceneTriggered',['../classhaevn_1_1view_1_1_main_window.html#a5c1fc80491565b4a9363d87267587234',1,'haevn::view::MainWindow']]]
 ];

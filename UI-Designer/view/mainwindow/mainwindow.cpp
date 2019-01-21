@@ -27,37 +27,37 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     tools = new haevn::core::visual::HTreeView();
 
     tools->addRootHeader("Control");
-    tools->insertData(0, haevn::core::enums::e_Widget::control_Button);
-    tools->insertData(0, haevn::core::enums::e_Widget::control_RadioButton);
-    tools->insertData(0, haevn::core::enums::e_Widget::control_CheckBox);
+    tools->insertData(0, haevn::core::enums::e_widget::control_Button);
+    tools->insertData(0, haevn::core::enums::e_widget::control_RadioButton);
+    tools->insertData(0, haevn::core::enums::e_widget::control_CheckBox);
 
     tools->addRootHeader("Input");
-    tools->insertData(1, haevn::core::enums::e_Widget::input_TextField);
-    tools->insertData(1, haevn::core::enums::e_Widget::input_ComboBox);
-    tools->insertData(1, haevn::core::enums::e_Widget::input_Slider);
-    tools->insertData(1, haevn::core::enums::e_Widget::input_SpinBox);
-    tools->insertData(1, haevn::core::enums::e_Widget::input_Date);
-    tools->insertData(1, haevn::core::enums::e_Widget::input_Time);
+    tools->insertData(1, haevn::core::enums::e_widget::input_TextField);
+    tools->insertData(1, haevn::core::enums::e_widget::input_ComboBox);
+    tools->insertData(1, haevn::core::enums::e_widget::input_Slider);
+    tools->insertData(1, haevn::core::enums::e_widget::input_SpinBox);
+    tools->insertData(1, haevn::core::enums::e_widget::input_Date);
+    tools->insertData(1, haevn::core::enums::e_widget::input_Time);
 
     tools->addRootHeader("Display");
-    tools->insertData(2,  haevn::core::enums::e_Widget::display_Label);
-    tools->insertData(2,  haevn::core::enums::e_Widget::display_ProgressBar);
-    tools->insertData(2,  haevn::core::enums::e_Widget::display_WebView);
+    tools->insertData(2,  haevn::core::enums::e_widget::display_Label);
+    tools->insertData(2,  haevn::core::enums::e_widget::display_ProgressBar);
+    tools->insertData(2,  haevn::core::enums::e_widget::display_WebView);
 
     tools->addRootHeader("Grouping");
-    tools->insertData(3, haevn::core::enums::e_Widget::grouping_GroupBox);
-    tools->insertData(3, haevn::core::enums::e_Widget::grouping_RadioButtonGroup);
+    tools->insertData(3, haevn::core::enums::e_widget::grouping_GroupBox);
+    tools->insertData(3, haevn::core::enums::e_widget::grouping_RadioButtonGroup);
 
     tools->addRootHeader("Items");
-    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_ListView);
-    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_TableView);
-    tools->insertData(4, haevn::core::enums::e_Widget::dataVisualization_TreeView);
+    tools->insertData(4, haevn::core::enums::e_widget::dataVisualization_ListView);
+    tools->insertData(4, haevn::core::enums::e_widget::dataVisualization_TableView);
+    tools->insertData(4, haevn::core::enums::e_widget::dataVisualization_TreeView);
 
     tools->addRootHeader("Layout");
-    tools->insertData(5, haevn::core::enums::e_Widget::layout_Grid);
-    tools->insertData(5, haevn::core::enums::e_Widget::layout_Canvas);
-    tools->insertData(5, haevn::core::enums::e_Widget::layout_HBox);
-    tools->insertData(5, haevn::core::enums::e_Widget::layout_VBox);
+    tools->insertData(5, haevn::core::enums::e_widget::layout_Grid);
+    tools->insertData(5, haevn::core::enums::e_widget::layout_Canvas);
+    tools->insertData(5, haevn::core::enums::e_widget::layout_HBox);
+    tools->insertData(5, haevn::core::enums::e_widget::layout_VBox);
 
     tools->setDragEnabled(true);
     layout()->addWidget(tools);
@@ -126,22 +126,38 @@ haevn::view::MainWindow::~MainWindow(){
 
 void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
+    // The Y position equals the menubar height with a small space(10px) below them
     int posY = ui->menuBar->height() + 10;
-    int height = size().height() - (posY + 20);
 
-    int canvasPosX = 320;
-    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
+    // The height equals the window height without the size of the menubar, a small space(10px) below the menubar
+    // and a small space at the bottom (20px)
+    // We can reuse the posY variable
+    int height = size().height() - ui->menuBar->height() - 2 * 10;
 
-    int detailsPosX = (canvasWidth) + 320;
 
+    // First handle the tools
+    // The toolview has a fixed width(300px) and a dynamic calculated height
     tools->resize(300, height);
+    // Also a fixed x position(10px) but a dynamic y position
     tools->move(10, posY);
 
+    // Next the canvas (scene)
+    // The width of the canvas ist 97% of the window width without
+    // the size of the tools(300px), details(300px) and a small space(20px) at booth sides
+    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
+
+    // Booth width and height are dynamicaly calculated
     ui->canvas->resize(canvasWidth, height);
-    ui->canvas->move(canvasPosX, ui->details->pos().y());
+
+    // The X position of the canvas is the tool width(300px), the y position is dynamic calculated
+    ui->canvas->move(tools->width() + 20, posY);
+
+    // Next the details
+    // The X position is equals the canvas width, the tools width and a small space(20px)
+    int detailsPosX = (canvasWidth) + tools->width() + 20;
 
     ui->details->resize(300, height);
-    ui->details->move(detailsPosX, ui->details->pos().y());
+    ui->details->move(detailsPosX, posY);
 
 }
 

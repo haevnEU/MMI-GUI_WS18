@@ -95,11 +95,14 @@ namespace haevn{
 
             // private variables
             private:
-
-                /// This variable represents the scenegraph
+                /**
+                 * @brief This variable represents the scenegraph
+                 */
                 QList<QWidget*>* m_scenegraph;
 
-                /// This variable represents the resourepath
+                /**
+                 * @brief This variable represents the resourepath
+                 */
                 QString m_resourcePath;
 
             signals:

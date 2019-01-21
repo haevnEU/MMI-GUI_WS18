@@ -1,7 +1,7 @@
 #include "fileio.h"
 
 
-void haevn::core::FileIO::write(const char* data){
+void haevn::core::FileIO::write(const char* t_data){
     // Open a new File save dialog
     QString fileName = QFileDialog::getSaveFileName(nullptr, "Export scenegraph", "", "(*.*);;All Files (*)");
 
@@ -20,13 +20,13 @@ void haevn::core::FileIO::write(const char* data){
     // Write the data to disk using streams
     QTextStream out(&file);
     out.setCodec("UTF-8");
-    out << data;
+    out << t_data;
     file.flush();
     file.close();
 
 }
 
-bool haevn::core::FileIO::fileExist(const char* path){
-    std::ifstream file(path);
+bool haevn::core::FileIO::fileExist(const char* t_path){
+    std::ifstream file(t_path);
     return file.good();
 }

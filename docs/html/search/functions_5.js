@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['heightchanged',['heightChanged',['../classhaevn_1_1core_1_1models_1_1_selection_model.html#afd3dbd113d2ee43a5bcf867cc6672763',1,'haevn::core::models::SelectionModel::heightChanged()'],['../classhaevn_1_1view_1_1_main_window.html#a6110f87aa77382a277a717c253955f5a',1,'haevn::view::MainWindow::heightChanged()']]],
-  ['htreeview',['HTreeView',['../classhaevn_1_1core_1_1visual_1_1_h_tree_view.html#aee6c3fee540a2920d41a29b652da4844',1,'haevn::core::visual::HTreeView']]]
+  ['fileexist',['fileExist',['../namespacehaevn_1_1core_1_1_file_i_o.html#a2d2c63cf59efecfdc1ebbeba42ce4f73',1,'haevn::core::FileIO']]]
 ];

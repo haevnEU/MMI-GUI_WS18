@@ -4,7 +4,7 @@ haevn::core::util::WidgetHelper::WidgetHelper(){
 
 }
 
-haevn::core::enums::e_Widget haevn::core::util::WidgetHelper::getType(QWidget* obj){
+haevn::core::enums::e_widget haevn::core::util::WidgetHelper::getType(QWidget* obj){
 
     if(QRadioButton* tmp = dynamic_cast<QRadioButton*>(obj)){
         return haevn::core::enums::control_RadioButton;

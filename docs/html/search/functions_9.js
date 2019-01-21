@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['namechanged',['nameChanged',['../classhaevn_1_1core_1_1models_1_1_selection_model.html#aab0883eaa51307fce13c7afe57385988',1,'haevn::core::models::SelectionModel::nameChanged()'],['../classhaevn_1_1view_1_1_main_window.html#a602fb290df5a0bb5daf64ed58cd9106d',1,'haevn::view::MainWindow::nameChanged()']]]
+  ['loadtriggered',['loadTriggered',['../classhaevn_1_1view_1_1_main_window.html#abbec341bdd0bcf6a99e7a3e05879ce8e',1,'haevn::view::MainWindow']]],
+  ['luahandle',['LuaHandle',['../classhaevn_1_1core_1_1lua_1_1_lua_handle.html#af7b77dbe3e18f4bfc328be281a0eb837',1,'haevn::core::lua::LuaHandle']]]
 ];

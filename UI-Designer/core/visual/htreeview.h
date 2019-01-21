@@ -39,15 +39,6 @@ namespace haevn {
                 explicit HTreeView(QWidget *parent = nullptr);
 
                 /**
-                 * @brief Mouse press event occurres if the mouse is pressed.
-                 * @details This event occurred iff the mouse was pressed.
-                 * This method will handle all interaction which is aociated
-                 * with the mouse.
-                 * @param event - This param contains all information about the mouse state.
-                 */
-                void mousePressEvent(QMouseEvent* event);
-
-                /**
                  * @brief startDrag slot
                  * @details This slot is called iff a drag operation started.
                  * This function will handle everythin which is done by dragging.
@@ -73,7 +64,7 @@ namespace haevn {
                  * @param level - Id of the section where the widget should be isnerted
                  * @param t_type - Type of the widget which should be inserted.
                  */
-                void insertData(int level, haevn::core::enums::e_Widget t_type);
+                void insertData(int level, haevn::core::enums::e_widget t_type);
 
 
                 /**

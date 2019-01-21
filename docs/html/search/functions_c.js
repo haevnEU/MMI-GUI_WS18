@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['removeitem',['removeItem',['../classhaevn_1_1core_1_1models_1_1_model.html#aa818adcedf951381f84aa345dc893e24',1,'haevn::core::models::Model']]],
-  ['resizeevent',['resizeEvent',['../classhaevn_1_1view_1_1_main_window.html#acbea68305cb6d3a468273f466ab24f95',1,'haevn::view::MainWindow']]]
+  ['positionchanged',['positionChanged',['../classhaevn_1_1core_1_1models_1_1_selection_model.html#ab3d3be02b7f3449482b796faf1321f58',1,'haevn::core::models::SelectionModel::positionChanged()'],['../classhaevn_1_1view_1_1_main_window.html#a2855bc268db7b56f345bf377ab3268f7',1,'haevn::view::MainWindow::positionChanged()']]],
+  ['posxchanged',['posXChanged',['../classhaevn_1_1view_1_1_main_window.html#ac26bf3eba61fd2085b7f4241f737f406',1,'haevn::view::MainWindow']]],
+  ['posychanged',['posYChanged',['../classhaevn_1_1view_1_1_main_window.html#ab0aded39260d6b2cf3fdde46f61f9be8',1,'haevn::view::MainWindow']]]
 ];
