@@ -162,7 +162,8 @@ bool haevn::core::lua::LuaHandle::validate(lua_State* L, haevn::core::models::Mo
         return false;
     }
     if(idx >= 0){
-        return (nullptr == s_model && idx < s_model->getScenegraph()->size());
+        bool tmo = nullptr == s_model && idx > s_model->getScenegraph()->size();
+        return (nullptr == s_model && idx > s_model->getScenegraph()->size());
     }
     return true;
 }
@@ -234,9 +235,10 @@ int haevn::core::lua::LuaHandle::getMaxHeight(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getMinHeight(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
+    QWidget* tmp = s_model->getScenegraph()->at(idx);
     int value = s_model->getScenegraph()->at(idx)->minimumHeight();
     lua_pushinteger(L, value);
     return 1;
@@ -244,7 +246,7 @@ int haevn::core::lua::LuaHandle::getMinHeight(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getWidth(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     int value = s_model->getScenegraph()->at(idx)->width();
@@ -254,7 +256,7 @@ int haevn::core::lua::LuaHandle::getWidth(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getMaxWidth(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     int value = s_model->getScenegraph()->at(idx)->maximumWidth();
@@ -264,7 +266,7 @@ int haevn::core::lua::LuaHandle::getMaxWidth(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getMinWidth(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     int value = s_model->getScenegraph()->at(idx)->minimumWidth();
@@ -274,7 +276,7 @@ int haevn::core::lua::LuaHandle::getMinWidth(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getPositionX(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     int value = s_model->getScenegraph()->at(idx)->pos().x();
@@ -284,7 +286,7 @@ int haevn::core::lua::LuaHandle::getPositionX(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getPositionY(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     int value = s_model->getScenegraph()->at(idx)->pos().y();
@@ -294,7 +296,7 @@ int haevn::core::lua::LuaHandle::getPositionY(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getName(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     const char* value = s_model->getScenegraph()->at(idx)->whatsThis().toStdString().data();
@@ -304,7 +306,7 @@ int haevn::core::lua::LuaHandle::getName(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getEnabled(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     bool value = s_model->getScenegraph()->at(idx)->isEnabled();
@@ -314,7 +316,7 @@ int haevn::core::lua::LuaHandle::getEnabled(lua_State* L){
 
 int haevn::core::lua::LuaHandle::getTooltip(lua_State* L){
     int idx = lua_tointeger(L, -1);
-    if(validate(L, s_model, idx)){
+    if(!validate(L, s_model, idx)){
         return 0;
     }
     const char* value = s_model->getScenegraph()->at(idx)->toolTip().toStdString().data();

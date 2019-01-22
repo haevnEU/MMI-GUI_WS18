@@ -126,12 +126,9 @@ haevn::view::MainWindow::~MainWindow(){
 
 void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
-    // The Y position equals the menubar height with a small space(10px) below them
-    int posY = ui->menuBar->height() + 10;
 
-    // The height equals the window height without the size of the menubar, a small space(10px) below the menubar
+    // The height equals the window height without the size of the menubar, a small space(10px) below the menubar and at the bottom
     // and a small space at the bottom (20px)
-    // We can reuse the posY variable
     int height = size().height() - ui->menuBar->height() - 2 * 10;
 
 
@@ -139,7 +136,7 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
     // The toolview has a fixed width(300px) and a dynamic calculated height
     tools->resize(300, height);
     // Also a fixed x position(10px) but a dynamic y position
-    tools->move(10, posY);
+    tools->move(10, ui->menuBar->height() + 10);
 
     // Next the canvas (scene)
     // The width of the canvas ist 97% of the window width without
@@ -149,15 +146,17 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
     // Booth width and height are dynamicaly calculated
     ui->canvas->resize(canvasWidth, height);
 
-    // The X position of the canvas is the tool width(300px), the y position is dynamic calculated
-    ui->canvas->move(tools->width() + 20, posY);
+    // The X position of the canvas is the tool width(300px), the y position is fix
+    ui->canvas->move(tools->width() + 20, ui->canvas->pos().y());
 
     // Next the details
-    // The X position is equals the canvas width, the tools width and a small space(20px)
+    // The details are the same as the tools exept the positionX
+    // The position equals canvas width + toolwidth + little space(20)
     int detailsPosX = (canvasWidth) + tools->width() + 20;
 
+
     ui->details->resize(300, height);
-    ui->details->move(detailsPosX, posY);
+    ui->details->move(detailsPosX, ui->details->pos().y());
 
 }
 

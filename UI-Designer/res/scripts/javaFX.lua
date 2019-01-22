@@ -343,10 +343,12 @@ result = result .. "| Build your application                           |\n";
 result = result .. "| Enjoy your interface.                            |\n";
 result = result .. "+--------------------------------------------------+\n";
 -- Iterate over the scenegraph
+end
 for idx = 0, maxItems, 1 do
     -- Get the item type
     type = GetType(idx)
     -- Test if the item is declared
+    Print(type)
     if type ~= uncat_nothing then 
         -- Get basic attributes
         height = GetHeight(idx)

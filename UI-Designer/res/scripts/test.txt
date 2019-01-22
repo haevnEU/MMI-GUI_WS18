@@ -1,0 +1,8 @@
++--------------------------------------------------+
+| Youre only a few step away from your interface.  |
+| To use this content you have to copy all content |
+| Do not copy this line                            |
+| Paste the code into your ui file                 |
+| Build your application                           |
+| Enjoy your interface.                            |
++--------------------------------------------------+
