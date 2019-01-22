@@ -82,7 +82,9 @@ namespace haevn{
                  * @details The constructor will create and initialize important data.
                  * @param parent - default = nullptr, it could be a reference to the parent.
                  */
-                explicit Scene(QObject *parent = nullptr);
+                explicit Scene(haevn::core::models::Model* t_applicationModel, QObject *parent = nullptr);
+
+                virtual ~Scene();
 
                 /**
                  * @brief Drag enter event occurres if a drag was detected.
@@ -169,7 +171,6 @@ namespace haevn{
                  * @return Pointer to the scenegraph.
                  */
                 QList<QWidget*>* getScenegraph();
-
 
             // private variables
             private:
@@ -284,7 +285,6 @@ namespace haevn{
                 void selectedItemChanged(QWidget* t_item);
 
             public slots:
-                void clear();
             };
         }
     }

@@ -217,15 +217,22 @@ namespace haevn{
 
                     ~LuaHandle();
 
+                   /**
+                     * @brief This method executes a default script.
+                     * @details This method will execute a lua script.#
+                     * It will call the same mthod with the default script as a param.
+                     * @return result of the script
+                     */
+                    int runScript();
+
 
                     /**
-                     * @brief This method tests if all three condidions are valid.
-                     * @details This method has an internal usage,
-                     * it will return if the lua_State is not a nullptr
-                     * if the idx is negative the index will not be considered as valid,
-                     * that mean the index and s_model are not a part of the test.
-                     * Otherwise the index is also tested against the s_models scenegraphsize
-                     */
+                      * @brief This method executes a script.
+                      * @details This method will execute a lua script.
+                      * The script must be specified by the file variable
+                      * @param file const char* this param is the path including the script name
+                      * @return result of the script
+                      */
                     int runScript(const char* file);
 
                     /**

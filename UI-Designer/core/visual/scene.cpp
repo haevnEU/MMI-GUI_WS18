@@ -1,8 +1,9 @@
 #include "scene.h"
 
-haevn::core::visual::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
+haevn::core::visual::Scene::Scene(haevn::core::models::Model* t_applicationModel, QObject *parent) : QGraphicsScene(parent){
     m_selectionModel = haevn::core::models::SelectionModel::getInstance();
-    m_applicationModel = haevn::core::models::Model::getInstance();
+    m_applicationModel = t_applicationModel;
+
     m_scenegraph = new QList<QWidget*>();
 
     m_buttonCounter = 0;
@@ -21,18 +22,11 @@ haevn::core::visual::Scene::Scene(QObject *parent) : QGraphicsScene(parent){
     m_treeWidgetCounter = 0;
     m_tableWidgetCounter = 0;
     m_listViewCounter = 0;
+
 }
 
-void haevn::core::visual::Scene::clear(){
-    m_applicationModel->getScenegraph()->clear();
-
-    QList<QGraphicsItem*> all = items();
-    for (int i = 0; i < all.size(); i++){
-        QGraphicsItem *gi = all[i];
-        if(gi->parentItem() == nullptr){
-            delete gi;
-        }
-    }
+haevn::core::visual::Scene::~Scene(){
+    QGraphicsScene::clear();
 }
 
 // Events

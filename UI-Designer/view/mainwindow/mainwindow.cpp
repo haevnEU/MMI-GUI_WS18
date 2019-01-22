@@ -18,8 +18,10 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    // Create custom scene//
-    m_scene = new haevn::core::visual::Scene();
+    m_applicationModel = new haevn::core::models::Model();
+    m_applicationModel->insertScript("TEST", "BLA");
+    m_applicationModel->insertScript("TEST2", "BLA2");
+    m_scene = new haevn::core::visual::Scene(m_applicationModel);
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
@@ -91,7 +93,6 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout_Qt, SIGNAL(triggered(bool)), this, SLOT(aboutQtTriggered(bool)));
     connect(ui->actionAbout_LUA, SIGNAL(triggered(bool)), this, SLOT(aboutLuaTriggered(bool)));
 
-
     connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
     connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
 
@@ -118,6 +119,10 @@ haevn::view::MainWindow::~MainWindow(){
     if(m_scene != nullptr){
         delete m_scene;
         m_scene = nullptr;
+    }
+    if(m_applicationModel != nullptr){
+        delete m_applicationModel;
+        m_applicationModel = nullptr;
     }
     delete ui;
 }
@@ -335,7 +340,12 @@ void haevn::view::MainWindow::newSceneTriggered(bool checked){
 }
 
 void haevn::view::MainWindow::buildTriggered(bool checked){
+    haevn::view::RunScriptWizard wizzard(m_applicationModel);
+    wizzard.show();
+    wizzard.exec();
+}
 
+void haevn::view::MainWindow::buildScriptTriggered(bool checked){
     // Open Filechoser dialog and save the result into a string
     QString fileName = QFileDialog::getOpenFileName(this, "Select a script", qApp->applicationDirPath(), "LUA Script (*.lua);");
     if (!fileName.isEmpty()){
@@ -345,6 +355,7 @@ void haevn::view::MainWindow::buildTriggered(bool checked){
         executeScript(fileName.toStdString().c_str());
      }
 }
+
 
 void haevn::view::MainWindow::aboutTriggered(bool checked){
 
@@ -408,10 +419,13 @@ void haevn::view::MainWindow::helpTriggered(bool checked){
 
 void haevn::view::MainWindow::executeScript(const char* path, bool displayResult){
 
-    haevn::core::lua::LuaHandle handler(haevn::core::models::Model::getInstance());
-
-    int result = handler.runScript(path);
-
+    haevn::core::lua::LuaHandle handler(m_applicationModel);
+    int result = -1;
+    if(path == nullptr){
+        int result = handler.runScript();
+    }else{
+        int result = handler.runScript(path);
+    }
     // Only show results if it was requested
     if(displayResult){
         // Switch between results

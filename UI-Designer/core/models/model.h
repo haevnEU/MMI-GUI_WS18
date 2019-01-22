@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QListWidget>
+#include <QMap>
 
 namespace haevn{
     namespace core {
@@ -20,26 +21,42 @@ namespace haevn{
             class Model : public QObject{
                 Q_OBJECT
 
-            // public static methods
-            public:
-
-                /**
-                 * @brief Gets the instance
-                 * @details GetInstance returns the existing instance,
-                 * new one is created iff theres no existing one.
-                 * @return Model Only existing instance
-                 */
-                static Model* getInstance();
 
             // static variables
             private:
-                /// Only allowed instance
-                static Model* s_instance;
 
              // public methods
              public:
 
+                /**
+                 * @brief Constructor
+                 * @details The constructor isnt available public.
+                 * It isnt public available due to singleton pattern.
+                 * @param parent
+                 */
+                explicit Model();
+
+                /**
+                 * @brief Coppy constructor
+                 * @details The copy constructor isnt available public.
+                 * It isnt public available due to singleton pattern.
+                 * @param another - Reference to another instance
+                 */
+                explicit Model(Model& another){}
+
+                /**
+                 * @brief Assignement operator.
+                 * @details The assignement operator isnt available public.
+                 * It isnt public available due to singleton pattern.
+                 * @param another - Reference to another instance
+                 */
+                Model& operator=(Model& another){}
+
                 virtual ~Model();
+
+                QMap<QString, QString>* getScripts();
+
+                void insertScript(QString name, QString path);
 
                 /**
                  * @brief Gets the scenegraph
@@ -66,32 +83,6 @@ namespace haevn{
                  */
                 QString getResourcePath();
 
-            // private methods
-            private:
-
-                /**
-                 * @brief Constructor
-                 * @details The constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param parent
-                 */
-                explicit Model();
-
-                /**
-                 * @brief Coppy constructor
-                 * @details The copy constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                explicit Model(Model& another){}
-
-                /**
-                 * @brief Assignement operator.
-                 * @details The assignement operator isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                Model& operator=(Model& another){}
 
             // private variables
             private:
@@ -99,6 +90,8 @@ namespace haevn{
                  * @brief This variable represents the scenegraph
                  */
                 QList<QWidget*>* m_scenegraph;
+
+                QMap<QString, QString>* m_scripts;
 
                 /**
                  * @brief This variable represents the resourepath

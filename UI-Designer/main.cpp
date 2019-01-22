@@ -1,6 +1,8 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
 
+#include "view/runscriptwizzard/runscriptwizard.h"
+
 int main(int argc, char *argv[]){
 
 
@@ -9,10 +11,6 @@ int main(int argc, char *argv[]){
 
     w.show();
     int retCode = a.exec();
-
-    // Delete singleton instances
-    delete haevn::core::models::Model::getInstance();
-    delete haevn::core::models::SelectionModel::getInstance();
 
     return retCode;
 }

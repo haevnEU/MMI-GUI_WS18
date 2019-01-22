@@ -332,7 +332,8 @@ layout_HBox = 20
 layout_VBox = 21
 
 -- Request scenegraph size
-maxItems = GetSceneGraphSize()
+maxItems = GetSceneGraphSize() - 1
+Print(maxItems)
 -- Fileheader
 result =           "+--------------------------------------------------+\n";
 result = result .. "| Youre only a few step away from your interface.  |\n";
@@ -343,7 +344,6 @@ result = result .. "| Build your application                           |\n";
 result = result .. "| Enjoy your interface.                            |\n";
 result = result .. "+--------------------------------------------------+\n";
 -- Iterate over the scenegraph
-end
 for idx = 0, maxItems, 1 do
     -- Get the item type
     type = GetType(idx)

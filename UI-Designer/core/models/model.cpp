@@ -1,16 +1,8 @@
 #include "model.h"
 
-haevn::core::models::Model* haevn::core::models::Model::s_instance = nullptr;
-haevn::core::models::Model* haevn::core::models::Model::getInstance(){
-    if(s_instance == nullptr){
-        s_instance = new Model();
-    }
-    return s_instance;
-}
-
 haevn::core::models::Model::Model() : QObject(){
-   m_scenegraph = new QList<QWidget*>();
-
+    m_scenegraph = new QList<QWidget*>();
+    m_scripts = new QMap<QString, QString>();
 }
 
 haevn::core::models::Model::~Model(){
@@ -18,6 +10,18 @@ haevn::core::models::Model::~Model(){
         delete m_scenegraph;
         m_scenegraph = nullptr;
     }
+    if(m_scripts != nullptr){
+        delete m_scripts;
+        m_scripts = nullptr;
+    }
+}
+
+void haevn::core::models::Model::insertScript(QString name, QString path){
+    m_scripts->insert(name, path);
+}
+
+QMap<QString, QString>* haevn::core::models::Model::getScripts(){
+    return m_scripts;
 }
 
 QList<QWidget*>* haevn::core::models::Model::getScenegraph(){

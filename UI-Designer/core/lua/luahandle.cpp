@@ -32,6 +32,10 @@ haevn::core::lua::LuaHandle::~LuaHandle(){
     lua_close(L);
 }
 
+int haevn::core::lua::LuaHandle::runScript(){
+
+}
+
 int haevn::core::lua::LuaHandle::runScript(const char* file){
 
     int result = luaL_loadfile(L, file);
@@ -145,7 +149,7 @@ int haevn::core::lua::LuaHandle::print(lua_State* L){
         bool param = lua_toboolean(L, -1);
         qDebug() << param;
     }
-
+    return 0;
 }
 
 // Export data
@@ -153,17 +157,27 @@ int haevn::core::lua::LuaHandle::exportData(lua_State* L){
     if(lua_isstring(L, -1)){
         haevn::core::FileIO::write(lua_tostring(L, -1));
     }
+    return 0;
 }
 
 // Validates the parameter
 // Iff s_model == nullptr and idx < 0 the function will only evaluate lua_State*
 bool haevn::core::lua::LuaHandle::validate(lua_State* L, haevn::core::models::Model* s_model, int idx){
+
+    // First test if the lua state exist
     if(nullptr == L){
+        // If not return false
         return false;
     }
-    if(idx >= 0){
-        bool tmo = nullptr == s_model && idx > s_model->getScenegraph()->size();
-        return (nullptr == s_model && idx > s_model->getScenegraph()->size());
+    // Next test if the model is a nullptr
+    if(s_model == nullptr){
+        // If so return false
+        return false;
+    }
+    // Finally test if the idx is to big
+    if(idx >= s_model->getScenegraph()->size()){
+        // if so return false
+        return false;
     }
     return true;
 }
@@ -171,7 +185,7 @@ bool haevn::core::lua::LuaHandle::validate(lua_State* L, haevn::core::models::Mo
 /*
  *
  +------------------------------------------------------------+
- | IMPORTAN NOTE                                              |
+ | IMPORTANT NOTE                                             |
  |                                                            |
  | Most of the following functions have the same blueprint,   |
  | so ill avoid unnecessary work.                             |

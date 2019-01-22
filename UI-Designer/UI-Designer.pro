@@ -68,7 +68,8 @@ SOURCES += \
     core/lua/src/lzio.c \
     core/lua/luahandle.cpp \
     core/export/fileio.cpp \
-    core/util/widgethelper.cpp
+    core/util/widgethelper.cpp \
+    view/runscriptwizzard/runscriptwizard.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
@@ -105,10 +106,12 @@ HEADERS += \
     core/lua/src/lzio.h \
     core/lua/luahandle.h \
     core/export/fileio.h \
-    core/util/widgethelper.h
+    core/util/widgethelper.h \
+    view/runscriptwizzard/runscriptwizard.h
 
 FORMS += \
-        view/mainwindow/mainwindow.ui
+        view/mainwindow/mainwindow.ui \
+    view/runscriptwizzard/runscriptwizard.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

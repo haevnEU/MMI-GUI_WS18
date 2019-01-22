@@ -410,6 +410,16 @@
     <string>About LUA</string>
    </property>
   </action>
+  <action name="actionSet_default_script">
+   <property name="text">
+    <string>Set default script</string>
+   </property>
+  </action>
+  <action name="actionBuild_with_another_script">
+   <property name="text">
+    <string>Build with another script</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

@@ -8,10 +8,13 @@
 #include <QFileDialog>
 
 
+#include "view/runscriptwizzard/runscriptwizard.h"
+
 #include "core/enums/enumerations.h"
 #include "core/visual/scene.h"
 #include "core/visual/htreeview.h"
 #include "core/lua/luahandle.h"
+#include "core/models/model.h"
 
 namespace Ui {
 class MainWindow;
@@ -61,6 +64,9 @@ namespace haevn {
             /// This element contains the scene
             haevn::core::visual::Scene* m_scene;
 
+
+            haevn::core::models::Model* m_applicationModel;
+
             /// Qt variable
             Ui::MainWindow *ui;
 
@@ -71,7 +77,7 @@ namespace haevn {
              * @param path - LUA File path
              * @param displyResult - Enable/Disable a result feedback, default enabled
             */
-            void executeScript(const char* path, bool displayResult = true);
+            void executeScript(const char* path = nullptr, bool displayResult = true);
 
         signals:
 
@@ -210,10 +216,19 @@ namespace haevn {
             /**
              * @brief This slot is triggered when the menu build was clicked.
              * @details This method will handle the translation process into a specific lnaguage
-             * It will use any lua script.
+             * It will use a default lua script.
              * @param checked - Qt internal.
              */
             void buildTriggered(bool checked = false);
+
+
+            /**
+             * @brief This slot is triggered when the menu build with another script was clicked.
+             * @details This method will handle the translation process into a specific lnaguage
+             * It will use any lua script.
+             * @param checked - Qt internal.
+             */
+            void buildScriptTriggered(bool checked = false);
 
             /**
              * @brief This slot is triggered when the menu new scene was clicked.
@@ -222,14 +237,12 @@ namespace haevn {
              */
             void newSceneTriggered(bool checked = false);
 
-
             /**
              * @brief This slot is triggered when the menu help was clicked.
              * @details This method will show the help file
              * @param checked - Qt internal.
              */
             void helpTriggered(bool checked = false);
-
 
             /**
              * @brief This slot is triggered when the menu about was clicked.
