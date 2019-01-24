@@ -19,15 +19,16 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     m_applicationModel = new haevn::core::models::Model();
-    m_applicationModel->insertScript("TEST", "BLA");
-    m_applicationModel->insertScript("TEST2", "BLA2");
     m_scene = new haevn::core::visual::Scene(m_applicationModel);
     // Set canvas center to the topleft point
     ui->canvas->setAlignment(Qt::AlignTop|Qt::AlignLeft);
     // Apply scene to canvas
     ui->canvas->setScene(m_scene);
+
+
     tools = new haevn::core::visual::HTreeView();
 
+    // Add data to the trreview
     tools->addRootHeader("Control");
     tools->insertData(0, haevn::core::enums::e_widget::control_Button);
     tools->insertData(0, haevn::core::enums::e_widget::control_RadioButton);
@@ -61,6 +62,7 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     tools->insertData(5, haevn::core::enums::e_widget::layout_HBox);
     tools->insertData(5, haevn::core::enums::e_widget::layout_VBox);
 
+    // end add data to treeview
     tools->setDragEnabled(true);
     layout()->addWidget(tools);
 
@@ -95,36 +97,15 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
 
     connect(m_scene->getSelectionModel(), SIGNAL(positionChanged(int, int)), this, SLOT(positionChanged(int, int)));
     connect(m_scene->getSelectionModel(), SIGNAL(selectedWidgetChanged(QWidget*)), this, SLOT(selectedWidgetChanged(QWidget*)));
-
-    std::string setupScript = qApp->applicationDirPath().append("/init.lua").toStdString();
-    haevn::core::lua::LuaHandle initHandler(nullptr);
-    if(initHandler.runScript(setupScript.c_str()) == LUA_OK){
-        int width = initHandler.getInt("width");
-        int height = initHandler.getInt("height");
-        if(width > 0 && height > 0){
-            resize(width, height);
-        }
-
-        int posX = initHandler.getInt("posX");
-        int posY = initHandler.getInt("posY");
-        if(width >= 0 && posX >= 0){
-            move(posX, posY);
-        }
-    }
-
 }
 
 haevn::view::MainWindow::~MainWindow(){
-
-    if(m_scene != nullptr){
-        delete m_scene;
-        m_scene = nullptr;
-    }
-    if(m_applicationModel != nullptr){
-        delete m_applicationModel;
-        m_applicationModel = nullptr;
-    }
+    delete m_scene;
+    delete m_applicationModel;
     delete ui;
+
+    m_scene = nullptr;
+    m_applicationModel = nullptr;
 }
 
 // Events
@@ -262,10 +243,6 @@ void haevn::view::MainWindow::nameChanged(QString t_name){
     }
 }
 
-void haevn::view::MainWindow::contentChanged(QString t_content){
-
-}
-
 void haevn::view::MainWindow::tooltipChanged(QString t_tooltip){
     if(m_scene != nullptr) {
         m_scene->getSelectionModel()->setTooltip(t_tooltip);
@@ -291,6 +268,8 @@ void haevn::view::MainWindow::enabledChanged(int t_visibility){
 }
 
 void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
+
+    // Set default properties
     if(nullptr == widget){
         ui->spPosX->setValue(0);
         ui->spPosY->setValue(0);
@@ -307,6 +286,7 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
         ui->leTooltip->setText("");
         ui->leName->setText("Nothing selected");
     }
+    // Set the properties to the widget properties
     else{
         m_scene->getSelectionModel()->selectWidget(widget);
         ui->spPosX->setValue(widget->pos().x());
@@ -327,22 +307,17 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
 }
 
 
-void haevn::view::MainWindow::loadTriggered(bool checked){
-
-}
-
-void haevn::view::MainWindow::saveTriggered(bool checked){
-
-}
-
 void haevn::view::MainWindow::newSceneTriggered(bool checked){
     m_scene->clear();
 }
 
 void haevn::view::MainWindow::buildTriggered(bool checked){
-    haevn::view::RunScriptWizard wizzard(m_applicationModel);
-    wizzard.show();
+    // The size of the wizard is 80% of the window size
+    int width = static_cast<int>(size().width() * 0.8);
+    int height = static_cast<int>(size().height() * 0.8);
+    haevn::view::RunScriptWizard wizzard(width, height, m_applicationModel);
     wizzard.exec();
+
 }
 
 void haevn::view::MainWindow::buildScriptTriggered(bool checked){
@@ -419,41 +394,5 @@ void haevn::view::MainWindow::helpTriggered(bool checked){
 
 void haevn::view::MainWindow::executeScript(const char* path, bool displayResult){
 
-    haevn::core::lua::LuaHandle handler(m_applicationModel);
-    int result = -1;
-    if(path == nullptr){
-        int result = handler.runScript();
-    }else{
-        int result = handler.runScript(path);
-    }
-    // Only show results if it was requested
-    if(displayResult){
-        // Switch between results
-        switch(result){
-            case LUA_OK:
-                QMessageBox(QMessageBox::Information, "Script result", "Script executed successfully", QMessageBox::Ok).exec();
-                break;
-            case LUA_YIELD:
-               QMessageBox(QMessageBox::Information, "LUA_YIELD", handler.getError(), QMessageBox::Ok).exec();
-               break;
-            case LUA_ERRRUN:
-                QMessageBox(QMessageBox::Information, "Runtime error", handler.getError(), QMessageBox::Ok).exec();
-                break;
-            case LUA_ERRSYNTAX:
-                QMessageBox(QMessageBox::Information, "Syntax error", handler.getError(), QMessageBox::Ok).exec();
-                break;
-            case LUA_ERRMEM:
-                QMessageBox(QMessageBox::Information, "Memory error", handler.getError(), QMessageBox::Ok).exec();
-                break;
-            case LUA_ERRGCMM:
-                QMessageBox(QMessageBox::Information, "LUA_ERRGCMM", handler.getError(), QMessageBox::Ok).exec();
-                break;
-            case LUA_ERRERR:
-                QMessageBox(QMessageBox::Information, "LUA_ERRERR", handler.getError(), QMessageBox::Ok).exec();
-                break;
-            default:
-                QMessageBox(QMessageBox::Information, "Unknown error", handler.getError(), QMessageBox::Ok).exec();
-            break;
-        }
-    }
+
 }

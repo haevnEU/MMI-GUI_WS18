@@ -5,6 +5,8 @@
 #include <QListWidget>
 #include <QMap>
 
+#include "core/export/fileio.h"
+
 namespace haevn{
     namespace core {
         namespace models{
@@ -54,8 +56,21 @@ namespace haevn{
 
                 virtual ~Model();
 
+                /**
+                 * @brief Gets all available scripts
+                 * @details This Method returns a pointer to a map which contains all scripts,
+                 * which were declared inside a scripts.toc file, which is placed in the root directory
+                 * @return  QMap<QString, QString>*
+                 */
                 QMap<QString, QString>* getScripts();
 
+                /**
+                 * @brief Insert a new script to the script map
+                 * @details This adds a new script to the available scripts map.
+                 * Note this should be called if the scripts.toc file is read.
+                 * @param name Name of the script, e.g. javaFX
+                 * @param path OS specific path to the script
+                 */
                 void insertScript(QString name, QString path);
 
                 /**
@@ -91,6 +106,9 @@ namespace haevn{
                  */
                 QList<QWidget*>* m_scenegraph;
 
+                /**
+                 * @brief This variable represents all available scripts read by scripts.toc
+                 */
                 QMap<QString, QString>* m_scripts;
 
                 /**

@@ -69,7 +69,11 @@ SOURCES += \
     core/lua/luahandle.cpp \
     core/export/fileio.cpp \
     core/util/widgethelper.cpp \
-    view/runscriptwizzard/runscriptwizard.cpp
+    view/runscriptwizzard/runscriptwizard.cpp \
+    core/visual/hlistwidgetitem.cpp \
+    view/runscriptwizzard/intropage.cpp \
+    view/runscriptwizzard/scriptpage.cpp \
+    view/runscriptwizzard/resultpage.cpp
 
 HEADERS += \
         view/mainwindow/mainwindow.h \
@@ -107,11 +111,14 @@ HEADERS += \
     core/lua/luahandle.h \
     core/export/fileio.h \
     core/util/widgethelper.h \
-    view/runscriptwizzard/runscriptwizard.h
+    view/runscriptwizzard/runscriptwizard.h \
+    core/visual/hlistwidgetitem.h \
+    view/runscriptwizzard/intropage.h \
+    view/runscriptwizzard/scriptpage.h \
+    view/runscriptwizzard/resultpage.h
 
 FORMS += \
-        view/mainwindow/mainwindow.ui \
-    view/runscriptwizzard/runscriptwizard.ui
+        view/mainwindow/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

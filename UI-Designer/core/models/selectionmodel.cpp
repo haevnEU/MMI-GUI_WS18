@@ -132,7 +132,7 @@ void haevn::core::models::SelectionModel::setName(QString t_name){
     if(t_name == m_name || selectedWidget == nullptr){
         return;
     }
-     // TODO
+
     m_name = t_name;
     selectedWidget->setWhatsThis(t_name);
     emit nameChanged(m_name);

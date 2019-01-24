@@ -1,30 +1,41 @@
 #include "runscriptwizard.h"
-#include "ui_runscriptwizard.h"
 
 #include <QDebug>
 
-haevn::view::RunScriptWizard::RunScriptWizard(haevn::core::models::Model* t_appModel, QWidget *parent) : QWizard(parent), ui(new Ui::RunScriptWizard){
-    ui->setupUi(this);
-    m_appModel = t_appModel;
-    m_luaScriptHandler = new haevn::core::lua::LuaHandle(m_appModel);
+#include <QString>
 
-    for(QString item : m_appModel->getScripts()->values()){
-        ui->listAvailableScripts->addItem(item);
-    }
+haevn::view::RunScriptWizard::RunScriptWizard(int width, int height, haevn::core::models::Model* t_appModel, QWidget *parent) : QWizard(parent){
 
-    connect(ui->listAvailableScripts, SIGNAL(itemSelectionChanged()), this, SLOT(itemSelectionChanged()));
+    setMinimumSize(width, height);
+    setMaximumSize(width, height);
+    resize(width, height);
+
+    m_introPage = new haevn::view::wizzard::IntroPage();
+    m_scriptPage = new haevn::view::wizzard::ScriptPage(t_appModel);
+    m_resultPage = new haevn::view::wizzard::ResultPage(t_appModel);
+
+    addPage(m_introPage);
+    addPage(m_scriptPage);
+    addPage(m_resultPage);
+
+    setWindowTitle("Export scenegraph");
 }
 
 haevn::view::RunScriptWizard::~RunScriptWizard(){
-    delete m_luaScriptHandler;
-    m_luaScriptHandler = nullptr;
-    delete ui;
+    delete m_introPage;
+    m_introPage = nullptr;
+
+    delete m_scriptPage;
+    m_scriptPage = nullptr;
+
+    delete m_resultPage;
+    m_resultPage = nullptr;
 }
 
-void haevn::view::RunScriptWizard::itemSelectionChanged(){
-    QListWidgetItem* item = ui->listAvailableScripts->selectedItems().at(0);
-    m_appModel->getScripts()->value(item->text());
-    qDebug() << item->text();
-    qDebug() << m_appModel->getScripts()->value(item->text());
+void haevn::view::RunScriptWizard::accept(){
 
+    if(m_resultPage->isExportChecked()){
+        haevn::core::file::FileIO().write(m_resultPage->getResult().toStdString().c_str());
+    }
+    QDialog::accept();
 }

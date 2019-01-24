@@ -166,14 +166,6 @@ namespace haevn {
             void nameChanged(QString t_name);
 
             /**
-             * @brief Sets the content of the selected widget.
-             * @details This method will set the content of the selected widget.
-             * Nothing will change or emitted if t_content == m_Scene->getSelectionModel()->gettContent().
-             * @param t_content - New content of the selected widget
-             */
-            void contentChanged(QString t_content);
-
-            /**
              * @brief Sets the tooltip of the selected widget.
              * @details This method will set the tooltip of the selected widget.
              * Nothing will change or emitted if t_tooltip == m_Scene->getSelectionModel()->getTooltip().
@@ -196,22 +188,6 @@ namespace haevn {
              * @param widget - New selected widget
              */
             void selectedWidgetChanged(QWidget* widget);            
-
-            /**
-             * @brief This slot is triggered when the menu load was clicked.
-             * @details This method will handle every operation which are required
-             * by the loading process.
-             * @param checked - Qt internal.
-             */
-            void loadTriggered(bool checked = false);
-
-            /**
-             * @brief This slot is triggered when the menu save was clicked.
-             * @details This method will handle every operation which are required
-             * by the saveing process.
-             * @param checked - Qt internal.
-             */
-            void saveTriggered(bool checked = false);
 
             /**
              * @brief This slot is triggered when the menu build was clicked.

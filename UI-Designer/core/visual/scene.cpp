@@ -36,28 +36,33 @@ void haevn::core::visual::Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *eve
 }
 
 void haevn::core::visual::Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
-    //qDebug() << event->scenePos();
+    QGraphicsScene::dragMoveEvent(event);
 }
 
 void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
 }
 
 void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
-    if(nullptr == event){
-        return;
-    }
+
+    // get the type of the dropped widget
     haevn::core::enums::e_widget t_type = static_cast<haevn::core::enums::e_widget>(event->mimeData()->property("type").toInt());
 
     if(t_type == haevn::core::enums::e_widget::uncat_nothing){
         return;
     }
 
+    // request the position of the mouse
     int x = static_cast<int>(event->scenePos().x());
     int y = static_cast<int>(event->scenePos().y());
+    // set defailt parameter
     int width = 100;
     int height = 30;
     QString name = "NAN";
     QWidget* item = nullptr;
+    // Switch between diferent types
+    // Each type creates a new item based on the selected type
+    // It will also reset the width and height, increment the type counter
+    // and it will also set the name to a default one
     switch(t_type){
         // Control part
         case haevn::core::enums::e_widget::control_Button:
@@ -175,6 +180,8 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
             break;
     }
 
+    // If the item was set insert it to the scenegraph
+    // and set the selection model
     if(nullptr != item){
 
         m_applicationModel->addItem(item);
@@ -193,19 +200,27 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
 
 void haevn::core::visual::Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
+    // Enable moving the items
     if(event->button() == Qt::MouseButton::LeftButton){
         m_grab = true;
+        // Get the item under mousepointer
         QGraphicsItem* item = itemAt(event->scenePos(), QTransform());
         if(nullptr != item){
-            QGraphicsProxyWidget* tmp = static_cast<QGraphicsProxyWidget*>(item);
+            // set the selectionmodel widget
+            // The itemAt method returns a graphics item and not a widget
+            // So a proxy class must be used.
+            QGraphicsProxyWidget* tmp = dynamic_cast<QGraphicsProxyWidget*>(item);
             m_selectionModel->selectWidget(tmp->widget());
             m_selectionModel->setPosition(event->scenePos().x(), event->scenePos().y());
             emit(selectedItemChanged(m_selectionModel->getSelectedwidget()));
         }
-    }else if(event->button() == Qt::MouseButton::RightButton){
+    }
+    // Right button removes an element, the procedure is the same as moving
+    // The m_grab variable is not set instead the item is removed
+    else if(event->button() == Qt::MouseButton::RightButton){
         QGraphicsItem* item = itemAt(event->scenePos(), QTransform());
         if(nullptr != item){
-            if(QGraphicsProxyWidget* proxyWidget = static_cast<QGraphicsProxyWidget*>(item)){
+            if(QGraphicsProxyWidget* proxyWidget = dynamic_cast<QGraphicsProxyWidget*>(item)){
                 m_scenegraph->removeOne(proxyWidget->widget());
                 m_applicationModel->removeItem(proxyWidget->widget());
                 removeItem(item);

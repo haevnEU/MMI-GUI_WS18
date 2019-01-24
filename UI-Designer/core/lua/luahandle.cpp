@@ -24,16 +24,11 @@ haevn::core::lua::LuaHandle::LuaHandle(haevn::core::models::Model* t_model){
     lua_register(L, "GetEnabled", getEnabled);
     lua_register(L, "GetTooltip", getTooltip);
     lua_register(L, "DisplayMessageBox", createMessageBox);
-    lua_register(L, "Export", exportData);
 
 }
 
 haevn::core::lua::LuaHandle::~LuaHandle(){
     lua_close(L);
-}
-
-int haevn::core::lua::LuaHandle::runScript(){
-
 }
 
 int haevn::core::lua::LuaHandle::runScript(const char* file){
@@ -148,14 +143,6 @@ int haevn::core::lua::LuaHandle::print(lua_State* L){
     }else if(lua_isboolean(L, -1)){
         bool param = lua_toboolean(L, -1);
         qDebug() << param;
-    }
-    return 0;
-}
-
-// Export data
-int haevn::core::lua::LuaHandle::exportData(lua_State* L){
-    if(lua_isstring(L, -1)){
-        haevn::core::FileIO::write(lua_tostring(L, -1));
     }
     return 0;
 }

@@ -1,19 +1,18 @@
 #include "model.h"
 
+
 haevn::core::models::Model::Model() : QObject(){
     m_scenegraph = new QList<QWidget*>();
-    m_scripts = new QMap<QString, QString>();
+    haevn::core::file::FileIO fileHandler;
+    m_scripts = fileHandler.loadScripts();
 }
 
 haevn::core::models::Model::~Model(){
-    if(m_scenegraph != nullptr){
-        delete m_scenegraph;
-        m_scenegraph = nullptr;
-    }
-    if(m_scripts != nullptr){
-        delete m_scripts;
-        m_scripts = nullptr;
-    }
+    delete m_scenegraph;
+    m_scenegraph = nullptr;
+
+    delete m_scripts;
+    m_scripts = nullptr;
 }
 
 void haevn::core::models::Model::insertScript(QString name, QString path){

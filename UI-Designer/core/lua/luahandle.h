@@ -121,13 +121,6 @@ namespace haevn{
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
-                    static int exportData(lua_State* L);
-
-
-                    /**
-                     * @brief Internal usage, part of LUA UI-Designer API.
-                     * @details This method is documented inside the GitHub repo
-                     */
                     static int getHeight(lua_State* L) ;
 
 
@@ -216,15 +209,6 @@ namespace haevn{
                     explicit LuaHandle(haevn::core::models::Model* t_model = nullptr);                    
 
                     ~LuaHandle();
-
-                   /**
-                     * @brief This method executes a default script.
-                     * @details This method will execute a lua script.#
-                     * It will call the same mthod with the default script as a param.
-                     * @return result of the script
-                     */
-                    int runScript();
-
 
                     /**
                       * @brief This method executes a script.
