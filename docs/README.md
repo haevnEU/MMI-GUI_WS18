@@ -22,13 +22,10 @@ Dieses Projekt unterstützt simple Objekte wie Button, ListView, CheckBox, etc. 
 Im Menu sind die Punkte "File", "Run", "Help" beheimatet.
 #### File
 Im Menüpunkt "File" werden sämtliche Interaktionen auf der Dateiebene gruppiert.
-+ Save: Speichert den Status der Application in einem LUA Script ab, noch nicht implementiert
-+ Load: Lädt den Status der Application aus einem LUA Script, noch nicht implementiert1
-+ New: Löscht alle Elemente des Szenegraph und ermöglicht es eine neue Umgebung zu starten.
++ New (Ctrl N): Löscht alle Elemente des Szenegraph und ermöglicht es eine neue Umgebung zu starten.
 #### Run
 Unter dem Menüpunkt "Run" werden Aktionen auf die Übersetzung und Prüfung des Scenegraph sowie Scripts zusammengefasst.
-+ Test: Testet das ausgewählte Script auf Fehler, noch nicht implementiert
-+ Build: Ruft das Script aus welches vorher festgelegt wird, das Ergebniss ist eine Datei die direkt in den Sourcecode kopiert werden kann.
++ Build (Ctrl B): Startet den Buildwizard welcher den Scenegraph in kopierbaren Code übersetzt.
 #### Help
 Hier sind Informationen zur Application sowie zusätzlichen Bibliotheken hinterlegt.
 + Help: Öffnet das Wiki auf GitHub.
@@ -52,32 +49,12 @@ Die Widgets innerhalb des Scenegraphs sind über Mausbewegungen neu positionierb
 
 [Oben](#inhalt)<br>
 
-## [Einstellung](#einstellung)
-
-Die Datei init.lua enthält grundlegende Einstellungen für das Programm. <br>
-
-
-| Name | Beispiel | Bedeutung |
-| --- | --- | --- |
-| width | 500 | Breite des Fenster |
-| height | 500 |Höhe des Fenster |
-| posX | 0 | X Koordinate |
-| posY | 0 | Y Koordinate |
-| background | #004040 | Hintergrundfarbe | 
-| foreground | #ffffff | Vordegrundfarbe |
-
-
-Weitere Einträge werden zukünftig ergänzt.
-
-[Oben](#inhalt)<br>
-
 ## [API](#api)
 It is possible to use own scripts, all available access methods will be listed here.
 
 + [Print](#Print)<br>
 + [DisplayMessageBox](#DisplayMessageBox)<br>
 + [GetSceneGraphSize](#Getscenegraphsize) <br>
-+ [Export](#Export)<br>
 + [GetType](#GetType)<br>
 + [GetHeight](#GetHeight) <br>
 + [GetMaxHeight](#GetMaxHeight)<br>
@@ -137,16 +114,6 @@ This method will create a new messagebox which is immidately displayed.
 CreateMessageBox("Information", "Hello World", 3)
 ```
 
-### _[Export](#Export)_
-This method will export the create UI file into a language specific file. The language was determine in the execution script.
-+ Parameter:
-    1. String: Data to export
-+ Return: Nothing<br>
-
-```lua
-data = generateSomeRandomStringData()
-Export(data)
-```
 ### _[GetType](#GetType)_
 This method will receive the type of the selected object.
 + Parameter:
@@ -585,14 +552,7 @@ layout_VBox = 21
 -- Request scenegraph size
 maxItems = GetSceneGraphSize()
 -- Fileheader
-result =           "+--------------------------------------------------+\n";
-result = result .. "| Youre only a few step away from your interface.  |\n";
-result = result .. "| To use this content you have to copy all content |\n";
-result = result .. "| Do not copy this line                            |\n";
-result = result .. "| Paste the code into your ui file                 |\n";
-result = result .. "| Build your application                           |\n";
-result = result .. "| Enjoy your interface.                            |\n";
-result = result .. "+--------------------------------------------------+\n";
+result = "";
 -- Iterate over the scenegraph
 for idx = 0, maxItems, 1 do
     -- Get the item type
@@ -650,6 +610,6 @@ for idx = 0, maxItems, 1 do
 end
 
 -- Export the result
-Export(result)
+return result
 ```
 <br>[Oben](#inhalt)<br>

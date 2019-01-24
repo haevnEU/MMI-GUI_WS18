@@ -23,21 +23,8 @@ namespace haevn{
             // public static methods
             public:
 
-                /**
-                 * @brief Gets the instance
-                 * @details GetInstance returns the existing instance,
-                 * new one is created iff theres no existing one.
-                 * @return SelectionModel - Only existing instance
-                 */
-                static SelectionModel* getInstance();
             // static variables
             private:
-
-
-                /**
-                 * @brief  Only allowed instance
-                 */
-                static SelectionModel* s_instance;
 
 
                 /**
@@ -47,6 +34,13 @@ namespace haevn{
 
             // public methods
             public:
+                /**
+                 * @brief Constructor
+                 * @details The constructor isnt available public.
+                 * It isnt public available due to singleton pattern.
+                 * @param parent
+                 */
+                explicit SelectionModel();
 
                 virtual ~SelectionModel();
 
@@ -65,33 +59,6 @@ namespace haevn{
                  * @return QWidget pointer to the current widget.
                  */
                 QWidget* getSelectedwidget();
-
-                // private methods
-            private:
-
-                /**
-                 * @brief Constructor
-                 * @details The constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param parent
-                 */
-                explicit SelectionModel();                
-
-                /**
-                 * @brief Coppy constructor
-                 * @details The copy constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                explicit SelectionModel(SelectionModel& another){}
-
-                /**
-                 * @brief Assignement operator.
-                 * @details The assignement operator isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                SelectionModel& operator=(SelectionModel& another){}
 
             // protected variables
             protected:

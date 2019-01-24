@@ -1,14 +1,5 @@
 #include "selectionmodel.h"
 
-// Singleton pattern
-haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::s_instance = nullptr;
-haevn::core::models::SelectionModel* haevn::core::models::SelectionModel::getInstance(){
-    if(s_instance == nullptr){
-        s_instance = new SelectionModel();
-    }
-    return s_instance;
-}
-
 haevn::core::models::SelectionModel::SelectionModel(){
     selectedWidget = nullptr;
 }

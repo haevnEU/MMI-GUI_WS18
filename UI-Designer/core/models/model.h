@@ -36,23 +36,7 @@ namespace haevn{
                  * It isnt public available due to singleton pattern.
                  * @param parent
                  */
-                explicit Model();
-
-                /**
-                 * @brief Coppy constructor
-                 * @details The copy constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                explicit Model(Model& another){}
-
-                /**
-                 * @brief Assignement operator.
-                 * @details The assignement operator isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param another - Reference to another instance
-                 */
-                Model& operator=(Model& another){}
+                explicit Model();              
 
                 virtual ~Model();
 

@@ -113,7 +113,7 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
     // The height equals the window height without the size of the menubar, a small space(10px) below the menubar and at the bottom
     // and a small space at the bottom (20px)
-    int height = size().height() - ui->menuBar->height() - 2 * 10;
+    int height = t_event->size().height() - ui->menuBar->height() - 2 * 10;
 
 
     // First handle the tools
@@ -125,7 +125,7 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
     // Next the canvas (scene)
     // The width of the canvas ist 97% of the window width without
     // the size of the tools(300px), details(300px) and a small space(20px) at booth sides
-    int canvasWidth = static_cast<int>((size().width() * 0.97) - 620);
+    int canvasWidth = static_cast<int>((t_event->size().width() * 0.97) - 620);
 
     // Booth width and height are dynamicaly calculated
     ui->canvas->resize(canvasWidth, height);
@@ -322,22 +322,11 @@ void haevn::view::MainWindow::buildTriggered(bool checked){
 
 }
 
-void haevn::view::MainWindow::buildScriptTriggered(bool checked){
-    // Open Filechoser dialog and save the result into a string
-    QString fileName = QFileDialog::getOpenFileName(this, "Select a script", qApp->applicationDirPath(), "LUA Script (*.lua);");
-    if (!fileName.isEmpty()){
-        // If a file was selected hand them to the script.
-        // The script required a c string
-        // => Convert QString to std::string to c string.
-        executeScript(fileName.toStdString().c_str());
-     }
-}
-
-
 void haevn::view::MainWindow::aboutTriggered(bool checked){
 
     // Ask user to open the browser
-    if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "GUI Designer", "This application is develop and maintained by Nils Milewski"
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::
+                                        Information, "GUI Designer", "This application is develop and maintained by Nils Milewski"
                                         "\n\nLast update: Jan 20 2019"
                                         "\n\nAt GitHub you can find more details.\nOpen GitHub website?", QMessageBox::Yes|QMessageBox::No).exec()){
         // Open the browser with the github repo
@@ -393,8 +382,3 @@ void haevn::view::MainWindow::helpTriggered(bool checked){
 }
 
 // End slots
-
-void haevn::view::MainWindow::executeScript(const char* path, bool displayResult){
-
-
-}

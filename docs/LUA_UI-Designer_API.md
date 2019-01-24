@@ -4,7 +4,6 @@ It is possible to use own scripts, all available access methods will be listed h
 + [Print](#Print)<br>
 + [DisplayMessageBox](#DisplayMessageBox)<br>
 + [GetSceneGraphSize](#Getscenegraphsize) <br>
-+ [Export](#Export)<br>
 + [GetType](#GetType)<br>
 + [GetHeight](#GetHeight) <br>
 + [GetMaxHeight](#GetMaxHeight)<br>
@@ -64,16 +63,6 @@ This method will create a new messagebox which is immidately displayed.
 CreateMessageBox("Information", "Hello World", 3)
 ```
 
-## _[Export](#Export)_
-This method will export the create UI file into a language specific file. The language was determine in the execution script.
-+ Parameter:
-    1. String: Data to export
-+ Return: Nothing<br>
-
-```lua
-data = generateSomeRandomStringData()
-Export(data)
-```
 ## _[GetType](#GetType)_
 This method will receive the type of the selected object.
 + Parameter:
@@ -512,14 +501,7 @@ layout_VBox = 21
 -- Request scenegraph size
 maxItems = GetSceneGraphSize()
 -- Fileheader
-result =           "+--------------------------------------------------+\n";
-result = result .. "| Youre only a few step away from your interface.  |\n";
-result = result .. "| To use this content you have to copy all content |\n";
-result = result .. "| Do not copy this line                            |\n";
-result = result .. "| Paste the code into your ui file                 |\n";
-result = result .. "| Build your application                           |\n";
-result = result .. "| Enjoy your interface.                            |\n";
-result = result .. "+--------------------------------------------------+\n";
+result = ""
 -- Iterate over the scenegraph
 for idx = 0, maxItems, 1 do
     -- Get the item type
@@ -577,5 +559,5 @@ for idx = 0, maxItems, 1 do
 end
 
 -- Export the result
-Export(result)
+return result
 ```

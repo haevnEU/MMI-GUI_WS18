@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>UI-Designer: haevn::core::models::Model Class Reference</title>
+<title>My Project: haevn::core::models::Model Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">UI-Designer
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -61,14 +61,13 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacehaevn.html">haevn</a></li><li class="navelem"><a class="el" href="namespacehaevn_1_1core.html">core</a></li><li class="navelem"><a class="el" href="namespacehaevn_1_1core_1_1models.html">models</a></li><li class="navelem"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html">Model</a></li>  </ul>
+<li class="navelem"><b>haevn</b></li><li class="navelem"><b>core</b></li><li class="navelem"><b>models</b></li><li class="navelem"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html">Model</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classhaevn_1_1core_1_1models_1_1_model-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">haevn::core::models::Model Class Reference</div>  </div>
@@ -79,12 +78,8 @@ $(function() {
  <a href="classhaevn_1_1core_1_1models_1_1_model.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="model_8h_source.html">model.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for haevn::core::models::Model:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classhaevn_1_1core_1_1models_1_1_model.png" alt=""/>
- </div></div>
+
+<p>Inherits QObject.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
@@ -97,8 +92,15 @@ Public Slots</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4cbed7aa9bf75a3aacf985a92c4bb37e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a4cbed7aa9bf75a3aacf985a92c4bb37e">~Model</a> ()</td></tr>
-<tr class="separator:a4cbed7aa9bf75a3aacf985a92c4bb37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae368de80b21067ba4c7e50ef79a0922"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#aae368de80b21067ba4c7e50ef79a0922">Model</a> ()</td></tr>
+<tr class="memdesc:aae368de80b21067ba4c7e50ef79a0922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aae368de80b21067ba4c7e50ef79a0922">More...</a><br /></td></tr>
+<tr class="separator:aae368de80b21067ba4c7e50ef79a0922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="memItemLeft" align="right" valign="top">QMap&lt; QString, QString &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae">getScripts</a> ()</td></tr>
+<tr class="memdesc:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all available scripts.  <a href="#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae">More...</a><br /></td></tr>
+<tr class="separator:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9e29ae66003f1cdc6d652c11110bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a3a9e29ae66003f1cdc6d652c11110bb1">insertScript</a> (QString name, QString path)</td></tr>
+<tr class="memdesc:a3a9e29ae66003f1cdc6d652c11110bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new script to the script map.  <a href="#a3a9e29ae66003f1cdc6d652c11110bb1">More...</a><br /></td></tr>
+<tr class="separator:a3a9e29ae66003f1cdc6d652c11110bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c88be9f98d0621512826baeca98d4c2"><td class="memItemLeft" align="right" valign="top">QList&lt; QWidget * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a2c88be9f98d0621512826baeca98d4c2">getScenegraph</a> ()</td></tr>
 <tr class="memdesc:a2c88be9f98d0621512826baeca98d4c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the scenegraph.  <a href="#a2c88be9f98d0621512826baeca98d4c2">More...</a><br /></td></tr>
 <tr class="separator:a2c88be9f98d0621512826baeca98d4c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,12 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6662d03d1acbadd24b4b33cbc257c6b"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#af6662d03d1acbadd24b4b33cbc257c6b">getResourcePath</a> ()</td></tr>
 <tr class="memdesc:af6662d03d1acbadd24b4b33cbc257c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path to the resource folder.  <a href="#af6662d03d1acbadd24b4b33cbc257c6b">More...</a><br /></td></tr>
 <tr class="separator:af6662d03d1acbadd24b4b33cbc257c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a32f532e4a7dd5fb9b804cbc21af5ca81"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html">Model</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a32f532e4a7dd5fb9b804cbc21af5ca81">getInstance</a> ()</td></tr>
-<tr class="memdesc:a32f532e4a7dd5fb9b804cbc21af5ca81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the instance.  <a href="#a32f532e4a7dd5fb9b804cbc21af5ca81">More...</a><br /></td></tr>
-<tr class="separator:a32f532e4a7dd5fb9b804cbc21af5ca81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represent the application data. </p>
@@ -121,8 +117,8 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>Jan 15, 2019 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4cbed7aa9bf75a3aacf985a92c4bb37e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cbed7aa9bf75a3aacf985a92c4bb37e">&#9670;&nbsp;</a></span>~Model()</h2>
+<a id="aae368de80b21067ba4c7e50ef79a0922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae368de80b21067ba4c7e50ef79a0922">&#9670;&nbsp;</a></span>Model()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +127,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">haevn::core::models::Model::~Model </td>
+          <td class="memname">haevn::core::models::Model::Model </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -139,10 +135,18 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>The constructor isnt available public. It isnt public available due to singleton pattern. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -178,34 +182,6 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a32f532e4a7dd5fb9b804cbc21af5ca81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32f532e4a7dd5fb9b804cbc21af5ca81">&#9670;&nbsp;</a></span>getInstance()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html">haevn::core::models::Model</a> * haevn::core::models::Model::getInstance </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the instance. </p>
-<p>GetInstance returns the existing instance, new one is created iff theres no existing one. </p><dl class="section return"><dt>Returns</dt><dd><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html" title="This class represent the application data.">Model</a> Only existing instance </dd></dl>
 
 </div>
 </div>
@@ -246,6 +222,63 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Gets the scenegraph. </p>
 <p>This Method returns a pointer to the scenegraph </p><dl class="section return"><dt>Returns</dt><dd>QList&lt;QWidget*&gt;* </dd></dl>
+
+</div>
+</div>
+<a id="aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae">&#9670;&nbsp;</a></span>getScripts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QMap&lt; QString, QString &gt; * haevn::core::models::Model::getScripts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets all available scripts. </p>
+<p>This Method returns a pointer to a map which contains all scripts, which were declared inside a scripts.toc file, which is placed in the root directory </p><dl class="section return"><dt>Returns</dt><dd>QMap&lt;QString, QString&gt;* </dd></dl>
+
+</div>
+</div>
+<a id="a3a9e29ae66003f1cdc6d652c11110bb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9e29ae66003f1cdc6d652c11110bb1">&#9670;&nbsp;</a></span>insertScript()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void haevn::core::models::Model::insertScript </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Insert a new script to the script map. </p>
+<p>This adds a new script to the available scripts map. Note this should be called if the scripts.toc file is read. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the script, e.g. javaFX </td></tr>
+    <tr><td class="paramname">path</td><td>OS specific path to the script </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -310,8 +343,8 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>UI-Designer/core/models/<a class="el" href="model_8h_source.html">model.h</a></li>
-<li>UI-Designer/core/models/<a class="el" href="model_8cpp.html">model.cpp</a></li>
+<li>D:/dev/MMI-GUI/UI-Designer/core/models/<a class="el" href="model_8h_source.html">model.h</a></li>
+<li>D:/dev/MMI-GUI/UI-Designer/core/models/model.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

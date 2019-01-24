@@ -1,7 +1,7 @@
 #include "scene.h"
 
 haevn::core::visual::Scene::Scene(haevn::core::models::Model* t_applicationModel, QObject *parent) : QGraphicsScene(parent){
-    m_selectionModel = haevn::core::models::SelectionModel::getInstance();
+    m_selectionModel = new haevn::core::models::SelectionModel();
     m_applicationModel = t_applicationModel;
 
     m_scenegraph = new QList<QWidget*>();
@@ -32,14 +32,17 @@ haevn::core::visual::Scene::~Scene(){
 // Events
 
 void haevn::core::visual::Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
+    event->accept();
     // Do nothing, this event is required to enable drag and drop
 }
 
 void haevn::core::visual::Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
+    event->accept();
     // Do nothing, this event is required to enable drag and drop
 }
 
 void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){
+    event->accept();
 }
 
 void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
@@ -178,6 +181,8 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
             m_tableWidgetCounter++;
             name = "TableWidget" + QString::number(m_tableWidgetCounter);
             break;
+    case haevn::core::enums::e_widget::uncat_nothing:
+        item = nullptr;
     }
 
     // If the item was set insert it to the scenegraph

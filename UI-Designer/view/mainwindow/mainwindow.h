@@ -70,15 +70,6 @@ namespace haevn {
             /// Qt variable
             Ui::MainWindow *ui;
 
-            /**
-             * @brief This method executes a LUA script
-             * @details This method will execute a LUA script specified by path.
-             * It will display a result window iff the displayResult is true
-             * @param path - LUA File path
-             * @param displyResult - Enable/Disable a result feedback, default enabled
-            */
-            void executeScript(const char* path = nullptr, bool displayResult = true);
-
         signals:
 
         public slots:
@@ -196,15 +187,6 @@ namespace haevn {
              * @param checked - Qt internal.
              */
             void buildTriggered(bool checked = false);
-
-
-            /**
-             * @brief This slot is triggered when the menu build with another script was clicked.
-             * @details This method will handle the translation process into a specific lnaguage
-             * It will use any lua script.
-             * @param checked - Qt internal.
-             */
-            void buildScriptTriggered(bool checked = false);
 
             /**
              * @brief This slot is triggered when the menu new scene was clicked.

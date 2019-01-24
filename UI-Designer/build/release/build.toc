@@ -1,3 +1,2 @@
 # javaFX scripts
-/res/scripts/javaFX.lua
-/res/scripts/create.lua
+/scripts/javaFX.lua
