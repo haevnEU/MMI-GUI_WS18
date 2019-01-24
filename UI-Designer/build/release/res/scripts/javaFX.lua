@@ -331,6 +331,8 @@ layout_Canvas = 19
 layout_HBox = 20
 layout_VBox = 21
 
+
+
 -- Request scenegraph size
 maxItems = GetSceneGraphSize() - 1
 Print(maxItems)

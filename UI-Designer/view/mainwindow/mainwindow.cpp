@@ -84,8 +84,6 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->cbEnabled, SIGNAL(stateChanged(int)), this, SLOT(enabledChanged(int)));
 
-    connect(ui->actionLoad, SIGNAL(triggered(bool)), this, SLOT(loadTriggered(bool)));
-    connect(ui->actionSave, SIGNAL(triggered(bool)), this, SLOT(saveTriggered(bool)));
     connect(ui->actionNewScene, SIGNAL(triggered(bool)), this, SLOT(newSceneTriggered(bool)));
 
     connect(ui->actionBuild, SIGNAL(triggered(bool)), this, SLOT(buildTriggered(bool)));
@@ -308,7 +306,11 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
 
 
 void haevn::view::MainWindow::newSceneTriggered(bool checked){
-    m_scene->clear();
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::Question, "GUI Designer", "Are you sure to reset the scene?"
+                                        "\nThis cannot be undone.", QMessageBox::Yes|QMessageBox::No).exec()){
+
+        m_scene->clear();
+    }
 }
 
 void haevn::view::MainWindow::buildTriggered(bool checked){

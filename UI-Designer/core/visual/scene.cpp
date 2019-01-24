@@ -32,11 +32,11 @@ haevn::core::visual::Scene::~Scene(){
 // Events
 
 void haevn::core::visual::Scene::dragEnterEvent(QGraphicsSceneDragDropEvent *event){
-    QGraphicsScene::dragEnterEvent(event);
+    // Do nothing, this event is required to enable drag and drop
 }
 
 void haevn::core::visual::Scene::dragMoveEvent(QGraphicsSceneDragDropEvent *event){
-    QGraphicsScene::dragMoveEvent(event);
+    // Do nothing, this event is required to enable drag and drop
 }
 
 void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *event){

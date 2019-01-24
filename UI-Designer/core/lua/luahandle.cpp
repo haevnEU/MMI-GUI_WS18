@@ -35,11 +35,13 @@ int haevn::core::lua::LuaHandle::runScript(const char* file){
 
     int result = luaL_loadfile(L, file);
     // if there no error execute the script
-    if(!result){
+    if(result == LUA_OK ){
         result = lua_pcall(L, 0, LUA_MULTRET, 0);
     }
     return result;
 }
+
+// Following methods are returning the topmost value from lua stack
 
 double haevn::core::lua::LuaHandle::getNumber(const char* name){
     lua_getglobal(L, name);
@@ -62,6 +64,7 @@ bool haevn::core::lua::LuaHandle::getBool(const char* name){
 }
 
 const char* haevn::core::lua::LuaHandle::getError(){
+  qDebug() << "error";
     if(nullptr != L && lua_isstring(L, -1)){
         return lua_tostring(L, -1);
     } else {

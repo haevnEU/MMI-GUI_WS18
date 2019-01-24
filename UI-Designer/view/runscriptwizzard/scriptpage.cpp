@@ -45,7 +45,21 @@ haevn::view::wizzard::ScriptPage::~ScriptPage(){
 }
 
 void haevn::view::wizzard::ScriptPage::itemSelectionChanged(){
+    // Set the line edit to the script path
     if(haevn::visual::HListWidgetItem* item = dynamic_cast<haevn::visual::HListWidgetItem*>(m_lwScripts->currentItem())){
         m_leSelectedScript->setText(item->getData());
     }
+}
+
+
+void haevn::view::wizzard::ScriptPage::showEvent(QShowEvent* event){
+    // Reset selection
+    m_lwScripts->setCurrentRow(-1);
+    m_leSelectedScript->setText("");
+
+}
+
+bool haevn::view::wizzard::ScriptPage::validatePage(){
+    // A script must be selected inside the listview, which implies that the lineedit is set too
+    return m_leSelectedScript->text() != "" && m_lwScripts->currentRow() >= 0;
 }

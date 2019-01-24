@@ -62,6 +62,25 @@ namespace haevn{
                  */
                 QList<haevn::visual::HListWidgetItem>* m_items;
 
+
+                /**
+                 * @brief ShowEvent, occurres if the page is visible
+                 * @details This event occurred iff this page is activated.
+                 * This method will handle the everything which should happened if this page is shown.
+                 * @param event - This param contains all information about the show operation.
+                 */
+                void showEvent(QShowEvent* event);
+
+                /**
+                 * @brief This functionn validates the page
+                 * @details [FROM qt wizard page class doc http://doc.qt.io/qt-5/qwizardpage.html#validatePage]
+                 * This virtual function is called by QWizard::validateCurrentPage() when the user clicks Next or Finish
+                 * to perform some last-minute validation. If it returns true,
+                 * the next page is shown (or the wizard finishes); otherwise, the current page stays up.
+                 * @return True iff a script is selected
+                 */
+                bool validatePage();
+
             public slots:
 
                 /**

@@ -8,7 +8,6 @@ haevn::view::wizzard::ResultPage::ResultPage(haevn::core::models::Model* t_appli
 
     setTitle(tr("Result"));
     m_lbInformation = new QLabel();
-    m_lbInformation->setText("Below you can see the code that is equivalent to the scene graph, you can copy it and paste it into your project.");
     m_lbInformation->setWordWrap(true);
 
     m_cbExportToFile = new QCheckBox();
@@ -32,24 +31,17 @@ bool haevn::view::wizzard::ResultPage::isExportChecked(){
     return m_cbExportToFile->isChecked();
 }
 
-int counter = 0;
 void haevn::view::wizzard::ResultPage::showEvent(QShowEvent* event){
-    /*if(counter > 0){
-        event->ignore();
-    }*/
-    counter++;
     QString scriptPath = field("script").toString();
-
-    qDebug() << scriptPath;
-
     haevn::core::lua::LuaHandle handler(m_applicationModel);
-    int result = handler.runScript(scriptPath.toStdString().c_str());
 
-    // Only show results if it was requested
-    if(!result){
-        m_leResult->setText(tr(handler.getError()));
-    }else{
+    int result = handler.runScript(scriptPath.toStdString().c_str());
+    if(result == LUA_OK){
+        m_lbInformation->setText("Below you can see the code that is equivalent to the scene graph, you can copy it and paste it into your project.");
         m_leResult->setText(handler.getString("result"));
+    }else{
+        m_lbInformation->setText("An error has occurred during execution");
+        m_leResult->setText(handler.getError());
     }
 }
 
