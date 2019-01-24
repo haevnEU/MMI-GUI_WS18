@@ -1,8 +1,6 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
 
-#include "view/runscriptwizzard/runscriptwizard.h"
-
 int main(int argc, char *argv[]){
 
 

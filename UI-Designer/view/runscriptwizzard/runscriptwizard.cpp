@@ -1,9 +1,5 @@
 #include "runscriptwizard.h"
 
-#include <QDebug>
-
-#include <QString>
-
 haevn::view::RunScriptWizard::RunScriptWizard(int width, int height, haevn::core::models::Model* t_appModel, QWidget *parent) : QWizard(parent){
 
     setMinimumSize(width, height);
