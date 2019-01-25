@@ -1,0 +1,2 @@
+# Place scripts inside data/scripts and copy their path into this file
+# Example /data/scripts/example.lua

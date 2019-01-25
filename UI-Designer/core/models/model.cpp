@@ -3,7 +3,7 @@
 
 haevn::core::models::Model::Model() : QObject(){
     m_scenegraph = new QList<QWidget*>();
-    haevn::core::file::FileIO fileHandler;
+    haevn::core::util::FileUtils fileHandler;
     m_scripts = fileHandler.loadScripts();
 }
 

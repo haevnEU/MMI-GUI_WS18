@@ -8,7 +8,7 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 
-#include "core/export/fileio.h"
+#include "core/util/fileutils.h"
 #include "core/lua/luahandle.h"
 #include "core/models/model.h"
 

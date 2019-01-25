@@ -4,7 +4,7 @@
 #include <QWizard>
 
 #include "core/lua/luahandle.h"
-#include "core/export/fileio.h"
+#include "core/util/fileutils.h"
 #include "core/models/model.h"
 #include "core/visual/hlistwidgetitem.h"
 

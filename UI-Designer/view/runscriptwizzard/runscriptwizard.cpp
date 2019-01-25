@@ -31,7 +31,7 @@ haevn::view::RunScriptWizard::~RunScriptWizard(){
 void haevn::view::RunScriptWizard::accept(){
 
     if(m_resultPage->isExportChecked()){
-        haevn::core::file::FileIO().write(m_resultPage->getResult().toStdString().c_str());
+        haevn::core::util::FileUtils().write(m_resultPage->getResult().toStdString().c_str());
     }
     QDialog::accept();
 }
