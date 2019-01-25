@@ -15,6 +15,7 @@
 #include "core/visual/htreeview.h"
 #include "core/lua/luahandle.h"
 #include "core/models/model.h"
+#include "core/util/fileutils.h"
 
 namespace Ui {
 class MainWindow;
@@ -194,6 +195,28 @@ namespace haevn {
              * @param checked - Qt internal.
              */
             void newSceneTriggered(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu reload script library was clicked.
+             * @details This method will read again the build.toc
+             * @param checked - Qt internal.
+             */
+            void reloadScriptLibrary(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu repair was clicked.
+             * @details This method will repair the application files.
+             * @param checked - Qt internal.
+             */
+            void repairTriggered(bool checked = false);
+
+            /**
+             * @brief This slot is triggered when the menu reset was clicked.
+             * @details This method will deletes all data inside data folder,
+             * it also resets the build.toc file.
+             * @param checked - Qt internal.
+             */
+            void resetTriggered(bool checked = false);
 
             /**
              * @brief This slot is triggered when the menu help was clicked.

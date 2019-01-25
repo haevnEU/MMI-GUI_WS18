@@ -41,6 +41,14 @@ namespace haevn{
                 virtual ~Model();
 
                 /**
+                 * @brief Loads the scripts from the toc file
+                 * @details This method will read the script.toc in the root application directory.
+                 * The scripts are placed in a QMap, the filename is used as the key and the path
+                 * is used as a value.
+                 */
+                void loadScripts();
+
+                /**
                  * @brief Gets all available scripts
                  * @details This Method returns a pointer to a map which contains all scripts,
                  * which were declared inside a scripts.toc file, which is placed in the root directory

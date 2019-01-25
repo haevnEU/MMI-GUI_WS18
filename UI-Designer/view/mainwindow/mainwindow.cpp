@@ -1,19 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-/*
- *
- +--------------------------------------+
- | TODO                                 |
- +--------------------------------------+
- | [ ] Implement method contentChanged  |
- | [ ] Implement save method            |
- | [ ] Implement load method            |
- |                                      |
- +--------------------------------------+
- *
- */
-
 haevn::view::MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
@@ -78,13 +65,15 @@ haevn::view::MainWindow::MainWindow(QWidget *parent) :
     connect(ui->sbObjectMaxWidth, SIGNAL(valueChanged(int)), this, SLOT(minWidthChanged(int)));
     connect(ui->sbObjectMinHeight, SIGNAL(valueChanged(int)), this, SLOT(minHeightChanged(int)));
 
-    connect(ui->leContent, SIGNAL(textChanged(QString)), this, SLOT(contentChanged(QString)));
     connect(ui->leTooltip, SIGNAL(textChanged(QString)), this, SLOT(tooltipChanged(QString)));
     connect(ui->leName, SIGNAL(textChanged(QString)), this, SLOT(nameChanged(QString)));
 
     connect(ui->cbEnabled, SIGNAL(stateChanged(int)), this, SLOT(enabledChanged(int)));
 
     connect(ui->actionNewScene, SIGNAL(triggered(bool)), this, SLOT(newSceneTriggered(bool)));
+    connect(ui->actionReload_script_library, SIGNAL(triggered(bool)), this, SLOT(reloadScriptLibrary(bool)));
+    connect(ui->actionRepair, SIGNAL(triggered(bool)), this, SLOT(repairTriggered(bool)));
+    connect(ui->actionReset, SIGNAL(triggered(bool)), this, SLOT(resetTriggered(bool)));
 
     connect(ui->actionBuild, SIGNAL(triggered(bool)), this, SLOT(buildTriggered(bool)));
 
@@ -308,8 +297,24 @@ void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
 void haevn::view::MainWindow::newSceneTriggered(bool checked){
     if (QMessageBox::Yes == QMessageBox(QMessageBox::Question, "GUI Designer", "Are you sure to reset the scene?"
                                         "\nThis cannot be undone.", QMessageBox::Yes|QMessageBox::No).exec()){
-
         m_scene->clear();
+    }
+}
+
+void haevn::view::MainWindow::reloadScriptLibrary(bool checked){
+    m_applicationModel->loadScripts();
+}
+
+void haevn::view::MainWindow::repairTriggered(bool checked){
+    haevn::core::util::FileUtils fileHandler;
+    fileHandler.checkFiles();
+}
+
+void haevn::view::MainWindow::resetTriggered(bool checked){
+    if (QMessageBox::Yes == QMessageBox(QMessageBox::Question, "GUI Designer", "You are about to reset all application data."
+                                        "\nThis cannot be undone.\nAre you sure?", QMessageBox::Yes|QMessageBox::No).exec()){
+        haevn::core::util::FileUtils fileHandler;
+        fileHandler.checkFiles(true);
     }
 }
 

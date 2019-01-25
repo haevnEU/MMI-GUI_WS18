@@ -9,8 +9,11 @@ int main(int argc, char *argv[]){
 
     for(int i = 0; i < argc; i++){
         QString arg = QString(argv[i]);
-        qDebug() << arg;
         if(arg.contains("repair")){
+            haevn::core::util::FileUtils fileHandler;
+            fileHandler.checkFiles();
+        }
+        if(arg.contains("reset")){
             haevn::core::util::FileUtils fileHandler;
             fileHandler.checkFiles(true);
         }
