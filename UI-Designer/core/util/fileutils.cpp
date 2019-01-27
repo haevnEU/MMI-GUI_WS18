@@ -35,7 +35,6 @@ bool haevn::core::util::FileUtils::fileExist(const char* t_path){
     return file.good();
 }
 
-
 QMap<QString, QString>* haevn::core::util::FileUtils::loadScripts(){
     QMap<QString, QString>* availableScripts = new QMap<QString, QString>();
 
@@ -79,17 +78,19 @@ void haevn::core::util::FileUtils::checkFiles(bool forceRepair){
     QFile tocFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/build.toc"));
     QFile settingsFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/settings.lua"));
     QDir scriptDirectory(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts"));
+    QFile exampleFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts/example.lua"));
 
     // The directory should be reseted
     if(forceRepair){
         QDir root(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-        root.removeRecursively();
-        repairFiles();
+        if(root.removeRecursively()){
+            repairFiles();
+        }
     }
     // First evaluate the tocFile,
     // the next step is to evaluate the settings file and script direcotry
     // If all exist the repair function is skipped
-    else if(!tocFile.exists() || settingsFile.exists() || !scriptDirectory.exists()){
+    else if(!tocFile.exists() || settingsFile.exists() || !scriptDirectory.exists() || !exampleFile.exists()){
         repairFiles();
     }
 }
@@ -104,6 +105,7 @@ void haevn::core::util::FileUtils::repairFiles(){
     QFile tocFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/build.toc"));
     QFile settingsFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/settings.lua"));
     QDir scriptDirectory(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts"));
+    QFile exampleFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts/example.lua"));
 
     if(!tocFile.exists()){
         tocFile.open(QIODevice::WriteOnly);
@@ -121,5 +123,14 @@ void haevn::core::util::FileUtils::repairFiles(){
         settingsFile.write("# This file contains all settings, note this function is not implemented");
         settingsFile.flush();
         settingsFile.close();
+    }
+
+    if(!exampleFile.exists()){
+        exampleFile.open(QIODevice::WriteOnly);
+        exampleFile.write("-- You can find the example script at"
+                           "\n-- https://github.com/nimile/MMI-GUI/wiki/Empty-script"
+                           "\n-- https://github.com/nimile/MMI-GUI/wiki/API-Beispiel");
+        exampleFile.flush();
+        exampleFile.close();
     }
 }
