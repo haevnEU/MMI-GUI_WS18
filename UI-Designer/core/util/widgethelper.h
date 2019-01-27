@@ -43,6 +43,7 @@ namespace haevn{
              * @date Jan 15, 2019
              */
             class WidgetHelper{
+
             public:
                 /**
                  * @brief Constructor

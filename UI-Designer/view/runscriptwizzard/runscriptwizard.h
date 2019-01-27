@@ -25,8 +25,23 @@ namespace haevn{
         class RunScriptWizard : public QWizard{
             Q_OBJECT
 
-        public:
+        private:
+            /**
+             * @brief This variable represent the intro page
+             */
+            haevn::view::wizzard::IntroPage* m_introPage;
 
+            /**
+             * @brief This variable represent the result page
+             */
+            haevn::view::wizzard::ResultPage* m_resultPage;
+
+            /**
+             * @brief This variable represent the script page
+             */
+            haevn::view::wizzard::ScriptPage* m_scriptPage;
+
+        public:
             /**
              * @brief Constructor
              * @details The constructor will create and initialize important data.
@@ -35,33 +50,15 @@ namespace haevn{
              */
             explicit RunScriptWizard(int width, int height, haevn::core::models::Model* t_appModel, QWidget *parent = nullptr);
 
-            ~RunScriptWizard();
+            virtual ~RunScriptWizard() override;
 
+        private:
             /**
              * @brief accept, occurres if the wizard is finished
              * @details This event occurred iff this wizzard is finished.
              * This method will handle the everything which should happened if this wizard is finished.
              */
             void accept() override;
-
-        private:
-
-            /**
-             * @brief This variable represent the intro page
-             */
-            haevn::view::wizzard::IntroPage* m_introPage;
-
-
-            /**
-             * @brief This variable represent the result page
-             */
-            haevn::view::wizzard::ResultPage* m_resultPage;
-
-
-            /**
-             * @brief This variable represent the script page
-             */
-            haevn::view::wizzard::ScriptPage* m_scriptPage;
 
         };
     }

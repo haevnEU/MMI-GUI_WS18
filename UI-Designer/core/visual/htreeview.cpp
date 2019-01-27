@@ -5,25 +5,27 @@ haevn::core::visual::HTreeView::HTreeView(QWidget *parent) : QTreeWidget(parent)
 }
 
 void haevn::core::visual::HTreeView::startDrag(Qt::DropActions supportedActions){
-
+    // Start of drag detected. The drag operation need some data
+    // Create new drag object an QMimedata
     QDrag* drag = new QDrag(this);
     QMimeData* mimeData = new QMimeData();
 
     mimeData->setText(currentItem()->text(0));
+
+    // One property is the type, a type is an enum which describes current selected item
     mimeData->setProperty("type", currentItem()->data(0, Qt::ItemDataRole::UserRole));
     drag->setMimeData(mimeData);
     Qt::DropAction dropAction = drag->exec();
 }
 
 void haevn::core::visual::HTreeView::addRootHeader(QString name){
-
     QTreeWidgetItem* treeItemButton = new QTreeWidgetItem();
     treeItemButton->setText(0, name);
     addTopLevelItem(treeItemButton);
 }
 
 void haevn::core::visual::HTreeView::insertData(int level, haevn::core::enums::e_widget t_type){
-
+    // The item deepth shouldnt exceed the amount of top level header
     if(level >= getTopLevelCount()){
         return;
     }
@@ -31,6 +33,8 @@ void haevn::core::visual::HTreeView::insertData(int level, haevn::core::enums::e
     QTreeWidgetItem* item = new QTreeWidgetItem();
     QString tooltip;
     // Used to set different UI types as tree view data
+    // The tooltip is the object type name, eg button, label ,etc.
+    // The data is a customized enum, which represent all available ui elements
     switch(t_type){
         // Control part
         case haevn::core::enums::e_widget::control_Button:

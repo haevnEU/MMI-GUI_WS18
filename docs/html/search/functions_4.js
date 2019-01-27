@@ -6,7 +6,6 @@ var searchData=
   ['getint',['getInt',['../classhaevn_1_1core_1_1lua_1_1_lua_handle.html#abadadb9e6f4c046dad786539d5b28d44',1,'haevn::core::lua::LuaHandle']]],
   ['getkey',['getKey',['../classhaevn_1_1visual_1_1_h_list_widget_item.html#aab7e4d50295c2ae46d880a026916ed2d',1,'haevn::visual::HListWidgetItem']]],
   ['getnumber',['getNumber',['../classhaevn_1_1core_1_1lua_1_1_lua_handle.html#a819edc33349a096da754fd706fa2afcc',1,'haevn::core::lua::LuaHandle']]],
-  ['getresourcepath',['getResourcePath',['../classhaevn_1_1core_1_1models_1_1_model.html#af6662d03d1acbadd24b4b33cbc257c6b',1,'haevn::core::models::Model']]],
   ['getresult',['getResult',['../classhaevn_1_1view_1_1wizzard_1_1_result_page.html#aa12fa1809ec080e91ea361e936c491ea',1,'haevn::view::wizzard::ResultPage']]],
   ['getscenegraph',['getScenegraph',['../classhaevn_1_1core_1_1models_1_1_model.html#a2c88be9f98d0621512826baeca98d4c2',1,'haevn::core::models::Model::getScenegraph()'],['../classhaevn_1_1core_1_1visual_1_1_scene.html#aeb57badd21882c795b6f73f4ae3b3cda',1,'haevn::core::visual::Scene::getScenegraph()']]],
   ['getscripts',['getScripts',['../classhaevn_1_1core_1_1models_1_1_model.html#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae',1,'haevn::core::models::Model']]],

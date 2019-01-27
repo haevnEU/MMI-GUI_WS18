@@ -23,13 +23,18 @@ namespace haevn{
             class Model : public QObject{
                 Q_OBJECT
 
-
-            // static variables
             private:
+                /**
+                 * @brief This variable represents the scenegraph
+                 */
+                QList<QWidget*>* m_scenegraph;
 
-             // public methods
+                /**
+                  * @brief This variable represents all available scripts read by scripts.toc
+                  */
+                QMap<QString, QString>* m_scripts;
+
              public:
-
                 /**
                  * @brief Constructor
                  * @details The constructor isnt available public.
@@ -72,47 +77,7 @@ namespace haevn{
                  */
                 QList<QWidget*>* getScenegraph();
 
-                /**
-                 * @brief Sets the path to resources
-                 * @details This method will set the path to the resource folder
-                 * The resource folder contains everything what the application
-                 * needs to operate.
-                 * See readme for further information about resource folder.
-                 * @param t_resourcePath - String which represent the OS specific path
-                 */
-                void setResourcePath(QString t_resourcePath);
-
-                /**
-                 * @brief Gets the path to the resource folder
-                 * @details This method will return an OS specific path to the
-                 * resource folder.
-                 * @return String
-                 */
-                QString getResourcePath();
-
-
-            // private variables
-            private:
-                /**
-                 * @brief This variable represents the scenegraph
-                 */
-                QList<QWidget*>* m_scenegraph;
-
-                /**
-                 * @brief This variable represents all available scripts read by scripts.toc
-                 */
-                QMap<QString, QString>* m_scripts;
-
-                /**
-                 * @brief This variable represents the resourepath
-                 */
-                QString m_resourcePath;
-
-            signals:
-
-
             public slots:
-
                 /**
                  * @brief Adds an item to the scenegraph
                  * @details This method will add an item to the scenegraph.

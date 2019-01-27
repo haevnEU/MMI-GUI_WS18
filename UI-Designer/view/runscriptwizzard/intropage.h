@@ -19,8 +19,13 @@ namespace haevn{
             class IntroPage : public QWizardPage{
                 Q_OBJECT
 
-            public:
+            private:
+                /**
+                 * @brief This is a ui element which represent basic information at startup
+                 */
+                QLabel* m_lbInformation;
 
+            public:
                 /**
                  * @brief Constructor
                  * @details The constructor will create and initialize important data.
@@ -29,12 +34,6 @@ namespace haevn{
                 explicit IntroPage(QWidget* parent = nullptr);
 
                 ~IntroPage();
-
-            private:
-                /**
-                 * @brief This is a ui element which represent basic information at startup
-                 */
-                QLabel* m_lbInformation;
             };
         }
     }

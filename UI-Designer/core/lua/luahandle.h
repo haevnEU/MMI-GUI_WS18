@@ -52,7 +52,7 @@ extern "C"{
 
 namespace haevn{
     namespace core{
-        // This namespace contains everything about lua interaction
+
         namespace lua{
 
             /**
@@ -78,7 +78,6 @@ namespace haevn{
                      */
                     lua_State* L;
 
-
                     /**
                      * @brief This method tests if all three condidions are valid.
                      * @details This method has an internal usage,
@@ -88,7 +87,6 @@ namespace haevn{
                      * Otherwise the index is also tested against the s_models scenegraphsize
                      */
                     static bool validate(lua_State* L, haevn::core::models::Model* s_model = nullptr, int idx = -1);
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -102,13 +100,11 @@ namespace haevn{
                      */
                     static int print(lua_State* L);
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getSceneGraphSize(lua_State* L);
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -116,13 +112,11 @@ namespace haevn{
                      */
                     static int createMessageBox(lua_State* L);
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getHeight(lua_State* L) ;
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -130,13 +124,11 @@ namespace haevn{
                      */
                     static int getMaxHeight(lua_State* L) ;
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getMinHeight(lua_State* L) ;
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -144,13 +136,11 @@ namespace haevn{
                      */
                     static int getWidth(lua_State* L) ;
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getMaxWidth(lua_State* L) ;
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -158,13 +148,11 @@ namespace haevn{
                      */
                     static int getMinWidth(lua_State* L) ;
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getPositionX(lua_State* L);
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -172,13 +160,11 @@ namespace haevn{
                      */
                     static int getPositionY(lua_State* L);
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getName(lua_State* L);
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -186,13 +172,11 @@ namespace haevn{
                      */
                     static int getEnabled(lua_State* L);
 
-
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
                      * @details This method is documented inside the GitHub repo
                      */
                     static int getTooltip(lua_State* L);
-
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.
@@ -200,7 +184,6 @@ namespace haevn{
                      */
                     static int getType(lua_State* L);
 
-                // public methods
                 public:
 
                     /**
@@ -254,12 +237,6 @@ namespace haevn{
                      * @return bool value from name
                      */
                     bool getBool(const char* name);
-
-                    // !TODO
-                    /**
-                     * @brief This method will be implemented in a future release
-                     */
-                    void setConfig(const char* name, const char* value);
 
                     /**
                      * @brief This method gets the last error message.

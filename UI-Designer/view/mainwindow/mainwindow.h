@@ -7,15 +7,13 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 
-
-#include "view/runscriptwizzard/runscriptwizard.h"
-
 #include "core/enums/enumerations.h"
 #include "core/visual/scene.h"
 #include "core/visual/htreeview.h"
 #include "core/lua/luahandle.h"
 #include "core/models/model.h"
 #include "core/util/fileutils.h"
+#include "view/runscriptwizzard/runscriptwizard.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,13 +29,10 @@ namespace haevn {
          * @version 1.0
          * @date Jan 15, 2019
          */
-        class MainWindow : public QMainWindow
-        {
+        class MainWindow : public QMainWindow{
             Q_OBJECT
 
-        // public methods
         public:
-
             /**
              * @brief Constructor
              * @details The constructor will create and initialize important data.
@@ -56,25 +51,28 @@ namespace haevn {
              */
             void resizeEvent(QResizeEvent* t_event);
 
-        // private variables
         private:
-
-            /// This element contains all tools
+            /**
+             * @brief This element contains all tools
+             */
             haevn::core::visual::HTreeView* tools;
 
-            /// This element contains the scene
+            /**
+             * @brief This element contains the scene
+             */
             haevn::core::visual::Scene* m_scene;
 
-
+            /**
+             * @brief This variable represent basic application data
+             */
             haevn::core::models::Model* m_applicationModel;
 
-            /// Qt variable
+            /**
+             * @brief QT Internal variable
+             */
             Ui::MainWindow *ui;
 
-        signals:
-
         public slots:
-
             /**
              * @brief Sets the width of the selected widget.
              * @details This method will set the width of the selected widget.
@@ -245,7 +243,6 @@ namespace haevn {
              * @param checked - Qt internal.
              */
             void aboutLuaTriggered(bool checked = false);
-
         };
 
     }

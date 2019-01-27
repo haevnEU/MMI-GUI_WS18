@@ -1,11 +1,10 @@
 #include "widgethelper.h"
 
 haevn::core::util::WidgetHelper::WidgetHelper(){
-
 }
 
 haevn::core::enums::e_widget haevn::core::util::WidgetHelper::getType(QWidget* obj){
-
+    // This method used the dynamic_cast to compare an param with all available ui elements
     if(QRadioButton* tmp = dynamic_cast<QRadioButton*>(obj)){
         return haevn::core::enums::control_RadioButton;
     } else if(QCheckBox* tmp = dynamic_cast<QCheckBox*>(obj)){
@@ -45,7 +44,6 @@ haevn::core::enums::e_widget haevn::core::util::WidgetHelper::getType(QWidget* o
     }else if(QTreeWidget* tmp = dynamic_cast<QTreeWidget*>(obj)){
             return haevn::core::enums::dataVisualization_TreeView;
     }
-
     // LAYOUT
 
     else{

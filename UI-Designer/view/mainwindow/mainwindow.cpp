@@ -90,7 +90,9 @@ haevn::view::MainWindow::~MainWindow(){
     delete m_scene;
     delete m_applicationModel;
     delete ui;
+    delete tools;
 
+    tools = nullptr;
     m_scene = nullptr;
     m_applicationModel = nullptr;
 }
@@ -98,8 +100,6 @@ haevn::view::MainWindow::~MainWindow(){
 // Events
 
 void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
-
-
     // The height equals the window height without the size of the menubar, a small space(10px) below the menubar and at the bottom
     // and a small space at the bottom (20px)
     int height = t_event->size().height() - ui->menuBar->height() - 2 * 10;
@@ -130,7 +130,6 @@ void haevn::view::MainWindow::resizeEvent(QResizeEvent* t_event){
 
     ui->details->resize(300, height);
     ui->details->move(detailsPosX, ui->details->pos().y());
-
 }
 
 //End events
@@ -251,11 +250,9 @@ void haevn::view::MainWindow::enabledChanged(int t_visibility){
             ui->cbEnabled->setText("State unknown");
         }
     }
-
 }
 
 void haevn::view::MainWindow::selectedWidgetChanged(QWidget* widget){
-
     // Set default properties
     if(nullptr == widget){
         ui->spPosX->setValue(0);
@@ -324,11 +321,9 @@ void haevn::view::MainWindow::buildTriggered(bool checked){
     int height = static_cast<int>(size().height() * 0.8);
     haevn::view::RunScriptWizard wizzard(width, height, m_applicationModel);
     wizzard.exec();
-
 }
 
 void haevn::view::MainWindow::aboutTriggered(bool checked){
-
     // Ask user to open the browser
     if (QMessageBox::Yes == QMessageBox(QMessageBox::
                                         Information, "GUI Designer", "This application is develop and maintained by Nils Milewski"

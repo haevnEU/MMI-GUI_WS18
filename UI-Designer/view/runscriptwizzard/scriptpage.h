@@ -23,20 +23,8 @@ namespace haevn{
              */
             class ScriptPage : public QWizardPage{
                 Q_OBJECT
-            public:
-
-                /**
-                 * @brief Constructor
-                 * @details The constructor will create and initialize important data.
-                 * @param t_appModel - this parameter contains the application model
-                 * @param parent - default = nullptr, it could be a reference to the parent.
-                 */
-                ScriptPage(haevn::core::models::Model* t_appmodel,  QWidget* parent = nullptr);
-
-                ~ScriptPage();
 
             private:
-
                 /**
                  * @brief This label contains information about the page
                  */
@@ -62,7 +50,18 @@ namespace haevn{
                  */
                 QList<haevn::visual::HListWidgetItem>* m_items;
 
+            public:
+                /**
+                 * @brief Constructor
+                 * @details The constructor will create and initialize important data.
+                 * @param t_appModel - this parameter contains the application model
+                 * @param parent - default = nullptr, it could be a reference to the parent.
+                 */
+                ScriptPage(haevn::core::models::Model* t_appmodel,  QWidget* parent = nullptr);
 
+                ~ScriptPage();
+
+            private:
                 /**
                  * @brief ShowEvent, occurres if the page is visible
                  * @details This event occurred iff this page is activated.
@@ -82,7 +81,6 @@ namespace haevn{
                 bool validatePage();
 
             public slots:
-
                 /**
                  * @brief itemSelectionChanged, this slot is called if the listwidget index changed
                  * @details This slot is called if the user changed the entry inside the list widget.

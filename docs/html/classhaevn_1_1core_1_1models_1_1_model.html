@@ -95,6 +95,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae368de80b21067ba4c7e50ef79a0922"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#aae368de80b21067ba4c7e50ef79a0922">Model</a> ()</td></tr>
 <tr class="memdesc:aae368de80b21067ba4c7e50ef79a0922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aae368de80b21067ba4c7e50ef79a0922">More...</a><br /></td></tr>
 <tr class="separator:aae368de80b21067ba4c7e50ef79a0922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b617731b65d994d97e6f128a8ff01c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a26b617731b65d994d97e6f128a8ff01c">loadScripts</a> ()</td></tr>
+<tr class="memdesc:a26b617731b65d994d97e6f128a8ff01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the scripts from the toc file.  <a href="#a26b617731b65d994d97e6f128a8ff01c">More...</a><br /></td></tr>
+<tr class="separator:a26b617731b65d994d97e6f128a8ff01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="memItemLeft" align="right" valign="top">QMap&lt; QString, QString &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae">getScripts</a> ()</td></tr>
 <tr class="memdesc:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all available scripts.  <a href="#aeb8da5d8ffbb0f7f7514b4ef3e17e5ae">More...</a><br /></td></tr>
 <tr class="separator:aeb8da5d8ffbb0f7f7514b4ef3e17e5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,12 +107,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c88be9f98d0621512826baeca98d4c2"><td class="memItemLeft" align="right" valign="top">QList&lt; QWidget * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#a2c88be9f98d0621512826baeca98d4c2">getScenegraph</a> ()</td></tr>
 <tr class="memdesc:a2c88be9f98d0621512826baeca98d4c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the scenegraph.  <a href="#a2c88be9f98d0621512826baeca98d4c2">More...</a><br /></td></tr>
 <tr class="separator:a2c88be9f98d0621512826baeca98d4c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab37adc6377e3efbe00a1bfed860db0ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#ab37adc6377e3efbe00a1bfed860db0ae">setResourcePath</a> (QString t_resourcePath)</td></tr>
-<tr class="memdesc:ab37adc6377e3efbe00a1bfed860db0ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the path to resources.  <a href="#ab37adc6377e3efbe00a1bfed860db0ae">More...</a><br /></td></tr>
-<tr class="separator:ab37adc6377e3efbe00a1bfed860db0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6662d03d1acbadd24b4b33cbc257c6b"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhaevn_1_1core_1_1models_1_1_model.html#af6662d03d1acbadd24b4b33cbc257c6b">getResourcePath</a> ()</td></tr>
-<tr class="memdesc:af6662d03d1acbadd24b4b33cbc257c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path to the resource folder.  <a href="#af6662d03d1acbadd24b4b33cbc257c6b">More...</a><br /></td></tr>
-<tr class="separator:af6662d03d1acbadd24b4b33cbc257c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represent the application data. </p>
@@ -182,26 +179,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="af6662d03d1acbadd24b4b33cbc257c6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6662d03d1acbadd24b4b33cbc257c6b">&#9670;&nbsp;</a></span>getResourcePath()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString haevn::core::models::Model::getResourcePath </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the path to the resource folder. </p>
-<p>This method will return an OS specific path to the resource folder. </p><dl class="section return"><dt>Returns</dt><dd>String </dd></dl>
 
 </div>
 </div>
@@ -282,6 +259,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a26b617731b65d994d97e6f128a8ff01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b617731b65d994d97e6f128a8ff01c">&#9670;&nbsp;</a></span>loadScripts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void haevn::core::models::Model::loadScripts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads the scripts from the toc file. </p>
+<p>This method will read the script.toc in the root application directory. The scripts are placed in a QMap, the filename is used as the key and the path is used as a value. </p>
+
+</div>
+</div>
 <a id="aa818adcedf951381f84aa345dc893e24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa818adcedf951381f84aa345dc893e24">&#9670;&nbsp;</a></span>removeItem</h2>
 
@@ -310,32 +307,6 @@ Public Member Functions</h2></td></tr>
 <p>This method will remove an item from the scenegraph. This is a slot which made a call by the scenegraph remove item signal possible. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t_item</td><td>- Pointer to the item which should be added </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab37adc6377e3efbe00a1bfed860db0ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab37adc6377e3efbe00a1bfed860db0ae">&#9670;&nbsp;</a></span>setResourcePath()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void haevn::core::models::Model::setResourcePath </td>
-          <td>(</td>
-          <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>t_resourcePath</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the path to resources. </p>
-<p>This method will set the path to the resource folder The resource folder contains everything what the application needs to operate. See readme for further information about resource folder. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t_resourcePath</td><td>- String which represent the OS specific path </td></tr>
   </table>
   </dd>
 </dl>

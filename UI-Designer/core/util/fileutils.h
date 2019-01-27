@@ -1,24 +1,11 @@
 #ifndef DATAEXPORT_H
 #define DATAEXPORT_H
 
-/*
- *
- +--------------------------------------+
- | TODO                                 |
- +--------------------------------------+
- |                                      |
- | [ ] Implement method getResourcePath |
- | [ ] Implement method getDataPath     |
- | [ ] Implement method read            |
- |                                      |
- +--------------------------------------+
- *
- */
-
-
 #include <iostream>
 #include <fstream>
+
 #include <QApplication>
+#include <QStandardPaths>
 
 #include <QObject>
 #include <QList>
@@ -36,8 +23,8 @@ namespace haevn{
             class FileUtils{
 
             public:
-
                 FileUtils();
+
                 ~FileUtils();
 
                 #ifdef _WIN32
@@ -79,13 +66,12 @@ namespace haevn{
                  * @param forceRepair - bool This can be set if the directory must be reseted, it is default disabled
                  */
                 void checkFiles(bool forceRepair = false);
-            private:
 
+            private:
                 /**
                  * @brief This method should be called iff the method checkFiles find finds a problem.
                  * This is an internal method which replace corupted files with new one.
                  * It will also create new files iff they not exist.
-                 *
                  */
                 void repairFiles();
             };

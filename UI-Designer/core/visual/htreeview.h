@@ -28,7 +28,7 @@ namespace haevn {
             class HTreeView : public QTreeWidget {
                 Q_OBJECT
 
-            // public methods
+
             public:
 
                 /**
@@ -74,10 +74,6 @@ namespace haevn {
                  * @return Ammount of sections
                  */
                 int getTopLevelCount();
-
-            signals:
-
-            public slots:
 
             };
 

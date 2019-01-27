@@ -20,49 +20,8 @@ namespace haevn{
              */
             class SelectionModel : public QObject{
                 Q_OBJECT
-            // public static methods
-            public:
 
-            // static variables
-            private:
-
-
-                /**
-                 * @brief  Application model
-                 */
-                static haevn::core::models::Model* s_model;
-
-            // public methods
-            public:
-                /**
-                 * @brief Constructor
-                 * @details The constructor isnt available public.
-                 * It isnt public available due to singleton pattern.
-                 * @param parent
-                 */
-                explicit SelectionModel();
-
-                virtual ~SelectionModel();
-
-                /**
-                 * @brief Selects a widther
-                 * @details This method will select a widget which should be represent
-                 * by this class
-                 * @param t_selection - Pointer to a widget which represent represent
-                 * the current selected widget
-                 */
-                void selectWidget(QWidget* t_selection);
-
-                /**
-                 * @brief gets the current selected widget
-                 * @details This method will return the current selected widget
-                 * @return QWidget pointer to the current widget.
-                 */
-                QWidget* getSelectedwidget();
-
-            // protected variables
             protected:
-
                 /**
                  * @brief  This variable represents the height.
                  */
@@ -119,27 +78,43 @@ namespace haevn{
                 QString m_content;
 
                 /**
-                 * @brief  This variable represents the name of the object.
-                 */
+                  * @brief  This variable represents the name of the object.
+                  */
                 QString m_name;
-
-                /**
-                 * @brief  This variable represents the background color.
-                 */
-                QColor m_background;
-
-                /**
-                 * @brief  This variable represents the foreground color.
-                 */
-                QColor m_foreground;
 
                 /**
                  * @brief  This variable represent the current widget.
                  */
                 QWidget* selectedWidget;
 
-            signals:
+            public:
+                /**
+                 * @brief Constructor
+                 * @details The constructor isnt available public.
+                 * It isnt public available due to singleton pattern.
+                 * @param parent
+                 */
+                explicit SelectionModel();
 
+                virtual ~SelectionModel();
+
+                /**
+                 * @brief Selects a widther
+                 * @details This method will select a widget which should be represent
+                 * by this class
+                 * @param t_selection - Pointer to a widget which represent represent
+                 * the current selected widget
+                 */
+                void selectWidget(QWidget* t_selection);
+
+                /**
+                 * @brief gets the current selected widget
+                 * @details This method will return the current selected widget
+                 * @return QWidget pointer to the current widget.
+                 */
+                QWidget* getSelectedwidget();
+
+            signals:
                 /**
                  * @brief Should be emited iff the current widget changed.
                  * @details This signal will be emited iff the current widget was changed.
@@ -219,7 +194,6 @@ namespace haevn{
                 void tooltipChanged(QString tooltip);
 
               public slots:
-
                 /**
                  * @brief Sets the height of the selected widget.
                  * @details This method will set the height of the selected widget.

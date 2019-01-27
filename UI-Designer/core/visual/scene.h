@@ -58,7 +58,6 @@
 #include "core/enums/enumerations.h"
 #include "core/util/fileutils.h"
 
-
 namespace haevn{
     namespace core {
         namespace visual{
@@ -74,9 +73,100 @@ namespace haevn{
             class Scene : public QGraphicsScene {
                 Q_OBJECT
 
-            // public methods
-            public:
+            private:
 
+                /**
+                 * @brief  This variable represent the application model
+                 */
+                haevn::core::models::Model* m_applicationModel;
+
+                /**
+                 * @brief  This variable represent the selection model
+                 */
+                haevn::core::models::SelectionModel* m_selectionModel;
+
+                /**
+                 * @brief  This variable determines if an object is grabbed.
+                 */
+                bool m_grab = false;
+
+                /**
+                 * @brief  This variable contains all widgets, it must be synchronize with the model.
+                 */
+                QList<QWidget*>* m_scenegraph;
+
+                /**
+                 * @brief  This variable is used to count the instered buttons.
+                 */
+                int m_buttonCounter;
+
+                /**
+                 * @brief  This variable counts the instered checkbox.
+                 */
+                int m_checkBoxCounter;
+
+                /**
+                 * @brief  This variable counts the instered radionbutton.
+                 */
+                int m_radioButtonCounter;
+
+                /**
+                 * @brief  This variable counts the instered time input widgets.
+                 */
+                int m_timeCounter;
+
+                /**
+                 * @brief  This variable counts the instered date input widgets.
+                 */
+                int m_dateCounter;
+
+                /**
+                 * @brief  This variable counts the instered spinbox.
+                 */
+                int m_spinBoxCounter;
+
+                /**
+                 * @brief  This variable counts the instered slider.
+                 */
+                int m_sliderCounter;
+
+                /**
+                 * @brief  This variable counts the instered combobox.
+                 */
+                int m_comboBoxCounter;
+
+                /**
+                 * @brief  This variable counts the instered inputfield.
+                 */
+                int m_textFieldCounter;
+
+                /**
+                 * @brief  This variable counts the instered label.
+                 */
+                int m_labelCounter;
+
+                /**
+                 * @brief  This variable counts the instered progressbar.
+                 */
+                int m_progressBarCounter;
+
+
+                /**
+                 * @brief  This variable counts the instered treewidgets.
+                 */
+                int m_treeWidgetCounter;
+
+                /**
+                 * @brief  This variable counts the instered tables.
+                 */
+                int m_tableWidgetCounter;
+
+                /**
+                 * @brief  This variable counts the instered listwidgets.
+                 */
+                int m_listViewCounter;
+
+            public:
                 /**
                  * @brief Constructor
                  * @details The constructor will create and initialize important data.
@@ -172,103 +262,7 @@ namespace haevn{
                  */
                 QList<QWidget*>* getScenegraph();
 
-            // private variables
-            private:
-
-                /**
-                 * @brief  This variable represent the application model
-                 */
-                haevn::core::models::Model* m_applicationModel;
-
-                /**
-                 * @brief  This variable represent the selection model
-                 */
-                haevn::core::models::SelectionModel* m_selectionModel;
-
-                /**
-                 * @brief  This variable determines if an object is grabbed.
-                 */
-                bool m_grab = false;
-
-                /**
-                 * @brief  This variable contains all widgets, it must be synchronize with the model.
-                 */
-                QList<QWidget*>* m_scenegraph;
-
-                /**
-                 * @brief  This variable is used to count the instered buttons.
-                 */
-                int m_buttonCounter;
-
-                /**
-                 * @brief  This variable counts the instered checkbox.
-                 */
-                int m_checkBoxCounter;
-
-                /**
-                 * @brief  This variable counts the instered radionbutton.
-                 */
-                int m_radioButtonCounter;
-
-                /**
-                 * @brief  This variable counts the instered time input widgets.
-                 */
-                int m_timeCounter;
-
-                /**
-                 * @brief  This variable counts the instered date input widgets.
-                 */
-                int m_dateCounter;
-
-                /**
-                 * @brief  This variable counts the instered spinbox.
-                 */
-                int m_spinBoxCounter;
-
-                /**
-                 * @brief  This variable counts the instered slider.
-                 */
-                int m_sliderCounter;
-
-                /**
-                 * @brief  This variable counts the instered combobox.
-                 */
-                int m_comboBoxCounter;
-
-                /**
-                 * @brief  This variable counts the instered inputfield.
-                 */
-                int m_textFieldCounter;
-
-                /**
-                 * @brief  This variable counts the instered label.
-                 */
-                int m_labelCounter;
-
-                /**
-                 * @brief  This variable counts the instered progressbar.
-                 */
-                int m_progressBarCounter;
-
-
-                /**
-                 * @brief  This variable counts the instered treewidgets.
-                 */
-                int m_treeWidgetCounter;
-
-                /**
-                 * @brief  This variable counts the instered tables.
-                 */
-                int m_tableWidgetCounter;
-
-                /**
-                 * @brief  This variable counts the instered listwidgets.
-                 */
-                int m_listViewCounter;
-
             signals:
-
-
                 /**
                  * @brief Emits the insertion of an element
                  * @details This signal will be emited iff an item was inserted
@@ -284,7 +278,6 @@ namespace haevn{
                  */
                 void selectedItemChanged(QWidget* t_item);
 
-            public slots:
             };
         }
     }

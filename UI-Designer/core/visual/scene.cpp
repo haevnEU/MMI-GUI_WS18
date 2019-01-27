@@ -22,7 +22,6 @@ haevn::core::visual::Scene::Scene(haevn::core::models::Model* t_applicationModel
     m_treeWidgetCounter = 0;
     m_tableWidgetCounter = 0;
     m_listViewCounter = 0;
-
 }
 
 haevn::core::visual::Scene::~Scene(){
@@ -46,7 +45,6 @@ void haevn::core::visual::Scene::dragLeaveEvent(QGraphicsSceneDragDropEvent *eve
 }
 
 void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
-
     // get the type of the dropped widget
     haevn::core::enums::e_widget t_type = static_cast<haevn::core::enums::e_widget>(event->mimeData()->property("type").toInt());
 
@@ -204,7 +202,6 @@ void haevn::core::visual::Scene::dropEvent(QGraphicsSceneDragDropEvent *event){
 }
 
 void haevn::core::visual::Scene::mousePressEvent(QGraphicsSceneMouseEvent *event){
-
     // Enable moving the items
     if(event->button() == Qt::MouseButton::LeftButton){
         m_grab = true;
@@ -242,7 +239,6 @@ void haevn::core::visual::Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         int y = static_cast<int>(event->scenePos().y());
         m_selectionModel->setPosition(x, y);
     }
-
 }
 
 void haevn::core::visual::Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){

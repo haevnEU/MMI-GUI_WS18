@@ -1,7 +1,6 @@
 #include "runscriptwizard.h"
 
 haevn::view::RunScriptWizard::RunScriptWizard(int width, int height, haevn::core::models::Model* t_appModel, QWidget *parent) : QWizard(parent){
-
     setMinimumSize(width, height);
     setMaximumSize(width, height);
     resize(width, height);
@@ -29,7 +28,6 @@ haevn::view::RunScriptWizard::~RunScriptWizard(){
 }
 
 void haevn::view::RunScriptWizard::accept(){
-
     if(m_resultPage->isExportChecked()){
         haevn::core::util::FileUtils().write(m_resultPage->getResult().toStdString().c_str());
     }

@@ -1,16 +1,12 @@
 #include "fileutils.h"
-#include <QDebug>
 
 haevn::core::util::FileUtils::FileUtils(){
-
 }
 
 haevn::core::util::FileUtils::~FileUtils(){
-
 }
 
 void haevn::core::util::FileUtils::write(const char* t_data){
-
     // Open a new File save dialog
     QString fileName = QFileDialog::getSaveFileName(nullptr, "Export scenegraph", "", "(*.*);;All Files (*)");
 
@@ -32,7 +28,6 @@ void haevn::core::util::FileUtils::write(const char* t_data){
         file.flush();
         file.close();
     }
-
 }
 
 bool haevn::core::util::FileUtils::fileExist(const char* t_path){
@@ -42,12 +37,11 @@ bool haevn::core::util::FileUtils::fileExist(const char* t_path){
 
 
 QMap<QString, QString>* haevn::core::util::FileUtils::loadScripts(){
-
     QMap<QString, QString>* availableScripts = new QMap<QString, QString>();
 
     // The scripts.toc file is contained inside the root directory of the application
     // The toc file contains the path to every build script.
-    QFile inputFile(qApp->applicationDirPath().append("/build.toc"));
+    QFile inputFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/build.toc"));
 
     // Open the file as readonly
     // If the file was opened it is possible to read it
@@ -62,12 +56,11 @@ QMap<QString, QString>* haevn::core::util::FileUtils::loadScripts(){
             // Skip lines which starts with # => comment
             if(!input.startsWith("#")){
                 // Get information about the file
-                QFileInfo fileInfo(qApp->applicationDirPath().append(input));
+                QFileInfo fileInfo(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append(input));
                 QString name = fileInfo.fileName();
                 QString path = fileInfo.filePath();
                 availableScripts->insert(name, path);
             }
-
         }
         inputFile.close();
     }
@@ -79,51 +72,48 @@ void haevn::core::util::FileUtils::checkFiles(bool forceRepair){
     // The directory of the application should look like
     // root
     //  |-----build.toc
-    //  |-----data
+    //  |-----scripts
     //  |       |-----settings.lua
-    //  |       |-----scripts
+    //  |-----scripts
 
-    QFile tocFile(qApp->applicationDirPath().append("/build.toc"));
-    QDir dataDirectory(qApp->applicationDirPath().append("/data"));
-    QFile settingsFile(qApp->applicationDirPath().append("/data/settings.lua"));
-    QDir scriptDirectory(qApp->applicationDirPath().append("/data/scripts"));
+    QFile tocFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/build.toc"));
+    QFile settingsFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/settings.lua"));
+    QDir scriptDirectory(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts"));
 
     // The directory should be reseted
     if(forceRepair){
-        tocFile.remove();
-        dataDirectory.removeRecursively();
+        QDir root(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+        root.removeRecursively();
+        repairFiles();
     }
-
-    // First evaluate the tocFile, the next step is to evaluate the data directory
-    // If one of these doesnt exist the last part will not be evaluated
-    // If booth exist the settings file and script direcotry is evaluated
+    // First evaluate the tocFile,
+    // the next step is to evaluate the settings file and script direcotry
     // If all exist the repair function is skipped
-    if(!tocFile.exists() || !dataDirectory.exists()
-            || !settingsFile.exists() || !scriptDirectory.exists()){
+    else if(!tocFile.exists() || settingsFile.exists() || !scriptDirectory.exists()){
         repairFiles();
     }
 }
 
 void haevn::core::util::FileUtils::repairFiles(){
-    QFile tocFile(qApp->applicationDirPath().append("/build.toc"));
+    QDir root(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
 
-    QDir dataDirectory(qApp->applicationDirPath().append("/data"));
-    QFile settingsFile(qApp->applicationDirPath().append("/data/settings.lua"));
-    QDir scriptDirectory(qApp->applicationDirPath().append("/data/scripts"));
+    if(!root.exists()){
+        root.mkdir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    }
+
+    QFile tocFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/build.toc"));
+    QFile settingsFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/settings.lua"));
+    QDir scriptDirectory(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts"));
 
     if(!tocFile.exists()){
         tocFile.open(QIODevice::WriteOnly);
-        tocFile.write("# Place scripts inside data/scripts and copy their path into this file\n# Example /data/scripts/example.lua");
+        tocFile.write("# Place scripts inside data/scripts and copy their path into this file\n# Example /scripts/example.lua");
         tocFile.flush();
         tocFile.close();
     }
 
-    if(!dataDirectory.exists()){
-        dataDirectory.mkdir(qApp->applicationDirPath().append("/data"));
-    }
-
     if(!scriptDirectory.exists()){
-        scriptDirectory.mkdir(qApp->applicationDirPath().append("/data/scripts"));
+        scriptDirectory.mkdir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/scripts"));
     }
 
     if(!settingsFile.exists()){

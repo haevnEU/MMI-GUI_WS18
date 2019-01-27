@@ -23,6 +23,9 @@ Im Menu sind die Punkte "File", "Run", "Help" beheimatet.
 #### File
 Im Menüpunkt "File" werden sämtliche Interaktionen auf der Dateiebene gruppiert.
 + New (Ctrl N): Löscht alle Elemente des Szenegraph und ermöglicht es eine neue Umgebung zu starten.
++ Reload script library: Liest die build.toc erneut ein.
++ Reset: Löscht alle dateien im ApplicationData Verzeichniss und erstellt diese erneut.
++ Repair: Stellt gelöschte Dateien wieder her.
 #### Run
 Unter dem Menüpunkt "Run" werden Aktionen auf die Übersetzung und Prüfung des Scenegraph sowie Scripts zusammengefasst.
 + Build (Ctrl B): Startet den Buildwizard welcher den Scenegraph in kopierbaren Code übersetzt.

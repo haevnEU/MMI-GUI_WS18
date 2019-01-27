@@ -7,6 +7,8 @@
 #include <QTextEdit>
 #include <QCheckBox>
 #include <QVBoxLayout>
+#include <QProgressBar>
+#include <QThread>
 
 #include "core/util/fileutils.h"
 #include "core/lua/luahandle.h"
@@ -24,8 +26,35 @@ namespace haevn{
              * @date Jan 24, 2019
              */
             class ResultPage : public QWizardPage{
-            public:
+                Q_OBJECT
 
+            private:
+                /**
+                 * @brief This is an ui element which represent basic information about the current page
+                 */
+                QLabel* m_lbInformation;
+
+                /**
+                 * @brief This is an ui element which represent the result, it is possible to copy the content.
+                 */
+                QTextEdit* m_leResult;
+
+                /**
+                 * @brief This is an ui element which enables/disables file export
+                 */
+                QCheckBox* m_cbExportToFile;
+
+                /**
+                 * @brief This variable is an ui element which indicates large operation endurance
+                 */
+                QProgressBar* m_progressBar;
+
+                /**
+                 * @brief This variable represent the application model
+                 */
+                haevn::core::models::Model* m_applicationModel;
+
+            public:
                 /**
                  * @brief Constructor
                  * @details The constructor will create and initialize important data.
@@ -54,27 +83,6 @@ namespace haevn{
                 bool isExportChecked();
 
             private:
-
-                /**
-                 * @brief This is an ui element which represent basic information about the current page
-                 */
-                QLabel* m_lbInformation;
-
-                /**
-                 * @brief This is an ui element which represent the result, it is possible to copy the content.
-                 */
-                QTextEdit* m_leResult;
-
-                /**
-                 * @brief This is an ui element which enables/disables file export
-                 */
-                QCheckBox* m_cbExportToFile;
-
-                /**
-                 * @brief This variable represent the application model
-                 */
-                haevn::core::models::Model* m_applicationModel;
-
                 /**
                  * @brief ShowEvent, occurres if the page is visible
                  * @details This event occurred iff this page is activated.
@@ -82,6 +90,15 @@ namespace haevn{
                  * @param event - This param contains all information about the show operation.
                  */
                 void showEvent(QShowEvent* event);
+
+                /**
+                 * @brief ShowEvent, occurres if the page left
+                 * @details This event occurred iff this page is left.
+                 * This method will handle the everything which should happened if this page is shown.
+                 * @param event - This param contains all information about the show operation.
+                 */
+                void leaveEvent(QEvent *event);
+
             };
         }
     }

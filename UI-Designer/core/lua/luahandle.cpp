@@ -24,7 +24,6 @@ haevn::core::lua::LuaHandle::LuaHandle(haevn::core::models::Model* t_model){
     lua_register(L, "GetEnabled", getEnabled);
     lua_register(L, "GetTooltip", getTooltip);
     lua_register(L, "DisplayMessageBox", createMessageBox);
-
 }
 
 haevn::core::lua::LuaHandle::~LuaHandle(){
@@ -32,7 +31,6 @@ haevn::core::lua::LuaHandle::~LuaHandle(){
 }
 
 int haevn::core::lua::LuaHandle::runScript(const char* file){
-
     int result = luaL_loadfile(L, file);
     // if there no error execute the script
     if(result == LUA_OK ){
@@ -71,8 +69,6 @@ const char* haevn::core::lua::LuaHandle::getError(){
         return "Unknown problem.";
     }
 }
-
-
 
 
 /*

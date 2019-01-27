@@ -1,7 +1,7 @@
 #include "view/mainwindow/mainwindow.h"
 #include <QApplication>
+
 #include "core/util/fileutils.h"
-#include <QDebug>
 
 int main(int argc, char *argv[]){
     QApplication a(argc, argv);
@@ -18,7 +18,6 @@ int main(int argc, char *argv[]){
             fileHandler.checkFiles(true);
         }
     }
-
     w.show();
     int retCode = a.exec();
 

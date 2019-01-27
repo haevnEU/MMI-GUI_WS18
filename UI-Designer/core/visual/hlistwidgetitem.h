@@ -18,8 +18,18 @@ namespace haevn{
          */
         class HListWidgetItem : public QListWidgetItem{
 
-        public:
+        private:
+            /**
+             * @brief Key of the item, it is also the name and should be contained in a map
+             */
+            QString m_key;
 
+            /**
+             * @brief Data of the item, it should be contained as a value inside a map
+             */
+            QString m_data;
+
+        public:
             /**
              * @brief Constructor
              * @details The constructor will create and initialize important data.
@@ -42,17 +52,6 @@ namespace haevn{
              * @return Key of this item
              */
             QString getData();
-        private:
-
-            /**
-             * @brief Key of the item, it is also the name and should be contained in a map
-             */
-            QString m_key;
-
-            /**
-             * @brief Data of the item, it should be contained as a value inside a map
-             */
-            QString m_data;
         };
 
     }
