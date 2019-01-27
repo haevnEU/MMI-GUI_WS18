@@ -1,1 +1,0 @@
-# This file contains all settings, note this function is not implemented

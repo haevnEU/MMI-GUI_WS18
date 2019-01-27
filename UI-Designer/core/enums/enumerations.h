@@ -80,7 +80,6 @@ namespace haevn{
                 display_WebView,
 
 
-                    /// Tool that describes a groupbox is selected
                 /**
                  * \brief Tool that describes nothing selected
                  */

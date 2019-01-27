@@ -79,6 +79,12 @@ namespace haevn{
                     lua_State* L;
 
                     /**
+                     * @brief Internal usage, part of LUA UI-Designer API.
+                     * @details This variable is used to store the application model
+                     */
+                    static haevn::core::models::Model* s_model;
+
+                    /**
                      * @brief This method tests if all three condidions are valid.
                      * @details This method has an internal usage,
                      * it will return if the lua_State is not a nullptr
@@ -87,12 +93,6 @@ namespace haevn{
                      * Otherwise the index is also tested against the s_models scenegraphsize
                      */
                     static bool validate(lua_State* L, haevn::core::models::Model* s_model = nullptr, int idx = -1);
-
-                    /**
-                     * @brief Internal usage, part of LUA UI-Designer API.
-                     * @details This variable is used to store the application model
-                     */
-                    static haevn::core::models::Model* s_model;
 
                     /**
                      * @brief Internal usage, part of LUA UI-Designer API.

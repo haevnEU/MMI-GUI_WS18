@@ -44,3 +44,10 @@ target_wrapper.*
 
 # QtCreator CMake
 CMakeLists.txt.user*
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+*.doc
+*.docx
+*.pdf
