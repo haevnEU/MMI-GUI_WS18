@@ -1,2 +1,0 @@
-# javaFX scripts
-/res/scripts/javaFX.lua
